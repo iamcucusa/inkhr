@@ -1,0 +1,14 @@
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store
+
+# Dependencies and builds
+node_modules/
+dist/
+coverage/
+
+# Local only
+.disclosure-terms.local
+.claude/settings.local.json
+CLAUDE.local.md
