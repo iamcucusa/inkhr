@@ -75,7 +75,7 @@ Two concerns, two commits. Follow "Automatic formatting" in `design.md`.
 Commit: `build(repo): format agent edits with a claude code hook`
 
 3. `npm install -D -E lint-staged@17.5.1`. Add the `lint-staged` config, the `prepare` script and `engines.node: ">=22.22.1"` to `package.json`, and write `.githooks/pre-commit` (executable).
-4. Check: `npm install` sets `git config core.hooksPath` to `.githooks`. Stage a deliberately unformatted file, commit it on a scratch branch, and confirm that the committed file is formatted. Then delete the scratch branch.
+4. Check: `npm install` sets `git config core.hooksPath` to `.githooks`. In a throwaway repository with the same `package.json`, Prettier config, `.githooks` and `node_modules`, commit an unformatted staged file and confirm the committed file is formatted. Also confirm that a partly staged file keeps its unstaged lines, and that a Prettier syntax error blocks the commit.
 
 Commit: `build(repo): format staged files in a pre-commit hook`
 

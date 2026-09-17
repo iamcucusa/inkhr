@@ -1,0 +1,3 @@
+#!/bin/sh
+# Formats the staged files and stages them again.
+npx --no-install lint-staged
