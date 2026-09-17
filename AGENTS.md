@@ -11,7 +11,7 @@ A bracket is a placeholder until the project it needs exists; replace it with th
 - Build the tokens: [token build command]
 - Lint: `npx nx affected -t lint`
 - Type-check: [type-check command]
-- Test: `npx nx affected -t test`
+- Test: `npx nx affected -t test`; the repository tools: `npm test`
 - Visual and axe checks: [e2e command]
 - Format: `npm run format`; check formatting: `npm run format:check`
 - Add a changeset: `npx changeset`
@@ -21,6 +21,7 @@ Formatting is automatic: a Claude Code hook formats every file an agent edits, a
 ## Read first
 
 - `DESIGN.md` for design work: roles, component recipes, do's and don'ts.
+- `docs/commit-guide.md` before committing: message format, branch names, disclosure. Hooks reject what breaks it, and you propose each message for approval.
 - `docs/stack-and-dependencies.md` before adding, removing or upgrading a package.
 - `GAPS.md` for what InkHR does not have. If a component, token or tool is not there, stop and ask.
 - `components.json` or the InkHR MCP server for a component API; the token files for values.
