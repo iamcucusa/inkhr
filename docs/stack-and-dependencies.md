@@ -22,39 +22,39 @@ The reasons for every other stack choice are in its dependency entry below.
 
 ## Where each dependency runs
 
-| Dependency | Version | Runs in | Status | Stage |
-|---|---|---|---|---|
-| DTCG | 2025.10 | Token source format | Pinned by `$schema` | 0 |
-| `style-dictionary` | 5.5.3 | Token build | Chosen | 0 |
-| `@terrazzo/cli` | 2.7.1 | After-edit hook, gate 1 | Chosen | 0 |
-| Angular (`@angular/*`) | 22.1.6, and 21 | Components, apps | Chosen | 0 |
-| `typescript`, Node | 6.0, 22 or later | Every build; `tsc` in the after-edit hook and gate 5 | Required by Angular 22 | 0 |
-| `@angular/aria` | 22.1.7 | Components | Chosen, validated in Stage 1 | 1 |
-| `@angular/cdk` | 22.1.7 | Components | Chosen, validated in Stage 1 | 1 |
-| `@angular/forms` (Signal Forms) | 22.1.6 | Form controls | Proposed | 1 |
-| Open Sans, Instrument Serif | | Shipped font files | Chosen, delivery not decided | 0 |
-| SVG optimiser and sprite builder | | Icon build | To choose | 1 |
-| `vitest`, `@vitest/browser-playwright`, `@testing-library/angular`, `@angular/aria` harnesses | | Before-done hook, CI | Chosen | 1 |
-| `@playwright/test` | | Gate 4 | Chosen | 1 |
-| `axe-core`, `@axe-core/playwright` | | Gate 3 | Chosen | 1 |
-| `angular-eslint`, `strictTemplates` | | Editor, gate 5 | Chosen | 0 |
-| `eslint` | | Editor, gate 5 | Needed, version not chosen | 0 |
-| `stylelint` | | Editor, gate 5 | Needed, version not chosen | 0 |
-| Bundle size checker | | Gate 6 | To choose | Not set |
-| `nx` | | Every build and CI run | Chosen | 2 |
-| `@changesets/cli` | | Gate 7, release | Chosen | 2 |
-| `@angular-devkit/schematics` | | `ng add`, `ng generate`, `ng update` in apps | Chosen | 2 |
-| `@compodoc/compodoc` | 2.0.0 | Metadata build, gate 7 API diff | Chosen | 1 |
-| `@cngxjs/compodocx` | 0.8.0 | Metadata build | Candidate | Later |
-| `@analogjs/platform`, `@analogjs/content` | 2.7.2 | Docs site build | Chosen | 3 |
-| `storybook`, `@storybook/angular-vite` | 10.6.0 | Local workbench | Optional | Re-evaluated |
-| Claude Code | | Agent sessions | Chosen | 0 |
-| `@angular/cli` MCP server, Angular Agent Skills, `best-practices.md` | | Agent sessions | Chosen | 0 |
-| MCP SDK | | InkHR MCP server | To choose | 4 |
-| `web-codegen-scorer` | 0.0.70 | Agent baseline | Chosen | 0 |
-| `adsa-cli` | 0.1.5 | Gate 7 | Chosen | 4 |
-| Claude Design | | Design work | Chosen | 3 |
-| Higgsfield, GPT Image 2.5 | | Design time only | Chosen | Design time |
+| Dependency                                                                                    | Version          | Runs in                                              | Status                       | Stage        |
+| --------------------------------------------------------------------------------------------- | ---------------- | ---------------------------------------------------- | ---------------------------- | ------------ |
+| DTCG                                                                                          | 2025.10          | Token source format                                  | Pinned by `$schema`          | 0            |
+| `style-dictionary`                                                                            | 5.5.3            | Token build                                          | Chosen                       | 0            |
+| `@terrazzo/cli`                                                                               | 2.7.1            | After-edit hook, gate 1                              | Chosen                       | 0            |
+| Angular (`@angular/*`)                                                                        | 22.1.6, and 21   | Components, apps                                     | Chosen                       | 0            |
+| `typescript`, Node                                                                            | 6.0, 22 or later | Every build; `tsc` in the after-edit hook and gate 5 | Required by Angular 22       | 0            |
+| `@angular/aria`                                                                               | 22.1.7           | Components                                           | Chosen, validated in Stage 1 | 1            |
+| `@angular/cdk`                                                                                | 22.1.7           | Components                                           | Chosen, validated in Stage 1 | 1            |
+| `@angular/forms` (Signal Forms)                                                               | 22.1.6           | Form controls                                        | Proposed                     | 1            |
+| Open Sans, Instrument Serif                                                                   |                  | Shipped font files                                   | Chosen, delivery not decided | 0            |
+| SVG optimiser and sprite builder                                                              |                  | Icon build                                           | To choose                    | 1            |
+| `vitest`, `@vitest/browser-playwright`, `@testing-library/angular`, `@angular/aria` harnesses |                  | Before-done hook, CI                                 | Chosen                       | 1            |
+| `@playwright/test`                                                                            |                  | Gate 4                                               | Chosen                       | 1            |
+| `axe-core`, `@axe-core/playwright`                                                            |                  | Gate 3                                               | Chosen                       | 1            |
+| `angular-eslint`, `strictTemplates`                                                           |                  | Editor, gate 5                                       | Chosen                       | 0            |
+| `eslint`                                                                                      |                  | Editor, gate 5                                       | Needed, version not chosen   | 0            |
+| `stylelint`                                                                                   |                  | Editor, gate 5                                       | Needed, version not chosen   | 0            |
+| Bundle size checker                                                                           |                  | Gate 6                                               | To choose                    | Not set      |
+| `nx`                                                                                          |                  | Every build and CI run                               | Chosen                       | 2            |
+| `@changesets/cli`                                                                             |                  | Gate 7, release                                      | Chosen                       | 2            |
+| `@angular-devkit/schematics`                                                                  |                  | `ng add`, `ng generate`, `ng update` in apps         | Chosen                       | 2            |
+| `@compodoc/compodoc`                                                                          | 2.0.0            | Metadata build, gate 7 API diff                      | Chosen                       | 1            |
+| `@cngxjs/compodocx`                                                                           | 0.8.0            | Metadata build                                       | Candidate                    | Later        |
+| `@analogjs/platform`, `@analogjs/content`                                                     | 2.7.2            | Docs site build                                      | Chosen                       | 3            |
+| `storybook`, `@storybook/angular-vite`                                                        | 10.6.0           | Local workbench                                      | Optional                     | Re-evaluated |
+| Claude Code                                                                                   |                  | Agent sessions                                       | Chosen                       | 0            |
+| `@angular/cli` MCP server, Angular Agent Skills, `best-practices.md`                          |                  | Agent sessions                                       | Chosen                       | 0            |
+| MCP SDK                                                                                       |                  | InkHR MCP server                                     | To choose                    | 4            |
+| `web-codegen-scorer`                                                                          | 0.0.70           | Agent baseline                                       | Chosen                       | 0            |
+| `adsa-cli`                                                                                    | 0.1.5            | Gate 7                                               | Chosen                       | 4            |
+| Claude Design                                                                                 |                  | Design work                                          | Chosen                       | 3            |
+| Higgsfield, GPT Image 2.5                                                                     |                  | Design time only                                     | Chosen                       | Design time  |
 
 ## Dependencies
 

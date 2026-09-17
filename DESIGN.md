@@ -3,7 +3,8 @@ name: InkHR
 description: Design system for an HR portfolio. Paper, ink and one cobalt.
 themes: [light, dark]
 densities: [comfortable, compact]
-source: [tokens/inkhr.tokens.json, tokens/modes/light.json, tokens/modes/dark.json]
+source:
+  [tokens/inkhr.tokens.json, tokens/modes/light.json, tokens/modes/dark.json]
 maintained: by hand; every token name is checked against the token files in CI
 ---
 
@@ -30,30 +31,30 @@ People: employees requesting time off and checking payslips, managers approving 
 
 Paper and ink carry the interface; cobalt is the only action and signal hue. Status and data colours never fill a button and never colour body text. Components read the role through its CSS variable and never a hex value or a primitive such as `color.cobalt.700`; the token files hold the values.
 
-| Name | Role | CSS variable | Use |
-|---|---|---|---|
-| Paper | `sys.surface.page` | `var(--sys-surface-page)` | The canvas of every screen. Near-white, neutral, never tinted. |
-| Card | `sys.surface.default` | `var(--sys-surface-default)` | Cards, fields, dialogs, the app bar. The surface text is measured against. |
-| Sunken | `sys.surface.sunken` | `var(--sys-surface-sunken)` | Recessed areas inside a card, one step below it. |
-| Ink | `sys.text.primary` | `var(--sys-text-primary)` | Body text, headings, values. The mark a person makes. |
-| Quiet ink | `sys.text.secondary` | `var(--sys-text-secondary)` | Metadata, captions, secondary labels. |
-| Hairline | `sys.border.subtle` | `var(--sys-border-subtle)` | Dividers between rows and sections. |
-| Edge | `sys.border.default` | `var(--sys-border-default)` | Field and card boundaries. |
-| Cobalt | `sys.action.primary.bg` | `var(--sys-action-primary-bg)` | The one action colour: the primary button, links, selection, focus and tabs. |
-| Cobalt, pressed ink | `sys.action.primary.bg-hover` | `var(--sys-action-primary-bg-hover)` | Primary button on hover; link text. |
-| Selected wash | `sys.selected.bg` | `var(--sys-selected-bg)` | Selected rows, nav items and chips, with text.on-selected. |
-| Inverse | `sys.surface.inverse` | `var(--sys-surface-inverse)` | Tooltips and toasts. |
+| Name                | Role                          | CSS variable                         | Use                                                                          |
+| ------------------- | ----------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
+| Paper               | `sys.surface.page`            | `var(--sys-surface-page)`            | The canvas of every screen. Near-white, neutral, never tinted.               |
+| Card                | `sys.surface.default`         | `var(--sys-surface-default)`         | Cards, fields, dialogs, the app bar. The surface text is measured against.   |
+| Sunken              | `sys.surface.sunken`          | `var(--sys-surface-sunken)`          | Recessed areas inside a card, one step below it.                             |
+| Ink                 | `sys.text.primary`            | `var(--sys-text-primary)`            | Body text, headings, values. The mark a person makes.                        |
+| Quiet ink           | `sys.text.secondary`          | `var(--sys-text-secondary)`          | Metadata, captions, secondary labels.                                        |
+| Hairline            | `sys.border.subtle`           | `var(--sys-border-subtle)`           | Dividers between rows and sections.                                          |
+| Edge                | `sys.border.default`          | `var(--sys-border-default)`          | Field and card boundaries.                                                   |
+| Cobalt              | `sys.action.primary.bg`       | `var(--sys-action-primary-bg)`       | The one action colour: the primary button, links, selection, focus and tabs. |
+| Cobalt, pressed ink | `sys.action.primary.bg-hover` | `var(--sys-action-primary-bg-hover)` | Primary button on hover; link text.                                          |
+| Selected wash       | `sys.selected.bg`             | `var(--sys-selected-bg)`             | Selected rows, nav items and chips, with text.on-selected.                   |
+| Inverse             | `sys.surface.inverse`         | `var(--sys-surface-inverse)`         | Tooltips and toasts.                                                         |
 
 Contrast on the card surface: ink 18.4:1 light and 15.8:1 dark, quiet ink 6.7:1 and 12.8:1, white on cobalt 7.0:1, ink on dark cobalt 10.5:1.
 
 Status, always with a dot or an icon and a word:
 
-| Status | Text on background | Edge and icon | Contrast, light | Contrast, dark |
-|---|---|---|---|---|
-| Success | `sys.status.success.text` on `sys.status.success.bg` | `sys.status.success.border`, `sys.status.success.icon` | 8.4:1 | 9.7:1 |
-| Warning | `sys.status.warning.text` on `sys.status.warning.bg` | `sys.status.warning.border`, `sys.status.warning.icon` | 8.8:1 | 9.6:1 |
-| Danger | `sys.status.danger.text` on `sys.status.danger.bg` | `sys.status.danger.border`, `sys.status.danger.icon` | 6.7:1 | 9.6:1 |
-| Info | `sys.status.info.text` on `sys.status.info.bg` | `sys.status.info.border`, `sys.status.info.icon` | 8.9:1 | 10.0:1 |
+| Status  | Text on background                                   | Edge and icon                                          | Contrast, light | Contrast, dark |
+| ------- | ---------------------------------------------------- | ------------------------------------------------------ | --------------- | -------------- |
+| Success | `sys.status.success.text` on `sys.status.success.bg` | `sys.status.success.border`, `sys.status.success.icon` | 8.4:1           | 9.7:1          |
+| Warning | `sys.status.warning.text` on `sys.status.warning.bg` | `sys.status.warning.border`, `sys.status.warning.icon` | 8.8:1           | 9.6:1          |
+| Danger  | `sys.status.danger.text` on `sys.status.danger.bg`   | `sys.status.danger.border`, `sys.status.danger.icon`   | 6.7:1           | 9.6:1          |
+| Info    | `sys.status.info.text` on `sys.status.info.bg`       | `sys.status.info.border`, `sys.status.info.icon`       | 8.9:1           | 10.0:1         |
 
 Data colours tell leave types, departments and chart series apart, used in this order; never a button fill, never text:
 
@@ -61,21 +62,21 @@ Data colours tell leave types, departments and chart series apart, used in this 
 
 ## Typography
 
-`font.family.sans` (Open Sans) for every component, in three weights. `font.family.display` (Instrument Serif) appears only at display size on welcome, onboarding and empty surfaces, as one italic phrase inside a headline ("Good morning, Ana. *Nothing waits on you today.*"), never as a heading or body copy. Figures are tabular (`font.numeric.tabular`). Type sizes compile to rem, so 200 percent text size grows a control with its text. Components set a whole role through its variable, never a size, line height or weight of their own.
+`font.family.sans` (Open Sans) for every component, in three weights. `font.family.display` (Instrument Serif) appears only at display size on welcome, onboarding and empty surfaces, as one italic phrase inside a headline ("Good morning, Ana. _Nothing waits on you today._"), never as a heading or body copy. Figures are tabular (`font.numeric.tabular`). Type sizes compile to rem, so 200 percent text size grows a control with its text. Components set a whole role through its variable, never a size, line height or weight of their own.
 
-| Role | CSS variable | Family | Use |
-|---|---|---|---|
-| `sys.type.display` | `var(--sys-type-display)` | `font.family.sans` | The one figure a view is about: a leave balance, a KPI value, a payslip total. |
-| `sys.type.heading.lg` | `var(--sys-type-heading-lg)` | `font.family.sans` | The page title, once per page. |
-| `sys.type.heading.md` | `var(--sys-type-heading-md)` | `font.family.sans` | Section titles, dialog titles. |
-| `sys.type.heading.sm` | `var(--sys-type-heading-sm)` | `font.family.sans` | Card titles, group labels. |
-| `sys.type.body.lg` | `var(--sys-type-body-lg)` | `font.family.sans` | Lead paragraphs on welcome and empty surfaces. |
-| `sys.type.body.md` | `var(--sys-type-body-md)` | `font.family.sans` | Default text, table cells, field values. |
-| `sys.type.body.sm` | `var(--sys-type-body-sm)` | `font.family.sans` | Help text, metadata, timestamps. |
-| `sys.type.label.md` | `var(--sys-type-label-md)` | `font.family.sans` | Buttons, field labels, tabs. |
-| `sys.type.label.sm` | `var(--sys-type-label-sm)` | `font.family.sans` | Badges, table headers, small labels. |
-| `sys.type.code` | `var(--sys-type-code)` | `font.family.mono` | Employee numbers, IBANs, reference codes. |
-| `sys.type.display-serif` | `var(--sys-type-display-serif)` | `font.family.display` | One italic phrase on welcome, onboarding and empty surfaces. |
+| Role                     | CSS variable                    | Family                | Use                                                                            |
+| ------------------------ | ------------------------------- | --------------------- | ------------------------------------------------------------------------------ |
+| `sys.type.display`       | `var(--sys-type-display)`       | `font.family.sans`    | The one figure a view is about: a leave balance, a KPI value, a payslip total. |
+| `sys.type.heading.lg`    | `var(--sys-type-heading-lg)`    | `font.family.sans`    | The page title, once per page.                                                 |
+| `sys.type.heading.md`    | `var(--sys-type-heading-md)`    | `font.family.sans`    | Section titles, dialog titles.                                                 |
+| `sys.type.heading.sm`    | `var(--sys-type-heading-sm)`    | `font.family.sans`    | Card titles, group labels.                                                     |
+| `sys.type.body.lg`       | `var(--sys-type-body-lg)`       | `font.family.sans`    | Lead paragraphs on welcome and empty surfaces.                                 |
+| `sys.type.body.md`       | `var(--sys-type-body-md)`       | `font.family.sans`    | Default text, table cells, field values.                                       |
+| `sys.type.body.sm`       | `var(--sys-type-body-sm)`       | `font.family.sans`    | Help text, metadata, timestamps.                                               |
+| `sys.type.label.md`      | `var(--sys-type-label-md)`      | `font.family.sans`    | Buttons, field labels, tabs.                                                   |
+| `sys.type.label.sm`      | `var(--sys-type-label-sm)`      | `font.family.sans`    | Badges, table headers, small labels.                                           |
+| `sys.type.code`          | `var(--sys-type-code)`          | `font.family.mono`    | Employee numbers, IBANs, reference codes.                                      |
+| `sys.type.display-serif` | `var(--sys-type-display-serif)` | `font.family.display` | One italic phrase on welcome, onboarding and empty surfaces.                   |
 
 A role never carries colour; colour comes from `sys.text.*`.
 
@@ -157,6 +158,7 @@ Read `AGENTS.md` first, then this file. Use `components.json` or the MCP server 
 Shorthand, always as roles: paper is `sys.surface.page`, card `sys.surface.default`, ink `sys.text.primary`, cobalt `sys.action.primary.bg`. Themes switch the values, never the names, so a screen written with roles works in light and dark. Never write a hex value, even one copied from a screenshot.
 
 Example prompts:
+
 - "Build the leave request screen in InkHR: the request form in a card on paper, Ana Kuiper's balance beside it (16 days statutory, 5 requested, 11 left) as a KPI tile, one primary button, 'Request time off'."
 - "Show the manager inbox as an InkHR data grid with a pending badge per row and row actions named with the employee."
 - "Design the empty state for 'No requests yet' with the ink drop, one sentence and the button 'Request time off'. Light and dark."
@@ -182,7 +184,10 @@ Example prompts:
 
 ```html
 <!-- Angular -->
-<ink-field label="First day" help="Day, month and year, for example 12-10-2026.">
+<ink-field
+  label="First day"
+  help="Day, month and year, for example 12-10-2026."
+>
   <ink-date-field></ink-date-field>
 </ink-field>
 <ink-button variant="primary">Request time off</ink-button>

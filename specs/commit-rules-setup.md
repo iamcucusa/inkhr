@@ -101,7 +101,12 @@ Add `tools/commit-rules/check-message.test.mjs` and `check-branch.test.mjs` with
          {
            "matcher": "Bash",
            "if": "Bash(git commit *)",
-           "hooks": [{ "type": "command", "command": "node tools/commit-rules/claude-pre-commit.mjs" }]
+           "hooks": [
+             {
+               "type": "command",
+               "command": "node tools/commit-rules/claude-pre-commit.mjs"
+             }
+           ]
          }
        ]
      }
@@ -109,6 +114,7 @@ Add `tools/commit-rules/check-message.test.mjs` and `check-branch.test.mjs` with
    ```
 
    `claude-pre-commit.mjs` reads the hook input from stdin, takes the command from `tool_input.command`, extracts the message (`-m` values or a heredoc), runs the checker, and exits with code 2 and the list of broken rules on stderr when it fails. If it cannot extract the message, it lets the command through and leaves the check to the `commit-msg` hook. Project hooks also apply to subagents. Reference: https://code.claude.com/docs/en/hooks.md
+
 4. **Block the bypass:** add permission deny rules in `.claude/settings.json` for `Bash(git commit --no-verify*)`, `Bash(git commit -n *)` and `Bash(git push --no-verify*)`.
 
 ### Step 5. Backstop before anything reaches `main`
