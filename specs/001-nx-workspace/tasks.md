@@ -27,21 +27,20 @@ Commit: `docs(repo): record nx workspace setup trial`
 
 ## 2. Create the workspace
 
-1. Create the workspace in a scratch folder with the chosen setup and copy the files listed in `design.md` into the repository.
-2. Pin exact versions in `package.json`: `nx`, `@nx/js` and `@nx/eslint` at 23.2.1, `typescript` at the newest 6.0.x, and `eslint` at the version Nx installed.
-3. Add `private: true` and `engines.node: ">=22"`, and the `workspaces` field if the trial confirmed it.
-4. Make `tsconfig.base.json` strict with an empty `paths` map.
-5. Add `.nx/cache` and `.nx/workspace-data` to `.gitignore`.
-6. Run `npm install` and commit `package-lock.json`.
-7. Check: `npx nx --version`, `npx nx show projects`, `npx nx report`, `npx eslint .`.
+1. Create the workspace in the repository with the steps in "Creating the workspace" in `design.md`.
+2. Check that `package.json` pins exact versions: `nx`, `@nx/js`, `@nx/eslint` and `@nx/eslint-plugin` at 23.2.1, `typescript` at 6.0.3, and `eslint` at the version Nx installed.
+3. Make `tsconfig.base.json` strict with an empty `paths` map.
+4. Add `.nx/cache` and `.nx/workspace-data` to `.gitignore`.
+5. Check that `nx init` wrote no agent, editor or formatter files (`git status`), and commit `package-lock.json`.
+6. Check: `npx nx --version`, `npx nx show projects`, `npx nx report`, `npx eslint .`.
 
 Commit: `build(repo): add nx workspace`
 
 ## 3. Set up Changesets
 
-1. `npm install -D -E @changesets/cli` and `npx changeset init`.
-2. Set `.changeset/config.json` as described in `design.md`.
-3. Check: `npx changeset status`.
+1. `npm install -D -E @changesets/cli@3.0.3`.
+2. Write `.changeset/config.json` by hand as described in `design.md`; `changeset init` is interactive only in 3.x.
+3. Check: `npx changeset status` exits 0. Its warning that `@inkhr/*` matches no package is expected until the first package exists.
 
 Commit: `build(repo): add changesets with fixed versioning`
 

@@ -40,5 +40,5 @@ Turn this repository into an Nx workspace that later specs add projects to. This
 - `npx changeset status` runs without error.
 - The trial result and the chosen setup are written in `design.md`.
 - `CLAUDE.md` is exactly `@AGENTS.md` plus a newline, and no other agent or editor files from Nx are committed.
-- `docs/stack-and-dependencies.md` shows the installed versions of `nx`, `@nx/js`, `@nx/eslint`, `eslint`, `typescript` and `@changesets/cli`.
+- `docs/stack-and-dependencies.md` shows the installed versions of `nx`, `@nx/js`, `@nx/eslint`, `@nx/eslint-plugin`, `eslint`, `typescript` and `@changesets/cli`.
 - The work is merged into `main` through a pull request whose commits follow `specs/commit-rules-setup.md`.
