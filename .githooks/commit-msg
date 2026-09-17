@@ -1,0 +1,3 @@
+#!/bin/sh
+# Rejects a commit message that breaks the rules; a fix costs one retype.
+node tools/commit-rules/check-message.mjs "$1"

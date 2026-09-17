@@ -1,5 +1,27 @@
 import { describe, expect, it } from 'vitest';
-import { extractMessage, readHookInput } from './claude-pre-commit.mjs';
+import {
+  extractMessage,
+  extractMessages,
+  readHookInput,
+} from './claude-pre-commit.mjs';
+
+describe('extractMessages', () => {
+  it('keeps each command separate instead of merging a script', () => {
+    const script = [
+      'git commit -m "docs(repo): add the guide"',
+      'echo done',
+      'git commit -m "chore: tidy"',
+    ].join('\n');
+    expect(extractMessages(script)).toEqual([
+      'docs(repo): add the guide',
+      'chore: tidy',
+    ]);
+  });
+
+  it('returns nothing for a script with no commit', () => {
+    expect(extractMessages('npm test && npm run format:check')).toEqual([]);
+  });
+});
 
 describe('extractMessage', () => {
   it('reads a -m message', () => {

@@ -4,6 +4,15 @@
 import { fileURLToPath } from 'node:url';
 import { checkMessage } from './check-message.mjs';
 
+// A script may hold several commands; each `git commit` is checked on its own,
+// so repeated -m values are joined per commit and not across the script.
+export function extractMessages(command) {
+  return command
+    .split(/&&|\|\||;|\n/)
+    .map((segment) => extractMessage(segment))
+    .filter((message) => message !== undefined);
+}
+
 // -m "..." / -m '...' / --message=... , and heredocs: -m "$(cat <<'EOF' ... EOF)"
 export function extractMessage(command) {
   // `git commit` as a command, not the words inside a quoted string: it must
@@ -34,9 +43,9 @@ export function readHookInput(raw) {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const { readFileSync } = await import('node:fs');
   const command = readHookInput(readFileSync(0, 'utf8'));
-  const message = command === undefined ? undefined : extractMessage(command);
+  const messages = command === undefined ? [] : extractMessages(command);
 
-  if (message !== undefined) {
+  for (const message of messages) {
     const failures = checkMessage(message);
     if (failures.length > 0) {
       process.stderr.write('This commit message breaks the commit rules:\n');
