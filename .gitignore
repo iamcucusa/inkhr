@@ -13,3 +13,8 @@ coverage/
 .claude/settings.local.json
 .claude/worktrees/
 CLAUDE.local.md
+
+# Nx
+.nx/cache
+.nx/workspace-data
+.nx/migrate-runs
