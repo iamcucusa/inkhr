@@ -8,6 +8,7 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@changesets/cli": "3.0.3",
     "@nx/eslint": "23.2.1",
     "@nx/eslint-plugin": "23.2.1",
     "@nx/js": "23.2.1",
