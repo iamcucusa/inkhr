@@ -32,7 +32,7 @@ Make the commit and branch rules binding: a bad commit message, branch name or d
 ## Done when
 
 - `npm test` passes, covering every rule in both checkers.
-- A commit whose message has a bad type or scope, a subject over 72 characters, an uppercase letter after the colon, a trailing period, a three-line body or any trailer is rejected, and the message names the broken rule.
+- A commit whose message has a bad type or scope, a header over 72 characters, an uppercase letter after the colon, a trailing period, a three-line body or any trailer is rejected, and the message names the broken rule.
 - A commit message containing a term from the committed patterns, in singular or plural, or a name from the private list, is rejected.
 - `git commit --no-verify` and `git push --no-verify` are refused when an agent tries them.
 - A Claude Code commit in this repository has no attribution lines.
