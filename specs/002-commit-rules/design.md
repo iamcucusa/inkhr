@@ -85,7 +85,7 @@ Only CI cannot be bypassed: `.claude/settings.json` reaches Claude Code users an
 - `package.json`: `vitest` 5.0.1 pinned, a `test` script running `vitest run`, and `prepare` extended with `node tools/commit-rules/init-local.mjs`.
 - `.claude/settings.json`: the three agent entries from the table above, added next to the formatting hook.
 - `.gitignore`: already ignores `.disclosure-terms.local`.
-- `AGENTS.md`: a `## Commits` section of at most six lines, pointing at `docs/commit-guide.md`, plus `npm test` next to the other commands.
+- `AGENTS.md`: one "Read first" line pointing at `docs/commit-guide.md`, in the shape of the `DESIGN.md` line, plus `npm test` next to the other commands. The rules themselves are not repeated here.
 - `docs/stack-and-dependencies.md`: the `vitest` row gets 5.0.1 and is split from the packages sharing its cell, which keep no version.
 - `specs/001-nx-workspace/*`, `specs/dependency-management-setup.md`, `specs/github-setup.md`: references to the hand-over note point at `docs/commit-guide.md` for the rules and at `specs/002-commit-rules/` for the enforcement.
 
