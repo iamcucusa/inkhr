@@ -41,7 +41,7 @@ Turn this repository into an Nx workspace that later specs add projects to. This
 - `npx nx report` runs without error.
 - `npx eslint .` runs without error on the empty workspace.
 - `npx changeset status` runs without error.
-- `npx nx format:check --all` runs without error, and `.changeset/config.json` has `format: "prettier"`.
+- `npm run format:check` runs without error, and `.changeset/config.json` has `format: "prettier"`.
 - An agent's edit that leaves a file unformatted is formatted by the hook right after the edit.
 - After `npm install`, `git config core.hooksPath` prints `.githooks`, and committing an unformatted staged file produces a formatted commit.
 - The trial result and the chosen setup are written in `design.md`.

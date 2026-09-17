@@ -7,6 +7,10 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "format": "nx format:write --all",
+    "format:check": "nx format:check --all"
+  },
   "devDependencies": {
     "@changesets/cli": "3.0.3",
     "@nx/eslint": "23.2.1",
