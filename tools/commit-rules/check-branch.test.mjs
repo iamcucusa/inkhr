@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { checkBranch } from './check-branch.mjs';
 
-const rules = (name) => checkBranch(name).map((failure) => failure.rule);
+// An explicit empty private list keeps the tests independent of the local file.
+const rules = (name) => checkBranch(name, []).map((failure) => failure.rule);
 
 describe('checkBranch', () => {
   it('accepts a spec branch named after its folder', () => {

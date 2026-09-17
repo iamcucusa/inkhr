@@ -11,6 +11,7 @@ import {
   TRAILERS,
   TYPES,
 } from './rules.mjs';
+import { checkDisclosure, readLocalTerms } from './disclosure.mjs';
 
 // Drops git's comment lines and everything below its scissors line.
 export function stripComments(message) {
@@ -24,7 +25,7 @@ export function stripComments(message) {
   return lines;
 }
 
-export function checkMessage(message) {
+export function checkMessage(message, localTerms = readLocalTerms()) {
   const lines = stripComments(message);
   const header = lines[0] ?? '';
   const failures = [];
@@ -85,6 +86,8 @@ export function checkMessage(message) {
       break;
     }
   }
+
+  failures.push(...checkDisclosure(lines.join('\n'), localTerms));
 
   return failures;
 }

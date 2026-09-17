@@ -7,8 +7,9 @@ import {
   BRANCH_SPEC,
 } from './rules.mjs';
 import { report } from './check-message.mjs';
+import { checkDisclosure, readLocalTerms } from './disclosure.mjs';
 
-export function checkBranch(name) {
+export function checkBranch(name, localTerms = readLocalTerms()) {
   const failures = [];
   const fail = (rule, detail) => failures.push({ rule, detail });
 
@@ -27,6 +28,7 @@ export function checkBranch(name) {
       `the name is ${name.length} characters, over ${BRANCH_MAX_LENGTH}`,
     );
   }
+  failures.push(...checkDisclosure(name.replace(/-/g, ' '), localTerms));
 
   return failures;
 }

@@ -1,0 +1,18 @@
+# Private disclosure terms, one per line. Proper nouns only: the generic
+# vocabulary lives in tools/commit-rules/disclosure-patterns.mjs.
+#
+# npm install copies this file to .disclosure-terms.local, which is gitignored
+# and never overwritten. Add the real names there, not here.
+#
+# A term also matches its plural and possessive forms, so add the base name only.
+# CI reads the same list from the DISCLOSURE_TERMS repository secret.
+
+# Employers and clients
+Northwind Logistics
+Acme Bank
+
+# Products under an agreement
+Project Polaris
+
+# People
+Jane Doe
