@@ -52,7 +52,7 @@ Run on 2026-09-17 with Node 24.18.0 and npm 11.16.0, in a scratch folder.
 | `package.json` | `name: "inkhr"`, `private: true`, `engines.node: ">=22"`, `workspaces: ["packages/*"]`, exact versions for `nx`, `@nx/js`, `@nx/eslint`, `@nx/eslint-plugin` (23.2.1), `eslint`, `typescript` 6.0.3 and `@changesets/cli` 3.0.3. |
 | `tsconfig.base.json` | `strict: true`, an empty `paths` map that later specs fill. |
 | `eslint.config.mjs` | `nx.configs['flat/base']` from `@nx/eslint-plugin`, and ignores for `**/dist` and `**/out-tsc`; no project rules yet. |
-| `.changeset/config.json` | Written by hand, because `changeset init` in 3.x is interactive only. It has the `$schema` of `@changesets/config` 4.0.1, `fixed: [["@inkhr/*"]]`, `baseBranch: "main"`, `access: "public"` (scoped packages are private on npm by default; change it if the packages stay private), `commit: false`, and the 3.x defaults for everything else. |
+| `.changeset/config.json` | Written by hand, because `changeset init` in 3.x is interactive only. It has the `$schema` of `@changesets/config` 4.0.1, `fixed: [["@inkhr/*"]]`, `baseBranch: "main"`, `access: "public"` (scoped packages are private on npm by default; change it if the packages stay private), `commit: false`, `format: false` (no formatter is chosen, and `auto` would pick up any formatter a generator adds), and the 3.x defaults for everything else. |
 | `CLAUDE.md` | `@AGENTS.md` |
 | `.gitignore` | Adds `.nx/cache` and `.nx/workspace-data`. |
 
