@@ -76,7 +76,7 @@ Nobody has to remember to format: agents' edits are formatted as they happen, an
   - `.githooks/pre-commit` (executable) runs `npx lint-staged`.
   - A `prepare` script, `git rev-parse --git-dir > /dev/null 2>&1 && git config core.hooksPath .githooks || true`, switches the hooks on at every `npm install`. The guard keeps `npm ci` working outside a git checkout.
   - `lint-staged` 17 needs Node 22.22.1 or later, so `engines.node` becomes `">=22.22.1"`.
-- **Shared with 002:** `specs/commit-rules-setup.md` adds its own entries to these same files: the attribution setting and commit hooks in `.claude/settings.json`, the commit-message check in `.githooks/`, and the same `prepare` script. It extends them instead of replacing them.
+- **Shared with 002:** `specs/002-commit-rules/` adds its own entries to these same files: the attribution setting and commit hooks in `.claude/settings.json`, the commit-message check in `.githooks/`, and the same `prepare` script. It extends them instead of replacing them.
 - **Not yet:** a CI format check, `npm run format:check`, waits for the CI workflows. Editor format-on-save is a personal setting and is not configured.
 
 ## Root files after this spec

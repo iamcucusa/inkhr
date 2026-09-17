@@ -1,6 +1,6 @@
 # GitHub setup: how contributors work in this repository
 
-Hand-over for the session that creates the GitHub repository. Nothing here is implemented yet. Work through the steps in order, one commit per step, following `specs/commit-rules-setup.md` from the first commit. That spec already covers the `main` ruleset for pull requests, linear history and blocked force pushes, rebase-only merges, the commit-message check, the disclosure secret and `CONTRIBUTING.md`; this spec adds what those leave out and does not repeat them.
+Hand-over for the session that creates the GitHub repository. Nothing here is implemented yet. Work through the steps in order, one commit per step, following `docs/commit-guide.md` from the first commit. `specs/002-commit-rules/` already covers the `main` ruleset for pull requests, linear history and blocked force pushes, rebase-only merges, the commit-message check, the disclosure secret and `CONTRIBUTING.md`; this spec adds what those leave out and does not repeat them.
 
 Why this exists: InkHR is built by a central team, product-area champions and agents. Local hooks and `.claude/` settings only reach some of them. What GitHub enforces reaches everyone, so reviews, gates, releases and security live there.
 
@@ -34,7 +34,7 @@ Create `.github/CODEOWNERS`. Team names are placeholders until the teams exist o
 
 ### Step 2. Review and gate rules on `main`
 
-Extend the ruleset from `specs/commit-rules-setup.md`:
+Extend the ruleset from `specs/002-commit-rules/`:
 
 - At least one approving review, and review from code owners.
 - Approvals are dismissed when new commits are pushed.

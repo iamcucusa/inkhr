@@ -1,6 +1,6 @@
 # Dependency management: how agents use the dependency rules
 
-Hand-over for the code sessions in this repository. It turns `docs/stack-and-dependencies.md` into something agents follow because the tooling enforces it, not because they read it. Work through the steps in order, one commit per step; dependency changes use the `deps` scope from `specs/commit-rules-setup.md`.
+Hand-over for the code sessions in this repository. It turns `docs/stack-and-dependencies.md` into something agents follow because the tooling enforces it, not because they read it. Work through the steps in order, one commit per step; dependency changes use the `deps` scope from `docs/commit-guide.md`.
 
 Why this exists: a dependency list that is only read drifts from `package.json`, and an agent that meets an unchosen tool picks the obvious one. The two failures to prevent are agents adding packages nobody chose, and the doc drifting away from what is installed.
 

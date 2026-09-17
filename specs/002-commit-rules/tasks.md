@@ -70,7 +70,7 @@ Depends on tasks 1 to 6.
 
 1. Delete `specs/commit-rules-setup.md`.
 2. Point every reference to it at `docs/commit-guide.md` for the rules and `specs/002-commit-rules/` for the enforcement: `specs/001-nx-workspace/requirements.md`, `design.md` and `tasks.md`, `specs/dependency-management-setup.md`, `specs/github-setup.md`.
-3. Check: `grep -r commit-rules-setup .` finds nothing.
+3. Check: `grep -rn commit-rules-setup . --exclude-dir=node_modules --exclude-dir=.git` finds only the two lines of this task.
 
 Commit: `docs(repo): replace the commit rules hand-over with the guide`
 

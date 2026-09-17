@@ -40,5 +40,5 @@ Make the commit and branch rules binding: a bad commit message, branch name or d
 - After a fresh clone and `npm install`, `git config core.hooksPath` prints `.githooks` and `.disclosure-terms.local` exists.
 - `.disclosure-terms.local` is absent from `git ls-files`, and a disclosure failure names the commit and the rule, never the term.
 - A pull request containing a commit that breaks a rule fails CI; the job log does not show the term.
-- The hand-over note is gone, and no file in the repository refers to it.
+- The hand-over note is gone, and nothing points at it any more except the task that removed it.
 - The work is merged into `main` through a pull request whose commits follow the rules it adds.

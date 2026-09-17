@@ -7,7 +7,7 @@ Turn this repository into an Nx workspace that later specs add projects to. This
 ## Context
 
 - The repository is `iamcucusa/inkhr`. `main` is protected: changes land through pull requests with rebase merges, and the owner merges without a second approval.
-- The monorepo layout, the stack and the dependency rules are in `AGENTS.md`, `docs/stack-and-dependencies.md` and `specs/dependency-management-setup.md`. Commit rules are in `specs/commit-rules-setup.md`.
+- The monorepo layout, the stack and the dependency rules are in `AGENTS.md`, `docs/stack-and-dependencies.md` and `specs/dependency-management-setup.md`. Commit rules are in `docs/commit-guide.md`.
 - Projects go under `packages/` (publishable `@inkhr/*` packages) and `apps/` (the docs site and the optional workbench). They are created by the spec of the stage that needs them.
 
 ## Requirements
@@ -32,7 +32,7 @@ Turn this repository into an Nx workspace that later specs add projects to. This
 - Any project under `packages/` or `apps/`, and the Angular, Style Dictionary, Terrazzo, Vitest or Playwright dependencies.
 - CI workflows and the seven gates, including a CI format check.
 - Editor format-on-save settings.
-- Commit-message hooks and the other Claude Code hooks (`specs/commit-rules-setup.md`). This spec adds only the formatting hooks.
+- Commit-message hooks and the other Claude Code hooks (`specs/002-commit-rules/`). This spec adds only the formatting hooks.
 - GitHub settings beyond what exists (`specs/github-setup.md`).
 
 ## Done when
@@ -47,4 +47,4 @@ Turn this repository into an Nx workspace that later specs add projects to. This
 - The trial result and the chosen setup are written in `design.md`.
 - `CLAUDE.md` is exactly `@AGENTS.md` plus a newline, and no other agent or editor files from Nx are committed.
 - `docs/stack-and-dependencies.md` shows the installed versions of `nx`, `@nx/js`, `@nx/eslint`, `@nx/eslint-plugin`, `eslint`, `typescript`, `@changesets/cli`, `prettier` and `lint-staged`.
-- The work is merged into `main` through a pull request whose commits follow `specs/commit-rules-setup.md`.
+- The work is merged into `main` through a pull request whose commits follow `docs/commit-guide.md`.
