@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { checkMessage } from './check-message.mjs';
 
-const rules = (message) => checkMessage(message).map((failure) => failure.rule);
+// An explicit empty private list keeps the tests independent of the local file.
+const rules = (message) =>
+  checkMessage(message, []).map((failure) => failure.rule);
 
 describe('checkMessage', () => {
   it('accepts a message with a scope', () => {
