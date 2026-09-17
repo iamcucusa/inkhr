@@ -5,7 +5,7 @@
   "ignore": [],
   "fixed": [["@inkhr/*"]],
   "linked": [],
-  "format": false,
+  "format": "prettier",
   "updateInternalDependencies": "patch",
   "commit": false,
   "changelog": "@changesets/cli/changelog"
