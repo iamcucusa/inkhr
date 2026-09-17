@@ -4,14 +4,14 @@ Hand-over for the Stage 4 session that builds `packages/mcp-server`. Nothing her
 
 ## Tools
 
-| Tool | Input | Returns |
-|---|---|---|
-| `list_components` | none | Component names, a one-line purpose and stability for each |
-| `get_component` | `name` | Inputs with types and defaults, outputs, content slots, style classes, keyboard map and examples |
-| `get_tokens` | `tier?`, `prefix?` | Token names, types, descriptions and current values per theme |
-| `get_pattern` | `name` | The composition recipe: components used and copy rules |
-| `lint_snippet` | `html`, `css` or `ts` source | Violations under the same rules as CI, with fixes |
-| `render_preview` | `html`, `theme`, `density` | A screenshot of the snippet rendered with InkHR in that theme and density, so the agent can check its own output |
+| Tool              | Input                        | Returns                                                                                                          |
+| ----------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `list_components` | none                         | Component names, a one-line purpose and stability for each                                                       |
+| `get_component`   | `name`                       | Inputs with types and defaults, outputs, content slots, style classes, keyboard map and examples                 |
+| `get_tokens`      | `tier?`, `prefix?`           | Token names, types, descriptions and current values per theme                                                    |
+| `get_pattern`     | `name`                       | The composition recipe: components used and copy rules                                                           |
+| `lint_snippet`    | `html`, `css` or `ts` source | Violations under the same rules as CI, with fixes                                                                |
+| `render_preview`  | `html`, `theme`, `density`   | A screenshot of the snippet rendered with InkHR in that theme and density, so the agent can check its own output |
 
 ## Sources
 
