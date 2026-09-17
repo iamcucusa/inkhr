@@ -43,7 +43,7 @@ Each layer covers a gap the one before leaves open. Steps 1 to 4 are needed from
 
 ### Step 1. Stop the trailer at the source
 
-Commit `.claude/settings.json` with the attribution turned off, so every Claude Code session in this repository stops adding `Co-Authored-By` and "Generated with Claude Code":
+Commit `.claude/settings.json` with the attribution turned off, adding to the file if it already exists (it holds the formatting hook), so every Claude Code session in this repository stops adding `Co-Authored-By` and "Generated with Claude Code":
 
 ```json
 {
@@ -85,11 +85,13 @@ Add `tools/commit-rules/check-message.test.mjs` and `check-branch.test.mjs` with
 
 ### Step 4. Block bad commits for agents and people
 
+`.githooks/pre-commit`, which formats staged files with `lint-staged`, and the `prepare` script below already exist. Extend them instead of replacing them.
+
 1. **Git hooks, committed in `.githooks/`:**
    - `commit-msg` runs the checker on the message file, so a fix costs one retype.
-   - `pre-commit` runs the affected quality checks (for example `nx affected -t lint test typecheck`, and the token check when token files change).
+   - `pre-commit` keeps its `lint-staged` step first, then runs the affected quality checks (for example `nx affected -t lint test typecheck`, and the token check when token files change).
    - `pre-push` runs the checker on every outgoing commit, catching commits made before the hooks were enabled, and runs the branch check on the pushed branch.
-2. **Switch the hooks on automatically:** a root `package.json` script, `"prepare": "git config core.hooksPath .githooks"`, so every `npm install` enables them in that clone.
+2. **Switch the hooks on automatically:** a root `package.json` script, `"prepare": "git rev-parse --git-dir > /dev/null 2>&1 && git config core.hooksPath .githooks || true"`, so every `npm install` enables them in that clone. The guard keeps `npm ci` working outside a git checkout.
 3. **Claude Code hook** in `.claude/settings.json`, so an agent's commit is checked even before git runs, and the agent receives the reason:
 
    ```json

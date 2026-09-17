@@ -51,30 +51,44 @@ This task has two concerns, so it makes two commits.
 1. `npm install -D -E prettier@3.9.7`.
 2. Write `.prettierrc` and `.prettierignore` as described in "Formatter" in `design.md`.
 3. Change `format` in `.changeset/config.json` from `false` to `"prettier"`.
-4. Check: `npx nx format:check` runs and lists only the files that are not formatted yet, and `npx changeset status` still exits 0.
+4. Check: `npx nx format:check --all` runs and lists only the files that are not formatted yet, and `npx changeset status` still exits 0.
 
 Commit: `build(repo): add prettier as the formatter`
 
-5. Run `npx nx format:write`. Review the diff, especially the Markdown tables and lists; if a file is damaged, add it to `.prettierignore` and format again.
-6. Check: `npx nx format:check` and `npx eslint .` pass.
+5. Run `npx nx format:write --all`. Review the diff, especially the Markdown tables and lists; if a file is damaged, add it to `.prettierignore` and format again.
+6. Check: `npx nx format:check --all` and `npx eslint .` pass.
 
 Commit: `style(repo): format existing files with prettier`
 
-## 5. Add the Claude Code pointer
+## 5. Format automatically
+
+Two concerns, two commits. Follow "Automatic formatting" in `design.md`.
+
+1. Write `tools/format/format-edited-file.mjs` and `.claude/settings.json` with the `PostToolUse` hook.
+2. Check: pipe a sample hook input for an unformatted scratch file into the script, and confirm the file is formatted and the script exits 0. Confirm it also exits 0 for a missing path and for a file listed in `.prettierignore`. Then, in a new Claude Code session, edit a file and confirm the hook formats it.
+
+Commit: `build(repo): format agent edits with a claude code hook`
+
+3. `npm install -D -E lint-staged@17.5.1`. Add the `lint-staged` config, the `prepare` script and `engines.node: ">=22.22.1"` to `package.json`, and write `.githooks/pre-commit` (executable).
+4. Check: `npm install` sets `git config core.hooksPath` to `.githooks`. Stage a deliberately unformatted file, commit it on a scratch branch, and confirm that the committed file is formatted. Then delete the scratch branch.
+
+Commit: `build(repo): format staged files in a pre-commit hook`
+
+## 6. Add the Claude Code pointer
 
 1. Create `CLAUDE.md` containing exactly `@AGENTS.md` and a newline.
 2. Check that no other agent or editor files were added by Nx (`git status`).
 
 Commit: `docs(repo): add claude pointer to agents file`
 
-## 6. Update the agent map and the dependency doc
+## 7. Update the agent map and the dependency doc
 
-1. Fill the known commands in the `AGENTS.md` Commands section as listed in `design.md`: split "Lint and type-check" into "Lint" and a "Type-check" placeholder, add the format commands, and keep the token build and the visual and axe commands as placeholders.
+1. Fill the known commands in the `AGENTS.md` Commands section as listed in `design.md`: split "Lint and type-check" into "Lint" and a "Type-check" placeholder, add the format commands and the line saying formatting is automatic, and keep the token build and the visual and axe commands as placeholders.
 2. Update `docs/stack-and-dependencies.md` with the installed versions, as listed in `design.md`.
 
 Commit: `docs(repo): record workspace commands and versions`
 
-## 7. Pull request
+## 8. Pull request
 
 1. Push the branch and open a pull request that links this spec and lists the "Done when" checks from `requirements.md` with their results.
 2. Merge with a rebase merge once every check passes.

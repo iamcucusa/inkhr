@@ -54,20 +54,40 @@ Prettier is the formatter, chosen on 2026-09-17.
 - **`.prettierignore`:** `/dist`, `/coverage`, `/.nx/cache`, `/.nx/workspace-data` and `package-lock.json`.
 - **Changesets:** `.changeset/config.json` changes from `format: false` to `format: "prettier"`. It was `false` only because no formatter was chosen, and `auto` would have picked up whichever formatter appeared first.
 - **ESLint:** `flat/base` has no formatting rules, so no `eslint-config-prettier` is needed. The spec that adds `angular-eslint` checks this again.
-- **Commands:** `npx nx format:write` formats and `npx nx format:check` checks. Both work without projects.
+- **Commands:** `npx nx format:write` formats and `npx nx format:check` checks. Both work without projects. Without flags they cover only the files changed against `defaultBase` (`main`), including uncommitted ones; `--all` covers the whole repository.
 - **Existing files:** with the settings above, Prettier reformats Markdown tables and lists in `DESIGN.md`, `docs/stack-and-dependencies.md`, `specs/` and `eslint.config.mjs`. That goes in its own `style` commit after the setup commit, so the setup diff stays readable. Review the Markdown diff, and add a file to `.prettierignore` if formatting damages it.
-- **Not yet:** a pre-commit format check belongs with the hooks in `specs/commit-rules-setup.md`, and the CI check belongs with the gates.
+
+### Automatic formatting
+
+Nobody has to remember to format: agents' edits are formatted as they happen, and every commit is formatted before it is created.
+
+- **Agent edits:** a Claude Code `PostToolUse` hook in the committed `.claude/settings.json`, matching `Edit|Write|MultiEdit`, runs `node "$CLAUDE_PROJECT_DIR/tools/format/format-edited-file.mjs"`. The script:
+  - reads the hook input from stdin and takes `tool_input.file_path`;
+  - skips a path that is missing, outside the project or deleted;
+  - runs the local `prettier --write --ignore-unknown` on that file, which also respects `.prettierignore`;
+  - always exits 0, printing any error on stderr, so a formatting failure never blocks an edit.
+
+  Project hooks also apply to subagents.
+- **Commits:** `lint-staged` 17.5.1 (`npm install -D -E`), chosen on 2026-09-17 because it formats only the staged content and stages it again, so partly staged files stay correct.
+  - `package.json` has `"lint-staged": { "*": "prettier --write --ignore-unknown" }`.
+  - `.githooks/pre-commit` (executable) runs `npx lint-staged`.
+  - A `prepare` script, `git rev-parse --git-dir > /dev/null 2>&1 && git config core.hooksPath .githooks || true`, switches the hooks on at every `npm install`. The guard keeps `npm ci` working outside a git checkout.
+  - `lint-staged` 17 needs Node 22.22.1 or later, so `engines.node` becomes `">=22.22.1"`.
+- **Shared with 002:** `specs/commit-rules-setup.md` adds its own entries to these same files: the attribution setting and commit hooks in `.claude/settings.json`, the commit-message check in `.githooks/`, and the same `prepare` script. It extends them instead of replacing them.
+- **Not yet:** a CI format check, `npx nx format:check --all`, waits for the CI workflows. Editor format-on-save is a personal setting and is not configured.
 
 ## Root files after this spec
 
 | File | Content |
 |---|---|
 | `nx.json` | `defaultBase: "main"`, `analytics: false`, the `targetDefaults` from `nx init`, the `@nx/eslint/plugin` plugin, no Nx Cloud id. |
-| `package.json` | `name: "inkhr"`, `private: true`, `engines.node: ">=22"`, `workspaces: ["packages/*"]`, exact versions for `nx`, `@nx/js`, `@nx/eslint`, `@nx/eslint-plugin` (23.2.1), `eslint`, `typescript` 6.0.3, `@changesets/cli` 3.0.3 and `prettier` 3.9.7. |
+| `package.json` | `name: "inkhr"`, `private: true`, `engines.node: ">=22.22.1"`, `workspaces: ["packages/*"]`, the `prepare` script and `lint-staged` config from "Automatic formatting", exact versions for `nx`, `@nx/js`, `@nx/eslint`, `@nx/eslint-plugin` (23.2.1), `eslint`, `typescript` 6.0.3, `@changesets/cli` 3.0.3, `prettier` 3.9.7 and `lint-staged` 17.5.1. |
 | `tsconfig.base.json` | `strict: true`, an empty `paths` map that later specs fill. |
 | `eslint.config.mjs` | `nx.configs['flat/base']` from `@nx/eslint-plugin`, and ignores for `**/dist` and `**/out-tsc`; no project rules yet. |
 | `.changeset/config.json` | Written by hand, because `changeset init` in 3.x is interactive only. It has the `$schema` of `@changesets/config` 4.0.1, `fixed: [["@inkhr/*"]]`, `baseBranch: "main"`, `access: "public"` (scoped packages are private on npm by default; change it if the packages stay private), `commit: false`, `format: "prettier"` (set to `false` in task 3 and changed in task 4; see "Formatter"), and the 3.x defaults for everything else. |
 | `.prettierrc`, `.prettierignore` | As described in "Formatter". |
+| `.claude/settings.json`, `tools/format/format-edited-file.mjs` | The agent formatting hook from "Automatic formatting". |
+| `.githooks/pre-commit` | Runs `npx lint-staged`. |
 | `CLAUDE.md` | `@AGENTS.md` |
 | `.gitignore` | Adds `.nx/cache`, `.nx/workspace-data` and `.nx/migrate-runs` (the last is written by `nx init`). |
 
@@ -79,10 +99,11 @@ Prettier is the formatter, chosen on 2026-09-17.
   - Build all packages: `npx nx run-many -t build`
   - Test: `npx nx affected -t test`
   - Add a changeset: `npx changeset`
-  - Format: `npx nx format:write`; check formatting: `npx nx format:check`
+  - Format changed files: `npx nx format:write`; check them: `npx nx format:check`; whole repository: add `--all`
   - The "Lint and type-check" line splits in two: "Lint" gets the command above, and "Type-check" stays a placeholder. The path alias setup infers no `typecheck` target, so the spec that adds the first project defines one and fills in the command.
   - Build the tokens and the visual and axe checks stay as placeholders until their projects exist.
-- `docs/stack-and-dependencies.md`: the "Where each dependency runs" rows for `nx`, `@changesets/cli` and `typescript` show the installed versions; add rows for `@nx/js`, `@nx/eslint` and `@nx/eslint-plugin` next to `nx`, and set the version in the `eslint` row. The `stylelint` row keeps no version until the spec that installs it. Add a `prettier` row (3.9.7, runs in the editor and `nx format`, Chosen, stage 0) and a `prettier` entry under "Quality gates" with the reasons from "Formatter".
+- `docs/stack-and-dependencies.md`: the "Where each dependency runs" rows for `nx`, `@changesets/cli` and `typescript` show the installed versions; add rows for `@nx/js`, `@nx/eslint` and `@nx/eslint-plugin` next to `nx`, and set the version in the `eslint` row. The `stylelint` row keeps no version until the spec that installs it. Add a `prettier` row (3.9.7, runs in the agent hook, the pre-commit hook and `nx format`, Chosen, stage 0) and a `lint-staged` row (17.5.1, pre-commit hook, Chosen, stage 0), with entries under "Quality gates" giving the reasons from "Formatter". The Node version in the `typescript`, Node row becomes 22.22.1 or later.
+- `AGENTS.md`: one line saying that formatting is automatic (agent hook and pre-commit hook), so agents do not run the formatter by hand.
 
 ## Decisions this spec does not take
 
