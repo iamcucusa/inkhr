@@ -2,7 +2,7 @@
 
 The stack of the InkHR package repository, the dependencies it installs or calls, and how they are kept current. A dependency is something the repository installs or calls; packages InkHR builds itself (`@inkhr/*`, the InkHR MCP server) are outputs, and their entries name what they are built on.
 
-Versions are the latest on npm on 2026-09-16. Where no version is shown, none is chosen.
+Versions were the latest on npm on 2026-09-16, except the ones the repository installs, which are the installed versions. Where no version is shown, none is chosen.
 
 ## Decisions without a dependency
 
@@ -16,45 +16,50 @@ The reasons for every other stack choice are in its dependency entry below.
 - **One pull request per upgrade.** Every dependency change lands as one pull request that passes the seven CI gates. A person merges it.
 - **Angular moves as a set.** `@angular/*` (including `@angular/aria`, `@angular/cdk` and `@angular/cli`) and `@angular-devkit/*` move together on the same major and minor. Support is the active Angular release and the previous major in long-term support, starting at 22 and 21.
 - **Angular majors go through `ng update`.** A new major is adopted with `ng update` and the migration schematics Angular ships, never by hand. Components use only current Angular APIs (enforced by gate 5), so the schematics meet no legacy patterns. Anything the schematics cannot migrate is fixed in the same pull request.
-- **Peer ranges set the pins.** Angular 22 accepts TypeScript `>=6.0 <6.1`, so `typescript` stays on 6.0 although 7 is released. Node is 22 or later.
+- **Peer ranges set the pins.** Angular 22 accepts TypeScript `>=6.0 <6.1`, so `typescript` stays on 6.0 although 7 is released. Node is 22.22.1 or later, the floor `lint-staged` 17 sets.
 - **DTCG moves by `$schema`.** Each token file names its format version in `$schema`. A newer version is adopted once `style-dictionary` and `@terrazzo/cli` read it: the token files and both tools change in one pull request.
 - **Consumers upgrade InkHR the same way.** InkHR's own breaking changes ship as `ng update` migrations, and every package change carries a changeset. Apps read the generated outputs, so a token format change reaches them only when an output is renamed or reshaped.
 
 ## Where each dependency runs
 
-| Dependency                                                                                    | Version          | Runs in                                              | Status                       | Stage        |
-| --------------------------------------------------------------------------------------------- | ---------------- | ---------------------------------------------------- | ---------------------------- | ------------ |
-| DTCG                                                                                          | 2025.10          | Token source format                                  | Pinned by `$schema`          | 0            |
-| `style-dictionary`                                                                            | 5.5.3            | Token build                                          | Chosen                       | 0            |
-| `@terrazzo/cli`                                                                               | 2.7.1            | After-edit hook, gate 1                              | Chosen                       | 0            |
-| Angular (`@angular/*`)                                                                        | 22.1.6, and 21   | Components, apps                                     | Chosen                       | 0            |
-| `typescript`, Node                                                                            | 6.0, 22 or later | Every build; `tsc` in the after-edit hook and gate 5 | Required by Angular 22       | 0            |
-| `@angular/aria`                                                                               | 22.1.7           | Components                                           | Chosen, validated in Stage 1 | 1            |
-| `@angular/cdk`                                                                                | 22.1.7           | Components                                           | Chosen, validated in Stage 1 | 1            |
-| `@angular/forms` (Signal Forms)                                                               | 22.1.6           | Form controls                                        | Proposed                     | 1            |
-| Open Sans, Instrument Serif                                                                   |                  | Shipped font files                                   | Chosen, delivery not decided | 0            |
-| SVG optimiser and sprite builder                                                              |                  | Icon build                                           | To choose                    | 1            |
-| `vitest`, `@vitest/browser-playwright`, `@testing-library/angular`, `@angular/aria` harnesses |                  | Before-done hook, CI                                 | Chosen                       | 1            |
-| `@playwright/test`                                                                            |                  | Gate 4                                               | Chosen                       | 1            |
-| `axe-core`, `@axe-core/playwright`                                                            |                  | Gate 3                                               | Chosen                       | 1            |
-| `angular-eslint`, `strictTemplates`                                                           |                  | Editor, gate 5                                       | Chosen                       | 0            |
-| `eslint`                                                                                      |                  | Editor, gate 5                                       | Needed, version not chosen   | 0            |
-| `stylelint`                                                                                   |                  | Editor, gate 5                                       | Needed, version not chosen   | 0            |
-| Bundle size checker                                                                           |                  | Gate 6                                               | To choose                    | Not set      |
-| `nx`                                                                                          |                  | Every build and CI run                               | Chosen                       | 2            |
-| `@changesets/cli`                                                                             |                  | Gate 7, release                                      | Chosen                       | 2            |
-| `@angular-devkit/schematics`                                                                  |                  | `ng add`, `ng generate`, `ng update` in apps         | Chosen                       | 2            |
-| `@compodoc/compodoc`                                                                          | 2.0.0            | Metadata build, gate 7 API diff                      | Chosen                       | 1            |
-| `@cngxjs/compodocx`                                                                           | 0.8.0            | Metadata build                                       | Candidate                    | Later        |
-| `@analogjs/platform`, `@analogjs/content`                                                     | 2.7.2            | Docs site build                                      | Chosen                       | 3            |
-| `storybook`, `@storybook/angular-vite`                                                        | 10.6.0           | Local workbench                                      | Optional                     | Re-evaluated |
-| Claude Code                                                                                   |                  | Agent sessions                                       | Chosen                       | 0            |
-| `@angular/cli` MCP server, Angular Agent Skills, `best-practices.md`                          |                  | Agent sessions                                       | Chosen                       | 0            |
-| MCP SDK                                                                                       |                  | InkHR MCP server                                     | To choose                    | 4            |
-| `web-codegen-scorer`                                                                          | 0.0.70           | Agent baseline                                       | Chosen                       | 0            |
-| `adsa-cli`                                                                                    | 0.1.5            | Gate 7                                               | Chosen                       | 4            |
-| Claude Design                                                                                 |                  | Design work                                          | Chosen                       | 3            |
-| Higgsfield, GPT Image 2.5                                                                     |                  | Design time only                                     | Chosen                       | Design time  |
+| Dependency                                                                                    | Version                 | Runs in                                              | Status                       | Stage        |
+| --------------------------------------------------------------------------------------------- | ----------------------- | ---------------------------------------------------- | ---------------------------- | ------------ |
+| DTCG                                                                                          | 2025.10                 | Token source format                                  | Pinned by `$schema`          | 0            |
+| `style-dictionary`                                                                            | 5.5.3                   | Token build                                          | Chosen                       | 0            |
+| `@terrazzo/cli`                                                                               | 2.7.1                   | After-edit hook, gate 1                              | Chosen                       | 0            |
+| Angular (`@angular/*`)                                                                        | 22.1.6, and 21          | Components, apps                                     | Chosen                       | 0            |
+| `typescript`, Node                                                                            | 6.0.3, 22.22.1 or later | Every build; `tsc` in the after-edit hook and gate 5 | Required by Angular 22       | 0            |
+| `@angular/aria`                                                                               | 22.1.7                  | Components                                           | Chosen, validated in Stage 1 | 1            |
+| `@angular/cdk`                                                                                | 22.1.7                  | Components                                           | Chosen, validated in Stage 1 | 1            |
+| `@angular/forms` (Signal Forms)                                                               | 22.1.6                  | Form controls                                        | Proposed                     | 1            |
+| Open Sans, Instrument Serif                                                                   |                         | Shipped font files                                   | Chosen, delivery not decided | 0            |
+| SVG optimiser and sprite builder                                                              |                         | Icon build                                           | To choose                    | 1            |
+| `vitest`, `@vitest/browser-playwright`, `@testing-library/angular`, `@angular/aria` harnesses |                         | Before-done hook, CI                                 | Chosen                       | 1            |
+| `@playwright/test`                                                                            |                         | Gate 4                                               | Chosen                       | 1            |
+| `axe-core`, `@axe-core/playwright`                                                            |                         | Gate 3                                               | Chosen                       | 1            |
+| `angular-eslint`, `strictTemplates`                                                           |                         | Editor, gate 5                                       | Chosen                       | 0            |
+| `eslint`                                                                                      | 9.39.5                  | Editor, gate 5                                       | Chosen                       | 0            |
+| `stylelint`                                                                                   |                         | Editor, gate 5                                       | Needed, version not chosen   | 0            |
+| Bundle size checker                                                                           |                         | Gate 6                                               | To choose                    | Not set      |
+| `nx`                                                                                          | 23.2.1                  | Every build and CI run                               | Chosen                       | 2            |
+| `@nx/js`                                                                                      | 23.2.1                  | Every build and CI run                               | Chosen                       | 2            |
+| `@nx/eslint`                                                                                  | 23.2.1                  | Lint target, gate 5                                  | Chosen                       | 2            |
+| `@nx/eslint-plugin`                                                                           | 23.2.1                  | Root ESLint config                                   | Chosen                       | 2            |
+| `prettier`                                                                                    | 3.9.7                   | Agent hook, pre-commit hook, `nx format`             | Chosen                       | 0            |
+| `lint-staged`                                                                                 | 17.5.1                  | Pre-commit hook                                      | Chosen                       | 0            |
+| `@changesets/cli`                                                                             | 3.0.3                   | Gate 7, release                                      | Chosen                       | 2            |
+| `@angular-devkit/schematics`                                                                  |                         | `ng add`, `ng generate`, `ng update` in apps         | Chosen                       | 2            |
+| `@compodoc/compodoc`                                                                          | 2.0.0                   | Metadata build, gate 7 API diff                      | Chosen                       | 1            |
+| `@cngxjs/compodocx`                                                                           | 0.8.0                   | Metadata build                                       | Candidate                    | Later        |
+| `@analogjs/platform`, `@analogjs/content`                                                     | 2.7.2                   | Docs site build                                      | Chosen                       | 3            |
+| `storybook`, `@storybook/angular-vite`                                                        | 10.6.0                  | Local workbench                                      | Optional                     | Re-evaluated |
+| Claude Code                                                                                   |                         | Agent sessions                                       | Chosen                       | 0            |
+| `@angular/cli` MCP server, Angular Agent Skills, `best-practices.md`                          |                         | Agent sessions                                       | Chosen                       | 0            |
+| MCP SDK                                                                                       |                         | InkHR MCP server                                     | To choose                    | 4            |
+| `web-codegen-scorer`                                                                          | 0.0.70                  | Agent baseline                                       | Chosen                       | 0            |
+| `adsa-cli`                                                                                    | 0.1.5                   | Gate 7                                               | Chosen                       | 4            |
+| Claude Design                                                                                 |                         | Design work                                          | Chosen                       | 3            |
+| Higgsfield, GPT Image 2.5                                                                     |                         | Design time only                                     | Chosen                       | Design time  |
 
 ## Dependencies
 
@@ -175,7 +180,23 @@ Each entry answers the same questions: **Use** (what it does in InkHR), **Human 
 - **Human loop.** Deprecated tokens warn for six months, with an autofix, before they are deleted.
 - **Agent loop.** A raw or unknown value is the same lint error for an agent as for a person, and `lint_snippet` on the InkHR MCP server applies the same rules.
 - **Why.** The standard linters for TypeScript, templates and CSS; `angular-eslint` already runs on ESLint.
-- **Gaps.** Versions not chosen.
+- **Gaps.** The `stylelint` version is not chosen.
+
+#### `prettier`
+
+- **Use.** The formatter for every file type in the repository: TypeScript, Angular templates, CSS, JSON and Markdown. `nx format` runs it, Changesets formats changelogs with it, and `npm run format` and `npm run format:check` are the entry points.
+- **Human loop.** Nobody formats by hand: a pre-commit hook formats the staged files, so a diff never mixes formatting with the change.
+- **Agent loop.** A Claude Code hook formats every file an agent edits, right after the edit, so an agent never has to remember the formatter.
+- **Why.** The default for Angular and Nx, and the one every generator and Changesets already support. oxfmt is faster but newer, and less proven on Angular templates and CSS.
+- **Gaps.** No CI format check yet; it comes with the gates. Editor format-on-save is a personal setting.
+
+#### `lint-staged`
+
+- **Use.** The pre-commit hook runs it, and it formats only the staged content with `prettier --write --ignore-unknown`, then stages the result.
+- **Human loop.** A partly staged file keeps its unstaged lines, so staging part of a file still works.
+- **Agent loop.** An agent's commit is formatted even when the Claude Code hook did not run, for example after a file was written by a command.
+- **Why.** The standard tool for the job, and the only one that formats staged content without touching the working tree.
+- **Gaps.** It needs Node 22.22.1 or later, which sets the repository's Node floor.
 
 #### Bundle size checker
 

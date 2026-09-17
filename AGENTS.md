@@ -4,15 +4,19 @@ Design system packages for the HR portfolio: DTCG tokens, framework-free styles 
 
 ## Commands
 
-Placeholders until the Nx targets are named; replace each bracket with the exact command.
+A bracket is a placeholder until the project it needs exists; replace it with the exact command.
 
-- Install: [install command]
-- Build all packages: [build command]
+- Install: `npm ci`
+- Build all packages: `npx nx run-many -t build`
 - Build the tokens: [token build command]
-- Lint and type-check: [lint command]
-- Test: [test command]
+- Lint: `npx nx affected -t lint`
+- Type-check: [type-check command]
+- Test: `npx nx affected -t test`
 - Visual and axe checks: [e2e command]
+- Format: `npm run format`; check formatting: `npm run format:check`
 - Add a changeset: `npx changeset`
+
+Formatting is automatic: a Claude Code hook formats every file an agent edits, and a pre-commit hook formats staged files. Run the format commands only to check or to fix a file by hand.
 
 ## Read first
 
