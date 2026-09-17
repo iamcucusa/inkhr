@@ -44,17 +44,32 @@ Run on 2026-09-17 with Node 24.18.0 and npm 11.16.0, in a scratch folder.
 5. Write `tsconfig.base.json` and `eslint.config.mjs`.
 6. Add `defaultBase` and `analytics` to `nx.json`; `nx init` writes neither.
 
+## Formatter
+
+Prettier is the formatter, chosen on 2026-09-17.
+
+- **Why Prettier:** it is the default for Angular and Nx. `nx format` and the Nx generators use it, it formats TypeScript, Angular templates, CSS, JSON and Markdown, and Changesets 3 can format changelogs with it. oxfmt is faster, but it is newer and less proven on Angular templates and CSS.
+- **Version:** `prettier` 3.9.7, installed with `npm install -D -E`.
+- **`.prettierrc`:** `{ "singleQuote": true }`, the Nx default. Other options stay at Prettier's defaults.
+- **`.prettierignore`:** `/dist`, `/coverage`, `/.nx/cache`, `/.nx/workspace-data` and `package-lock.json`.
+- **Changesets:** `.changeset/config.json` changes from `format: false` to `format: "prettier"`. It was `false` only because no formatter was chosen, and `auto` would have picked up whichever formatter appeared first.
+- **ESLint:** `flat/base` has no formatting rules, so no `eslint-config-prettier` is needed. The spec that adds `angular-eslint` checks this again.
+- **Commands:** `npx nx format:write` formats and `npx nx format:check` checks. Both work without projects.
+- **Existing files:** with the settings above, Prettier reformats Markdown tables and lists in `DESIGN.md`, `docs/stack-and-dependencies.md`, `specs/` and `eslint.config.mjs`. That goes in its own `style` commit after the setup commit, so the setup diff stays readable. Review the Markdown diff, and add a file to `.prettierignore` if formatting damages it.
+- **Not yet:** a pre-commit format check belongs with the hooks in `specs/commit-rules-setup.md`, and the CI check belongs with the gates.
+
 ## Root files after this spec
 
 | File | Content |
 |---|---|
 | `nx.json` | `defaultBase: "main"`, `analytics: false`, the `targetDefaults` from `nx init`, the `@nx/eslint/plugin` plugin, no Nx Cloud id. |
-| `package.json` | `name: "inkhr"`, `private: true`, `engines.node: ">=22"`, `workspaces: ["packages/*"]`, exact versions for `nx`, `@nx/js`, `@nx/eslint`, `@nx/eslint-plugin` (23.2.1), `eslint`, `typescript` 6.0.3 and `@changesets/cli` 3.0.3. |
+| `package.json` | `name: "inkhr"`, `private: true`, `engines.node: ">=22"`, `workspaces: ["packages/*"]`, exact versions for `nx`, `@nx/js`, `@nx/eslint`, `@nx/eslint-plugin` (23.2.1), `eslint`, `typescript` 6.0.3, `@changesets/cli` 3.0.3 and `prettier` 3.9.7. |
 | `tsconfig.base.json` | `strict: true`, an empty `paths` map that later specs fill. |
 | `eslint.config.mjs` | `nx.configs['flat/base']` from `@nx/eslint-plugin`, and ignores for `**/dist` and `**/out-tsc`; no project rules yet. |
-| `.changeset/config.json` | Written by hand, because `changeset init` in 3.x is interactive only. It has the `$schema` of `@changesets/config` 4.0.1, `fixed: [["@inkhr/*"]]`, `baseBranch: "main"`, `access: "public"` (scoped packages are private on npm by default; change it if the packages stay private), `commit: false`, `format: false` (no formatter is chosen, and `auto` would pick up any formatter a generator adds), and the 3.x defaults for everything else. |
+| `.changeset/config.json` | Written by hand, because `changeset init` in 3.x is interactive only. It has the `$schema` of `@changesets/config` 4.0.1, `fixed: [["@inkhr/*"]]`, `baseBranch: "main"`, `access: "public"` (scoped packages are private on npm by default; change it if the packages stay private), `commit: false`, `format: "prettier"` (set to `false` in task 3 and changed in task 4; see "Formatter"), and the 3.x defaults for everything else. |
+| `.prettierrc`, `.prettierignore` | As described in "Formatter". |
 | `CLAUDE.md` | `@AGENTS.md` |
-| `.gitignore` | Adds `.nx/cache` and `.nx/workspace-data`. |
+| `.gitignore` | Adds `.nx/cache`, `.nx/workspace-data` and `.nx/migrate-runs` (the last is written by `nx init`). |
 
 ## Changes to existing files
 
@@ -64,12 +79,12 @@ Run on 2026-09-17 with Node 24.18.0 and npm 11.16.0, in a scratch folder.
   - Build all packages: `npx nx run-many -t build`
   - Test: `npx nx affected -t test`
   - Add a changeset: `npx changeset`
+  - Format: `npx nx format:write`; check formatting: `npx nx format:check`
   - The "Lint and type-check" line splits in two: "Lint" gets the command above, and "Type-check" stays a placeholder. The path alias setup infers no `typecheck` target, so the spec that adds the first project defines one and fills in the command.
   - Build the tokens and the visual and axe checks stay as placeholders until their projects exist.
-- `docs/stack-and-dependencies.md`: the "Where each dependency runs" rows for `nx`, `@changesets/cli` and `typescript` show the installed versions; add rows for `@nx/js`, `@nx/eslint` and `@nx/eslint-plugin` next to `nx`, and set the version in the `eslint` row. The `stylelint` row keeps no version until the spec that installs it.
+- `docs/stack-and-dependencies.md`: the "Where each dependency runs" rows for `nx`, `@changesets/cli` and `typescript` show the installed versions; add rows for `@nx/js`, `@nx/eslint` and `@nx/eslint-plugin` next to `nx`, and set the version in the `eslint` row. The `stylelint` row keeps no version until the spec that installs it. Add a `prettier` row (3.9.7, runs in the editor and `nx format`, Chosen, stage 0) and a `prettier` entry under "Quality gates" with the reasons from "Formatter".
 
 ## Decisions this spec does not take
 
-- Formatter: none until one is chosen in `docs/stack-and-dependencies.md`.
 - Nx Cloud and remote caching: off.
 - Nx's own agent configuration: off; InkHR's agent files are hand-written.

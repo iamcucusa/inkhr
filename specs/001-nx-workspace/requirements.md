@@ -18,12 +18,13 @@ Turn this repository into an Nx workspace that later specs add projects to. This
 4. `typescript` is pinned to an exact 6.0.x version, because Angular 22 accepts only `>=6.0 <6.1`. The base TypeScript config is strict.
 5. ESLint runs from one root flat config through `@nx/eslint`. `angular-eslint` is added by the first spec that adds Angular code.
 6. Changesets is set up with fixed versioning for every `@inkhr/*` package and `main` as the base branch. `nx release` is not used.
-7. Nothing the stack doc marks as not chosen is added: no formatter, no Nx Cloud or remote cache, no dependency update bot.
+7. Nothing the stack doc marks as not chosen is added: no Nx Cloud or remote cache, no dependency update bot.
 8. Nx writes no agent files of its own. The root `CLAUDE.md` contains exactly `@AGENTS.md`.
 9. `AGENTS.md` lists the real workspace-level commands; commands for projects that do not exist yet stay as placeholders.
 10. `docs/stack-and-dependencies.md` records the versions this spec installs.
 11. Nx local cache and workspace data folders are ignored by git.
 12. No analytics are sent.
+13. Prettier is the formatter, pinned to an exact version with one root config. `nx format` runs it, Changesets formats with it, and the existing files are formatted in their own commit.
 
 ## Out of scope
 
@@ -38,7 +39,8 @@ Turn this repository into an Nx workspace that later specs add projects to. This
 - `npx nx report` runs without error.
 - `npx eslint .` runs without error on the empty workspace.
 - `npx changeset status` runs without error.
+- `npx nx format:check` runs without error, and `.changeset/config.json` has `format: "prettier"`.
 - The trial result and the chosen setup are written in `design.md`.
 - `CLAUDE.md` is exactly `@AGENTS.md` plus a newline, and no other agent or editor files from Nx are committed.
-- `docs/stack-and-dependencies.md` shows the installed versions of `nx`, `@nx/js`, `@nx/eslint`, `@nx/eslint-plugin`, `eslint`, `typescript` and `@changesets/cli`.
+- `docs/stack-and-dependencies.md` shows the installed versions of `nx`, `@nx/js`, `@nx/eslint`, `@nx/eslint-plugin`, `eslint`, `typescript`, `@changesets/cli` and `prettier`.
 - The work is merged into `main` through a pull request whose commits follow `specs/commit-rules-setup.md`.

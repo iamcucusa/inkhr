@@ -44,21 +44,37 @@ Commit: `build(repo): add nx workspace`
 
 Commit: `build(repo): add changesets with fixed versioning`
 
-## 4. Add the Claude Code pointer
+## 4. Add Prettier
+
+This task has two concerns, so it makes two commits.
+
+1. `npm install -D -E prettier@3.9.7`.
+2. Write `.prettierrc` and `.prettierignore` as described in "Formatter" in `design.md`.
+3. Change `format` in `.changeset/config.json` from `false` to `"prettier"`.
+4. Check: `npx nx format:check` runs and lists only the files that are not formatted yet, and `npx changeset status` still exits 0.
+
+Commit: `build(repo): add prettier as the formatter`
+
+5. Run `npx nx format:write`. Review the diff, especially the Markdown tables and lists; if a file is damaged, add it to `.prettierignore` and format again.
+6. Check: `npx nx format:check` and `npx eslint .` pass.
+
+Commit: `style(repo): format existing files with prettier`
+
+## 5. Add the Claude Code pointer
 
 1. Create `CLAUDE.md` containing exactly `@AGENTS.md` and a newline.
 2. Check that no other agent or editor files were added by Nx (`git status`).
 
 Commit: `docs(repo): add claude pointer to agents file`
 
-## 5. Update the agent map and the dependency doc
+## 6. Update the agent map and the dependency doc
 
-1. Fill the known commands in the `AGENTS.md` Commands section as listed in `design.md`: split "Lint and type-check" into "Lint" and a "Type-check" placeholder, and keep the token build and the visual and axe commands as placeholders.
+1. Fill the known commands in the `AGENTS.md` Commands section as listed in `design.md`: split "Lint and type-check" into "Lint" and a "Type-check" placeholder, add the format commands, and keep the token build and the visual and axe commands as placeholders.
 2. Update `docs/stack-and-dependencies.md` with the installed versions, as listed in `design.md`.
 
 Commit: `docs(repo): record workspace commands and versions`
 
-## 6. Pull request
+## 7. Pull request
 
 1. Push the branch and open a pull request that links this spec and lists the "Done when" checks from `requirements.md` with their results.
 2. Merge with a rebase merge once every check passes.
