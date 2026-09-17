@@ -46,7 +46,7 @@ Commit: `build(repo): add changesets with fixed versioning`
 
 ## 4. Add Prettier
 
-This task has two concerns, so it makes two commits.
+This task has three concerns, so it makes three commits.
 
 1. `npm install -D -E prettier@3.9.7`.
 2. Write `.prettierrc` and `.prettierignore` as described in "Formatter" in `design.md`.
@@ -59,6 +59,11 @@ Commit: `build(repo): add prettier as the formatter`
 6. Check: `npx nx format:check --all` and `npx eslint .` pass.
 
 Commit: `style(repo): format existing files with prettier`
+
+7. Add the `format` and `format:check` scripts to `package.json` as described in "Formatter" in `design.md`, without an `nx` field.
+8. Check: `npm run format:check` exits 0, and `npx nx show projects` still lists none.
+
+Commit: `build(repo): add format scripts`
 
 ## 5. Format automatically
 
