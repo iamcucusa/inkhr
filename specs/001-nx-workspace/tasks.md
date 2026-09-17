@@ -1,6 +1,6 @@
 # 001 Nx workspace: tasks
 
-Work on a branch, for example `chore/nx-workspace`. One commit per task, following `specs/commit-rules-setup.md`; stop after each task and propose the commit message for approval. Open one pull request at the end and merge it with a rebase merge.
+Work on the branch `001-nx-workspace`, named after this spec folder as "Branches and pull requests" in `specs/commit-rules-setup.md` describes. One commit per task, following `specs/commit-rules-setup.md`; stop after each task and propose the commit message for approval. Open one pull request at the end and merge it with a rebase merge.
 
 ## 1. Trial the workspace setup (nothing committed)
 
