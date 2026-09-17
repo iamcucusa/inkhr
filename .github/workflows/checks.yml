@@ -1,0 +1,48 @@
+name: checks
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      # The private names never reach the log: the checker reads them from the
+      # file and reports the rule, not the term. A fork gets no secret, and the
+      # committed patterns are still checked.
+      - name: Write the private disclosure terms
+        env:
+          DISCLOSURE_TERMS: ${{ secrets.DISCLOSURE_TERMS }}
+        run: |
+          if [ -n "$DISCLOSURE_TERMS" ]; then
+            printf '%s\n' "$DISCLOSURE_TERMS" > .disclosure-terms.local
+          else
+            rm -f .disclosure-terms.local
+            echo "No DISCLOSURE_TERMS secret: private names are not checked."
+          fi
+
+      - name: Check the branch name
+        run: node tools/commit-rules/check-branch.mjs "${{ github.head_ref }}"
+
+      - name: Check the commit messages
+        run: |
+          node tools/commit-rules/check-range.mjs \
+            "origin/${{ github.base_ref }}..${{ github.event.pull_request.head.sha }}"
+
+      - run: npm run format:check
+
+      - run: npm test
