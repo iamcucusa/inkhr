@@ -2,14 +2,18 @@
   "name": "inkhr",
   "private": true,
   "engines": {
-    "node": ">=22"
+    "node": ">=22.22.1"
   },
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
+    "prepare": "git rev-parse --git-dir > /dev/null 2>&1 && git config core.hooksPath .githooks || true",
     "format": "nx format:write --all",
     "format:check": "nx format:check --all"
+  },
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown"
   },
   "devDependencies": {
     "@changesets/cli": "3.0.3",
@@ -17,6 +21,7 @@
     "@nx/eslint-plugin": "23.2.1",
     "@nx/js": "23.2.1",
     "eslint": "9.39.5",
+    "lint-staged": "17.5.1",
     "nx": "23.2.1",
     "prettier": "3.9.7",
     "typescript": "6.0.3"
