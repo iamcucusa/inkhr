@@ -29,6 +29,14 @@ Why this exists: rules written only in `CLAUDE.md` or `AGENTS.md` are advice. Lo
 - **Incremental, atomic, non-breaking.** One task, one commit, one concern. If a task covers two unrelated concerns, split it and say which files go in each. Every commit is self-contained and leaves the repository working, so history reads as one decision per commit and `git log`, `git blame`, `git bisect` and single-commit reverts stay reliable.
 - **The quality checks pass before every commit.**
 
+### Branches and pull requests
+
+- **Spec work:** the branch is named exactly like its spec folder, `NNN-slug`, for example `001-nx-workspace`.
+- **Other work:** `type/scope-slug`, with a type and scope from the commit rules, for example `fix/tokens-dark-contrast` or `build/deps-angular-22-2`.
+- **Shape:** lowercase, words joined by hyphens, at most 50 characters. No person, company or tool names: the disclosure rules apply, and a `claude/` prefix is tool attribution. An agent renames a generated branch before its first push.
+- **One branch per pull request,** deleted after merge.
+- **Traceability lives in the pull request.** Rebase merges leave no merge commit, so the branch name is gone from history once merged. A spec pull request names its spec folder in the title or the first line of the body.
+
 ## Enforcement, in layers
 
 Each layer covers a gap the one before leaves open. Steps 1 to 4 are needed from the first commit; steps 5 and 6 come with the GitHub repository and the first pull request. Steps 1 to 4 give fast local feedback; step 6 is what makes the rules binding for everyone.
@@ -48,13 +56,14 @@ Commit `.claude/settings.json` with the attribution turned off, so every Claude 
 ### Step 2. Keep the rules in view
 
 - Create `docs/commit-guide.md` with the rules above, plus five right and wrong examples for messages and one for splitting a mixed change into two commits.
-- Add a short "Commits" section to the root `AGENTS.md` (which `CLAUDE.md` imports with `@AGENTS.md`), no more than five lines:
+- Add a short "Commits" section to the root `AGENTS.md` (which `CLAUDE.md` imports with `@AGENTS.md`), no more than six lines:
 
   ```
   ## Commits
   - Conventional Commits, `type(scope): subject`, subject only, under 72 characters, imperative, lowercase after the colon, no period.
   - No trailers or tool attribution. Describe the change, not the reason. Disclosure rules apply to messages.
   - One task, one commit, one concern; checks pass before every commit.
+  - Branches: `NNN-slug` for a spec, `type/scope-slug` otherwise; no tool prefix. A spec pull request names its spec.
   - Stop after each task and propose the message; the maintainer commits or approves.
   - Full rules and examples: docs/commit-guide.md. A hook rejects messages that break them.
   ```
@@ -70,14 +79,16 @@ Write `tools/commit-rules/check-message.mjs` (Node, no new runtime dependency). 
 5. No term from `.disclosure-terms.local`, matched case-insensitively, when that file exists. Without it the check is skipped, with a notice.
 6. Merge and revert messages created by git pass through unchanged.
 
-Add `tools/commit-rules/check-message.test.mjs` with passing and failing examples for each rule, run with the repository's test runner.
+A second entry point, `tools/commit-rules/check-branch.mjs`, takes a branch name and checks it against "Branches and pull requests": the `NNN-slug` or `type/scope-slug` pattern, the length, and the disclosure terms. `main` and `changeset-release/*` pass unchanged.
+
+Add `tools/commit-rules/check-message.test.mjs` and `check-branch.test.mjs` with passing and failing examples for each rule, run with the repository's test runner.
 
 ### Step 4. Block bad commits for agents and people
 
 1. **Git hooks, committed in `.githooks/`:**
    - `commit-msg` runs the checker on the message file, so a fix costs one retype.
    - `pre-commit` runs the affected quality checks (for example `nx affected -t lint test typecheck`, and the token check when token files change).
-   - `pre-push` runs the checker on every outgoing commit, catching commits made before the hooks were enabled.
+   - `pre-push` runs the checker on every outgoing commit, catching commits made before the hooks were enabled, and runs the branch check on the pushed branch.
 2. **Switch the hooks on automatically:** a root `package.json` script, `"prepare": "git config core.hooksPath .githooks"`, so every `npm install` enables them in that clone.
 3. **Claude Code hook** in `.claude/settings.json`, so an agent's commit is checked even before git runs, and the agent receives the reason:
 
@@ -100,7 +111,7 @@ Add `tools/commit-rules/check-message.test.mjs` with passing and failing example
 
 ### Step 5. Backstop before anything reaches `main`
 
-- **CI:** a job on every pull request that runs the checker over every commit in the pull request, and fails the pull request when one breaks a rule. This covers clones where the hooks were never enabled. Add it to the "changeset, API diff and docs" gate, so the gate count stays at seven.
+- **CI:** a job on every pull request that runs the checker over every commit in the pull request, and fails the pull request when one breaks a rule. The same job runs the branch check on the head branch and, for an `NNN-slug` branch, checks that the title or the first line of the body names `specs/NNN-slug`. This covers clones where the hooks were never enabled. Add it to the "changeset, API diff and docs" gate, so the gate count stays at seven.
 - **Optional:** commitlint with `@commitlint/config-conventional`, configured with the same types, scopes and limits, if an off-the-shelf tool is preferred for the header rules. The trailer and disclosure checks stay in the custom checker either way.
 
 ### Step 6. Make the rules binding for every contributor
@@ -132,6 +143,8 @@ The local layers only help people and tools that use them: `.claude/settings.jso
 - A message over 72 characters, with an uppercase letter after the colon, a trailing period, an unknown type or scope, or a three-line body is rejected, with the rule named.
 - A message containing a term from `.disclosure-terms.local` is rejected, and `.disclosure-terms.local` does not appear in `git ls-files`.
 - `git commit --no-verify` is refused when an agent tries it.
+- Pushing a branch named `claude/some-work` or `Feature_X` is rejected with the rule named; `001-nx-workspace` and `fix/tokens-dark-contrast` pass.
+- A pull request from an `NNN-slug` branch that does not name its spec fails CI.
 - After a fresh clone and `npm install`, `git config core.hooksPath` prints `.githooks`.
 - A pull request containing a bad commit fails CI.
 - A Claude Code commit in this repository has no attribution lines.
