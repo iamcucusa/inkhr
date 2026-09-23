@@ -1,0 +1,396 @@
+{
+  "$schema": "https://www.designtokens.org/schema/2025.10",
+  "sys": {
+    "surface": {
+      "page": {
+        "$type": "color",
+        "$value": "{ref.color.ink.950}",
+        "$description": "The screen itself, behind every other surface. The app bar, the side nav and a card all sit on `sys.surface.default`, which is lighter in both themes."
+      },
+      "default": {
+        "$type": "color",
+        "$value": "{ref.color.ink.900}",
+        "$description": "A card, the app bar and the side nav sit here, and elevation level 1 with them. In light it is the same white as `sys.surface.raised`, so the shadow separates the two, not the colour."
+      },
+      "raised": {
+        "$type": "color",
+        "$value": "{ref.color.ink.850}",
+        "$description": "What sits under elevation from level 2. In light the same white as `sys.surface.default`, so only the shadow lifts it; in dark its own step, because a shadow barely reads on ink."
+      },
+      "sunken": {
+        "$type": "color",
+        "$value": "{ref.color.ink.975}",
+        "$description": "A well for what the screen reports back and nobody changes here: a balance, a contract value, a group header row. Never behind a chart: data marks need a page, a card or a raised surface."
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "{ref.color.paper.50}",
+        "$description": "What a toast and a tooltip sit on, the two things that float over the screen for a moment. It flips with the theme so it clears a page, a card or a well alike; its text is `sys.text.inverse`."
+      }
+    },
+    "text": {
+      "primary": {
+        "$type": "color",
+        "$value": "{ref.color.paper.50}",
+        "$description": "Body copy, headings and anything a reader must not miss. `sys.action.secondary.text` reads the same value, since a secondary button's label sits on the page rather than on a fill."
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "{ref.color.paper.200}",
+        "$description": "One step quieter than the body: a subtitle, a description, the second line of a list row. It still clears 4.5:1, so nothing written in it is decoration."
+      },
+      "tertiary": {
+        "$type": "color",
+        "$value": "{ref.color.paper.300}",
+        "$description": "Metadata and help: a timestamp, a count, the line under a field saying what to enter. It shares a value with `sys.text.placeholder` in both themes, and only the job tells them apart."
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "{ref.color.ink.600}",
+        "$description": "Where a control that cannot be used right now writes its label. The contrast list leaves it out, so it is never the only sign a control is off: the control says so itself."
+      },
+      "link": {
+        "$type": "color",
+        "$value": "{ref.color.cobalt.300}",
+        "$description": "A link in running text. In light it is a step darker than `sys.action.primary.bg` so it holds at body size; in dark the two are one value, and only their jobs differ."
+      },
+      "on-selected": {
+        "$type": "color",
+        "$value": "{ref.color.cobalt.200}",
+        "$description": "The label of a row, chip or option that is chosen, on `sys.selected.bg`. In light it is darker than `sys.text.link` and in dark lighter, so a chosen thing never reads as something to click."
+      },
+      "placeholder": {
+        "$type": "color",
+        "$value": "{ref.color.paper.300}",
+        "$description": "An example inside an empty field, gone on the first keystroke. Never the label and never the help line, which stay on the screen and read `sys.text.tertiary`."
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "{ref.color.ink.950}",
+        "$description": "Text on `sys.surface.inverse`, which means a toast and a tooltip. In dark it is the same value as `sys.surface.page`, since a toast there is paper and the page is ink."
+      }
+    },
+    "border": {
+      "default": {
+        "$type": "color",
+        "$value": "{ref.color.ink.700}",
+        "$description": "Between the hairline of `sys.border.subtle` and the 3:1 boundary a control needs: a divider that should be seen and is not itself something to use."
+      },
+      "strong": {
+        "$type": "color",
+        "$value": "{ref.color.paper.500}",
+        "$description": "The 3:1 boundary of a control: a field, a checkbox, a secondary button's edge. It holds one value in both themes, because that floor has to be cleared on paper and on ink alike."
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{ref.color.ink.800}",
+        "$description": "A hairline between things that belong together: rows in a table, the rule under a header, a card's own edge. No contrast pairing covers it, so nothing may depend on seeing it."
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "{ref.color.cobalt.300}",
+        "$description": "A field, a select and a textarea change their own border to this while they are hovered or focused. Not the ring, which sits outside the control and is `sys.focus.ring`."
+      }
+    },
+    "action": {
+      "primary": {
+        "bg": {
+          "$type": "color",
+          "$value": "{ref.color.cobalt.300}",
+          "$description": "The fill of the one button on a view that commits. The same cobalt as `sys.signal.bg` in both themes: this one is pressed, that one only says where the user is."
+        },
+        "bg-hover": {
+          "$type": "color",
+          "$value": "{ref.color.cobalt.200}",
+          "$description": "One ramp step further under the pointer, so the change reads in either theme. In light it is the same value as `sys.text.link`; in dark the two part."
+        },
+        "bg-pressed": {
+          "$type": "color",
+          "$value": "{ref.color.cobalt.100}",
+          "$description": "Two ramp steps from rest, held while the button is down, with the 1px drop the shared press directive adds. Under reduced motion the movement goes and this stays."
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{ref.color.ink.950}",
+          "$description": "Text on the primary fill, flipping with the theme because the fill does. The same value as `sys.signal.text` in both themes, each named for the fill it sits on."
+        }
+      },
+      "secondary": {
+        "bg": {
+          "$type": "color",
+          "$value": "{ref.color.ink.900}",
+          "$description": "No fill of its own: a secondary button reads as an outline, holding the same value as `sys.surface.default` in both themes."
+        },
+        "bg-hover": {
+          "$type": "color",
+          "$value": "{ref.color.ink.850}",
+          "$description": "What a secondary button owns outright, and its only part. In light the same value as `sys.selected.bg`, so a hovered button and a selected row match; in dark it steps up the neutral axis instead."
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{ref.color.paper.500}",
+          "$description": "The edge that makes a secondary button a button. The same value as `sys.border.strong` in both themes, since it is the 3:1 boundary every control draws."
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{ref.color.paper.50}",
+          "$description": "A secondary button's label, sitting on the surface and not on a fill, so it takes the same value as `sys.text.primary` in both themes."
+        }
+      },
+      "danger": {
+        "bg": {
+          "$type": "color",
+          "$value": "{ref.color.brick.400}",
+          "$description": "Brick and never cobalt: the fill of the one button that destroys or refuses, a deleted record or a rejected request. It is never mistaken for the primary one."
+        },
+        "bg-hover": {
+          "$type": "color",
+          "$value": "{ref.color.brick.300}",
+          "$description": "Under the pointer it goes one ramp step further, as the primary fill does. The same value as `sys.status.danger.text` in both themes, which is text on a tint and not a fill."
+        },
+        "text": {
+          "$type": "color",
+          "$value": "{ref.color.ink.950}",
+          "$description": "The label on the destructive fill. The same value as `sys.action.primary.text` in both themes, because both fills are strong enough to need the far end of the neutral axis."
+        }
+      }
+    },
+    "signal": {
+      "bg": {
+        "$type": "color",
+        "$value": "{ref.color.cobalt.300}",
+        "$description": "Cobalt where it reports rather than invites: a checked box, a switch that is on, a tab underline, a count badge. The same value as `sys.action.primary.bg`, which is the thing to press."
+      },
+      "bg-hover": {
+        "$type": "color",
+        "$value": "{ref.color.cobalt.200}",
+        "$description": "One ramp step further when the pointer is on a signal that can be changed, a checkbox or a switch. The same value as `sys.action.primary.bg-hover` in both themes."
+      },
+      "bg-pressed": {
+        "$type": "color",
+        "$value": "{ref.color.cobalt.100}",
+        "$description": "Two steps from rest, held while the control is down. In light `sys.text.on-selected` reads the same value, a label on a tinted row rather than a fill, so the two never meet."
+      },
+      "text": {
+        "$type": "color",
+        "$value": "{ref.color.ink.950}",
+        "$description": "The mark inside a signal: the tick in a checked box, the dash in a mixed one, the count in a badge. The same value as `sys.action.primary.text` in both themes, each named for its own fill."
+      }
+    },
+    "status": {
+      "success": {
+        "text": {
+          "$type": "color",
+          "$value": "{ref.color.moss.300}",
+          "$description": "Words on a success tint, at 4.5:1, where the mark and the edge need only 3:1."
+        },
+        "bg": {
+          "$type": "color",
+          "$value": "{ref.color.moss.950}",
+          "$description": "The tint a success message sits on: a change saved, a request approved."
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{ref.color.moss.500}",
+          "$description": "Around a success message, at 3:1 on its tint, the same floor its mark clears."
+        },
+        "icon": {
+          "$type": "color",
+          "$value": "{ref.color.moss.400}",
+          "$description": "Drawn at 3:1 on the tint, the success mark. The four status marks have four different outlines, so a status reads in greyscale and never rests on its colour."
+        }
+      },
+      "warning": {
+        "text": {
+          "$type": "color",
+          "$value": "{ref.color.amber.300}",
+          "$description": "Words on a warning tint, at 4.5:1, where the mark and the edge need only 3:1."
+        },
+        "bg": {
+          "$type": "color",
+          "$value": "{ref.color.amber.950}",
+          "$description": "The tint a warning message sits on: a session about to end, a field that will block the form."
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{ref.color.amber.500}",
+          "$description": "Around a warning message, at 3:1 on its tint, the same floor its mark clears."
+        },
+        "icon": {
+          "$type": "color",
+          "$value": "{ref.color.amber.400}",
+          "$description": "Drawn at 3:1 on the tint, the warning mark. The four status marks have four different outlines, so a status reads in greyscale and never rests on its colour."
+        }
+      },
+      "danger": {
+        "text": {
+          "$type": "color",
+          "$value": "{ref.color.brick.300}",
+          "$description": "Words on an error tint, at 4.5:1. The same value as `sys.action.danger.bg-hover` in both themes, which is a fill and not words."
+        },
+        "bg": {
+          "$type": "color",
+          "$value": "{ref.color.brick.950}",
+          "$description": "The tint an error message sits on: a form that cannot be submitted, a change that did not save. Not the destructive button, which is `sys.action.danger.bg`."
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{ref.color.brick.500}",
+          "$description": "Around an error message, at 3:1 on its tint. In light the same value as `sys.status.danger.icon`, the only one of the four where the edge and the mark do not part."
+        },
+        "icon": {
+          "$type": "color",
+          "$value": "{ref.color.brick.400}",
+          "$description": "Drawn at 3:1 on the tint, the error mark. The four status marks have four different outlines, so a status reads in greyscale and never rests on its colour."
+        }
+      },
+      "info": {
+        "text": {
+          "$type": "color",
+          "$value": "{ref.color.cobalt.300}",
+          "$description": "Words on an informative tint, at 4.5:1. In light the same value as `sys.text.link`, which it is not: an alert links only where a link is written."
+        },
+        "bg": {
+          "$type": "color",
+          "$value": "{ref.color.cobalt.950}",
+          "$description": "The tint an informative message sits on, where the system states a fact and asks for nothing: balances refresh nightly. In light the same value as `sys.selected.bg`."
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{ref.color.cobalt.500}",
+          "$description": "Around an informative message, at 3:1 on its tint, the same floor its mark clears."
+        },
+        "icon": {
+          "$type": "color",
+          "$value": "{ref.color.cobalt.400}",
+          "$description": "Drawn at 3:1 on the tint, the info mark. The four status marks have four different outlines, so a status reads in greyscale and never rests on its colour."
+        }
+      }
+    },
+    "selected": {
+      "bg": {
+        "$type": "color",
+        "$value": "{ref.color.cobalt.950}",
+        "$description": "The fill of a row, option or chip the user has chosen, which stays until they choose otherwise. Its label reads `sys.text.on-selected` and its edge `sys.selected.border`."
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{ref.color.cobalt.300}",
+        "$description": "Cobalt on the edge of a chosen row or option. The same value as `sys.focus.ring` in both themes, so selection and focus are told apart by where the colour sits, not by the colour."
+      }
+    },
+    "focus": {
+      "ring": {
+        "$type": "color",
+        "$value": "{ref.color.cobalt.300}",
+        "$description": "Drawn outside a control with keyboard focus, held off it by two pixels of the surface behind. A button, a checkbox and a switch take it; a field changes its own border instead."
+      }
+    },
+    "avatar": {
+      "bg": {
+        "$type": "color",
+        "$value": "{ref.color.cobalt.900}",
+        "$description": "A disc behind a person's initials, drawn when there is no photograph to put through the duotone. One pair serves everyone: no colour per person, and never a data colour for a face."
+      },
+      "text": {
+        "$type": "color",
+        "$value": "{ref.color.cobalt.200}",
+        "$description": "The initials themselves, measured against the disc at 4.5:1. In light they hold the same value as `sys.text.link` and are not a link: an avatar is an image, with nothing to click."
+      }
+    },
+    "data": {
+      "1": {
+        "bg": {
+          "$type": "color",
+          "$value": "{ref.color.teal.500}",
+          "$description": "The fill of the mark of data series 1: a bar, a segment, a line or a key. For leave types, departments and chart series, assigned in order. Never a button fill, never text."
+        }
+      },
+      "2": {
+        "bg": {
+          "$type": "color",
+          "$value": "{ref.color.plum.300}",
+          "$description": "The fill of the mark of data series 2: a bar, a segment, a line or a key. For leave types, departments and chart series, assigned in order. Never a button fill, never text."
+        }
+      },
+      "3": {
+        "bg": {
+          "$type": "color",
+          "$value": "{ref.color.olive.200}",
+          "$description": "The fill of the mark of data series 3: a bar, a segment, a line or a key. For leave types, departments and chart series, assigned in order. Never a button fill, never text."
+        }
+      },
+      "4": {
+        "bg": {
+          "$type": "color",
+          "$value": "{ref.color.violet.500}",
+          "$description": "The fill of the mark of data series 4: a bar, a segment, a line or a key. For leave types, departments and chart series, assigned in order. Never a button fill, never text."
+        }
+      },
+      "5": {
+        "bg": {
+          "$type": "color",
+          "$value": "{ref.color.paper.400}",
+          "$description": "The fill of the mark of data series 5: a bar, a segment, a line or a key. For leave types, departments and chart series, assigned in order. Never a button fill, never text."
+        }
+      },
+      "6": {
+        "bg": {
+          "$type": "color",
+          "$value": "{ref.color.azure.400}",
+          "$description": "The fill of the mark of data series 6: a bar, a segment, a line or a key. For leave types, departments and chart series, assigned in order. Never a button fill, never text."
+        }
+      }
+    },
+    "elevation": {
+      "1": {
+        "$type": "shadow",
+        "$value": "{ref.elevation.ink.1}",
+        "$description": "The shadow for cards and hovered table rows."
+      },
+      "2": {
+        "$type": "shadow",
+        "$value": "{ref.elevation.ink.2}",
+        "$description": "The shadow for menus and popovers."
+      },
+      "3": {
+        "$type": "shadow",
+        "$value": "{ref.elevation.ink.3}",
+        "$description": "The shadow for side panels and toasts."
+      },
+      "4": {
+        "$type": "shadow",
+        "$value": "{ref.elevation.ink.4}",
+        "$description": "The shadow for dialogs."
+      }
+    }
+  },
+  "texture": {
+    "ink": {
+      "wash": {
+        "$type": "asset",
+        "$value": "ink-wash-dark.jpg",
+        "$description": "16:9; welcome and onboarding surfaces"
+      },
+      "stroke": {
+        "$type": "asset",
+        "$value": "ink-stroke-dark.jpg",
+        "$description": "21:9; section marks and empty states"
+      }
+    }
+  },
+  "image": {
+    "treatment": {
+      "tint": {
+        "$type": "color",
+        "$value": "{ref.color.cobalt.300}",
+        "$description": "The second half of the duotone: the cobalt laid over the grey photograph. Never a colour for anything else."
+      },
+      "blend": {
+        "$type": "string",
+        "$value": "multiply",
+        "$description": "How the tint meets the photograph: screen in light, so shadows turn cobalt and highlights stay white; multiply in dark, so highlights turn cobalt and shadows stay ink."
+      }
+    }
+  }
+}
