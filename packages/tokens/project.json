@@ -60,7 +60,9 @@
         "{projectRoot}/terrazzo.config.mjs",
         "{projectRoot}/lint/**/*",
         "{projectRoot}/tests/**/*",
-        "{projectRoot}/vitest.config.mts"
+        "{projectRoot}/vitest.config.mts",
+        "{workspaceRoot}/tools/name-check/**/*",
+        "{workspaceRoot}/.claude/skills/inkhr/rules/**/*"
       ],
       "options": {
         "command": "vitest run",
