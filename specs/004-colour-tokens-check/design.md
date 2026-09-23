@@ -9,7 +9,7 @@ light  inkhr/naming          sys.button.bg is outside the naming grammar
 dark   parser:init           Could not resolve alias {ref.color.cobalt.750}.
 ```
 
-Terrazzo's own output prints a source excerpt under every error, 3,522 lines for the 424 errors of the first trial run; the one-line form is what a person reads in a hook and what an agent acts on. `--src <dir>` points the check at another source folder, for the tests. Any other argument, such as the file names `lint-staged` passes, is ignored: a change to one file can break the other pair, so both pairs are always checked.
+Terrazzo's own output prints a source excerpt under every error, 3,522 lines for the 424 errors of the first trial run; the one-line form is what a person reads in a hook and what an agent acts on. Terrazzo's own rules do not always name the token (`core/valid-color` prints only "Migrate to the new object format…"), so the runner appends the file and line that the excerpt's `>` marker points at, as in `(modes/light.json:99)`. It runs `tz check --quiet`: without a terminal, Terrazzo prints its warnings in the same form as errors, so a notice such as "string colors will be deprecated" would read as a `parser:init` failure. Every configured rule is an error, so `--quiet` hides only Terrazzo's own notices, which `npx tz check` by hand still shows. `--src <dir>` points the check at another source folder, for the tests. Any other argument, such as the file names `lint-staged` passes, is ignored: a change to one file can break the other pair, so both pairs are always checked.
 
 Everything is in the package:
 
