@@ -38,7 +38,7 @@ Setting `lint.rules` replaces Terrazzo's recommended set instead of adding to it
 | `inkhr/deprecated-replacement`                              | A `$deprecated` value is a string naming a token in braces                       | all                 |
 | `inkhr/theme-parity`                                        | `modes/light.json` and `modes/dark.json` declare the same names                  | the two theme files |
 
-Two failures come from Terrazzo's parser, not from a lint rule, and print as `parser:init`: a reference to a name that does not exist, and a reference to a token of an unknown type. The parser stops the run on them, so they are reported alone.
+Two failures come from Terrazzo's parser, not from a lint rule, and print as `parser:init`: a reference to a name that does not exist, and a reference to a token of an unknown type. The parser stops that pair's run on them, so its lint rules do not report; the other pair's run still does, which is why an invented type referenced in one theme only fails as `parser:init` there and as `inkhr/known-type` in the other.
 
 - **References** read `originalValue.$value`, which keeps the literal `{…}` alias that `aliasOf` resolves away. Counted on the source: every `sys` token that references anything references a `ref`, and no `ref` references anything, so the rule locks in what is true today.
 - **Theme parity** cannot read the token map: loading both theme files in one run silently drops one. The rule finds the theme file among the run's `sources` and reads the other theme file from the same folder.
@@ -66,28 +66,28 @@ Chosen by the design lead on 23 September 2026 (option A): the board's component
 
 Run on 23 September 2026 with `@terrazzo/cli` 2.7.1 from the design workspace's `scripts/token-check` harness, the rules and grammar above, and the source as merged in spec 003. A name added to one theme file only also fails `inkhr/theme-parity`, which the fixtures show where it happens.
 
-| Fixture                                            | Result                                   |
-| -------------------------------------------------- | ---------------------------------------- |
-| The source, light pair and dark pair               | pass, about 0.6 s each                   |
-| A raw hex in a role                                | `core/valid-color`                       |
-| A reference to `{ref.color.cobalt.750}`            | `parser:init`                            |
-| A primitive given `$type: banana` and referenced   | `parser:init`                            |
-| A colour role without `$description`               | `inkhr/descriptions`                     |
-| A duration without `$description`                  | pass: not a covered type                 |
-| A `ref` referencing `{sys.action.primary.bg}`      | `inkhr/references`                       |
-| A `sys` role referencing another `sys` role        | `inkhr/references`                       |
-| `sys.action.primary.bg.hover` beside the role      | `inkhr/naming`                           |
-| `sys.action.primary.hover.bg`                      | `inkhr/naming`, `inkhr/theme-parity`     |
-| `sys.button.bg`                                    | `inkhr/naming`, `inkhr/theme-parity`     |
-| `sys.action.primary.background`                    | `inkhr/naming`, `inkhr/theme-parity`     |
-| `sys.action.primary.bg-active`                     | `inkhr/naming`, `inkhr/theme-parity`     |
-| `sys.action.bg.text`                               | `inkhr/naming`, `inkhr/theme-parity`     |
-| `sys.text.background`                              | `inkhr/naming`, `inkhr/theme-parity`     |
-| `sys.surface.inverse` deleted from `dark.json`     | `inkhr/theme-parity`                     |
-| A token of `$type: banana` that nothing references | `inkhr/known-type`                       |
-| `$deprecated: true`                                | `inkhr/deprecated-replacement`           |
-| `$deprecated: "Use {sys.action.secondary.bg}."`    | pass                                     |
-| A segment in camelCase (`ref.color.cobaltBlue.*`)  | `inkhr/naming`, `core/consistent-naming` |
+| Fixture                                            | Result                                                                                      |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| The source, light pair and dark pair               | pass, about 0.6 s each                                                                      |
+| A raw hex in a role                                | `core/valid-color`                                                                          |
+| A reference to `{ref.color.cobalt.750}`            | `parser:init`                                                                               |
+| A primitive given `$type: banana` and referenced   | `parser:init` in light, where it is referenced; `inkhr/known-type` in dark, where it is not |
+| A colour role without `$description`               | `inkhr/descriptions`                                                                        |
+| A duration without `$description`                  | pass: not a covered type                                                                    |
+| A `ref` referencing `{sys.action.primary.bg}`      | `inkhr/references`                                                                          |
+| A `sys` role referencing another `sys` role        | `inkhr/references`                                                                          |
+| `sys.action.primary.bg.hover` beside the role      | `inkhr/naming`                                                                              |
+| `sys.action.primary.hover.bg`                      | `inkhr/naming`, `inkhr/theme-parity`                                                        |
+| `sys.button.bg`                                    | `inkhr/naming`, `inkhr/theme-parity`                                                        |
+| `sys.action.primary.background`                    | `inkhr/naming`, `inkhr/theme-parity`                                                        |
+| `sys.action.primary.bg-active`                     | `inkhr/naming`, `inkhr/theme-parity`                                                        |
+| `sys.action.bg.text`                               | `inkhr/naming`, `inkhr/theme-parity`                                                        |
+| `sys.text.background`                              | `inkhr/naming`, `inkhr/theme-parity`                                                        |
+| `sys.surface.inverse` deleted from `dark.json`     | `inkhr/theme-parity`                                                                        |
+| A token of `$type: banana` that nothing references | `inkhr/known-type`                                                                          |
+| `$deprecated: true`                                | `inkhr/deprecated-replacement`                                                              |
+| `$deprecated: "Use {sys.action.secondary.bg}."`    | pass                                                                                        |
+| A segment in camelCase (`ref.color.cobaltBlue.*`)  | `inkhr/naming`, `core/consistent-naming`                                                    |
 
 The first run, with `core/descriptions` and `core/duplicate-values` on as the plan had them, failed 424 times on the source: 60 undescribed non-colour tokens and 152 duplicate values, each reported for both pairs.
 
