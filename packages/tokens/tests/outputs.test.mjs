@@ -111,6 +111,18 @@ describe.each(Object.keys(THEMES))('%s theme', (theme) => {
 });
 
 describe('light CSS', () => {
+  // tools/name-check derives CSS names this way, so the docs can be checked without a build.
+  it('names each variable --ink- plus the token id with dots as hyphens', () => {
+    const { declarations } = cssBlock('light');
+    const expected = colour([
+      ...shared,
+      ...tokens(readJson(THEMES.light.file)),
+    ]).map((token) => `--ink-${token.path.join('-')}`);
+    expect(sorted(declarations.map(({ name }) => name))).toEqual(
+      sorted(expected),
+    );
+  });
+
   it('declares the colour tokens of the light pair under :root with the ink prefix', () => {
     const { selector, declarations } = cssBlock('light');
     expect(selector).toBe(THEMES.light.selector);
