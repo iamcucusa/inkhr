@@ -4,14 +4,13 @@ State across sessions, for people and agents. Read this, then `git log --oneline
 
 ## Now
 
-Stage 0, colour slice 1. Phase: spec 004 in review, task 9 of 10 done. Next action: open the pull request, then the design lead reviews and rebase merges.
+Stage 0, colour slice 1. Phase: spec 005 drafted. Next action: the design lead approves `specs/005-colour-tokens-names`.
 
 ## Specs
 
-| Stage | Spec                       | Status      | Next action                                | Who         | Updated    |
-| ----- | -------------------------- | ----------- | ------------------------------------------ | ----------- | ---------- |
-| 0     | `004-colour-tokens-check`  | in review   | Review the pull request, then rebase merge | design lead | 2026-09-23 |
-| 0     | 005, names and agent files | not started | Draft the spec once 004 is merged          | agent       | 2026-09-23 |
+| Stage | Spec                      | Status  | Next action      | Who         | Updated    |
+| ----- | ------------------------- | ------- | ---------------- | ----------- | ---------- |
+| 0     | `005-colour-tokens-names` | drafted | Approve the spec | design lead | 2026-09-23 |
 
 Status, and who sets it: not started (nobody yet); drafted (the agent, in the commit that adds the spec folder); approved (the design lead, or the agent in its next commit on the design lead's word); tests committed (the agent, with the failing tests); implementing (the agent; each task commit moves Next action to the next task); in review (the agent, in the last commit before the pull request opens); blocked (the agent or a person; Next action names what unblocks it and who).
 
