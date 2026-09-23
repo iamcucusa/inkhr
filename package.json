@@ -21,6 +21,7 @@
     "@nx/eslint": "23.2.1",
     "@nx/eslint-plugin": "23.2.1",
     "@nx/js": "23.2.1",
+    "@terrazzo/cli": "2.7.1",
     "eslint": "9.39.5",
     "lint-staged": "17.5.1",
     "nx": "23.2.1",
