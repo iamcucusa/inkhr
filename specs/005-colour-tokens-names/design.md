@@ -34,7 +34,7 @@ Each change below, in the order the file reads. Nothing outside colour changes, 
 ## `GAPS.md` (A0.3, E3)
 
 - **A second accent colour**, by decision: "Status and data colours never fill a button and never colour body text" becomes "never colour body text and never fill a button, except brick on the destructive button, `sys.action.danger.bg`".
-- **A generic label colour**, new, by decision: "There is none. Every fill that carries a label owns its text role (`sys.action.primary.text`, `sys.action.danger.text`, `sys.signal.text`, `sys.avatar.text`, `sys.status.{kind}.text`), and `sys.selected.bg` is labelled by `sys.text.on-selected`. `sys.text.on-accent` was retired on 22 September 2026."
+- **A generic label colour**, new, by decision: "There is none. Every fill that carries a label owns its text role (`sys.action.primary.text`, `sys.action.danger.text`, `sys.signal.text`, `sys.avatar.text`, `sys.status.{kind}.text`), and `sys.selected.bg` is labelled by `sys.text.on-selected`. `sys.text.on-accent` was retired on 22 September 2026." The retirement sentence sits on its own continuation line, ending in the skip marker, since it names a retired token on purpose; the role names on the line above stay checked.
 - **Chart components**, not yet: `data.1` to `data.6` become `sys.data.1.bg` to `sys.data.6.bg`; the gap stays, and the entry says it is in no stage yet, so a person adds it to the roadmap before work starts.
 - **`ink-icon`**, not yet: in no stage yet, the same sentence.
 - **Control height tokens**, not yet: Stage 0, with the density pair.
@@ -116,7 +116,7 @@ Rule 1 on the board reads "Components use sys names only"; its component form ha
 - `inkhr/descriptions`: removes `sys.action.primary.bg`'s description in a copy and expects the rule; the correct row's sentence is set as the description and passes.
 - `check:names`: writes the form in a code span of a temporary document and runs the name check on it; the incorrect form fails, the correct one passes.
 
-A row whose "Caught by" the test does not know fails, so the file cannot name a check that does not exist.
+A row whose "Caught by" the test does not know fails, so the file cannot name a check that does not exist. `tokens:test` takes `tools/name-check/` and the rule file as cache inputs too, so a change to either reruns it.
 
 ## Documentation
 
