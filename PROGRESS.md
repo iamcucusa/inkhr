@@ -4,13 +4,13 @@ State across sessions, for people and agents. Read this, then `git log --oneline
 
 ## Now
 
-Stage 0, colour slice 1. Phase: spec 003 approved, task 1 of 9 done. Next action: install Style Dictionary (task 2).
+Stage 0, colour slice 1. Phase: spec 003 approved, task 2 of 9 done. Next action: write the failing tests (task 3).
 
 ## Specs
 
 | Stage | Spec                       | Status      | Next action                       | Who   | Updated    |
 | ----- | -------------------------- | ----------- | --------------------------------- | ----- | ---------- |
-| 0     | `003-colour-tokens-build`  | approved    | Install Style Dictionary (task 2) | agent | 2026-09-23 |
+| 0     | `003-colour-tokens-build`  | approved    | Write the failing tests (task 3)  | agent | 2026-09-23 |
 | 0     | 004, gate 1 and the hooks  | not started | Draft the spec once 003 is merged | agent | 2026-09-23 |
 | 0     | 005, names and agent files | not started | Draft the spec once 004 is merged | agent | 2026-09-23 |
 
