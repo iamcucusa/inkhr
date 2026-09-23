@@ -69,7 +69,7 @@ Each entry answers the same questions: **Use** (what it does in InkHR), **Human 
 
 #### DTCG 2025.10
 
-- **Use.** The format of the token files in `packages/tokens/src/`: one file for primitives and theme-independent values, one file per theme for roles. Colours are sRGB component objects with the hex kept; dimensions and durations are `{value, unit}`; images are `asset` tokens.
+- **Use.** The format of the token files in `packages/tokens/src/`: one file for primitives and theme-independent values, and one file per theme, `modes/light.json` and `modes/dark.json`, for the colour roles and the other roles that change with the theme, under the same names in both. Colours are sRGB component objects with the hex kept; dimensions and durations are `{value, unit}`; images are `asset` tokens.
 - **Human loop.** A token change is a JSON diff reviewed in the pull request.
 - **Agent loop.** A closed, typed vocabulary: an agent reads token names and `$description`, and an unknown or off-format token fails gate 1.
 - **Why.** The first stable W3C format, read by both `style-dictionary` and `@terrazzo/cli`.
@@ -77,11 +77,11 @@ Each entry answers the same questions: **Use** (what it does in InkHR), **Human 
 
 #### `style-dictionary` 5.5.4
 
-- **Use.** Builds each theme into CSS custom properties (light under `:root`, dark under `[data-theme="dark"]`), TypeScript, Swift and Kotlin in `packages/tokens`.
+- **Use.** Builds the shared file with one theme file at a time, never both, into `packages/tokens/dist/`: CSS custom properties with the `--ink-` prefix (light under `:root`, dark under `[data-ink-theme="dark"]`), TypeScript, Swift and Kotlin. The dark CSS block holds only the tokens the dark file declares, through a file filter on CSS alone, since Swift and Kotlin have no cascade. Only the types in `packages/tokens/covered-types.mjs` are built, colour today.
 - **Human loop.** Outputs are reviewed when a transform changes.
 - **Agent loop.** A deterministic build step whose outputs an agent can diff; the generated CSS variables are the names components and `DESIGN.md` use.
 - **Why.** Reads the 2025.10 colour and dimension objects and has the widest set of platform outputs, which web, iOS and Android need.
-- **Gaps.** Needs one custom transform, written by InkHR, for duration objects.
+- **Gaps.** The built-in transform groups print the other types wrong, so they join the build with their own slices: six transforms written by InkHR (durations, typography to four properties, native dimensions, native shadows, native cubic beziers, quoting in Kotlin) and one typography format.
 
 #### `@terrazzo/cli` 2.7.1
 
