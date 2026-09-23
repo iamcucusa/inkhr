@@ -80,15 +80,17 @@ Root `npm test` keeps running `tools/` only; the package tests run through Nx.
 
 In `packages/tokens/project.json`, each an `nx:run-commands` target with `cwd` `packages/tokens`:
 
-| Target      | Command                | Depends on | Cache inputs and outputs                                                        |
-| ----------- | ---------------------- | ---------- | ------------------------------------------------------------------------------- |
-| `build`     | `node build.mjs`       |            | inputs `src/**`, `build.mjs`, `covered-types.mjs`; outputs `{projectRoot}/dist` |
-| `typecheck` | `tsc -p tsconfig.json` | `build`    | inputs `dist/ts/**`, `tsconfig.json`                                            |
-| `test`      | `vitest run`           | `build`    | inputs `dist/**`, `tests/**`, `vitest.config.mts`                               |
+| Target      | Command                | Depends on | Cache inputs and outputs                                                           |
+| ----------- | ---------------------- | ---------- | ---------------------------------------------------------------------------------- |
+| `build`     | `node build.mjs`       |            | inputs `src/**`, `build.mjs`, `covered-types.mjs`; outputs `{projectRoot}/dist`    |
+| `typecheck` | `tsc -p tsconfig.json` | `build`    | inputs `src/**`, `build.mjs`, `covered-types.mjs`, `tsconfig.json`                 |
+| `test`      | `vitest run`           | `build`    | inputs `src/**`, `build.mjs`, `covered-types.mjs`, `tests/**`, `vitest.config.mts` |
+
+`typecheck` and `test` read `dist/`, but `dist/` cannot be a cache input: Nx leaves gitignored files out of the hash, so a changed build would still hit a cached pass. Their inputs are what `dist/` is built from instead, so any change that could change `dist/` also misses the cache.
 
 `test` gets its `dependsOn` in task 4, with the build: in task 3 there is no `build` target to depend on, and the tests fail on the missing `dist/`.
 
-If `@nx/eslint/plugin` infers `tokens:lint` from the root flat config, it lints `build.mjs` and the tests and must pass; `dist/` is already ignored there.
+Nx infers two things from the package itself, seen in task 1: no `tokens:lint` target, so the CI step's `-t lint` skips the package; and an `nx-release-publish` target, because the package is public. The repository does not use `nx release`, so nothing runs that target, and it is left alone until publishing is decided in slice 3.
 
 ## CI
 
