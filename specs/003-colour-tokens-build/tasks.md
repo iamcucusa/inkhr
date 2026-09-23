@@ -38,7 +38,7 @@ Depends on tasks 2 and 3.
 
 1. Write `packages/tokens/covered-types.mjs` and `packages/tokens/build.mjs` as in "The build" in `design.md`: the pair rule, the filter on `COVERED_TYPES`, the CSS mode filter and `commentStyle: 'none'`.
 2. Add the `build` target, and `dependsOn: ["build"]` on `test`.
-3. Check: `npx nx run tokens:build` writes the eight files and prints only the expected "filtered out token references" warning for dark CSS; `npx nx run tokens:test` passes; the counts match "Done when" in `requirements.md`. Attach `dist/css/dark.css` and the head of each light file to the pull request as evidence.
+3. Check: `npx nx run tokens:build` writes the ten files and prints only the two expected warnings named in "The build" in `design.md`; `npx nx run tokens:test` passes; the counts match "Done when" in `requirements.md`. Attach `dist/css/dark.css` and the head of each light file to the pull request as evidence.
 
 Commit: `feat(tokens): build colour outputs for css, ts, swift and kotlin`
 
