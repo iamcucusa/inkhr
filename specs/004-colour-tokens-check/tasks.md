@@ -65,11 +65,10 @@ Commit: `test(repo): add failing tests for the agent hooks`
 Depends on tasks 4 and 6.
 
 1. Write `tools/hooks/after-token-edit.mjs`, `before-done.mjs` and `session-start.mjs`, and add the three hooks to `.claude/settings.json` as in "Where the check runs" in `design.md`.
-2. Check: `npm test` passes. Then, in a new Claude Code session in this worktree:
-   - the session opens with the `PROGRESS.md` blocks, the git state and the merged pull requests;
+2. Check: `npm test` passes, and `node tools/hooks/session-start.mjs` prints the `PROGRESS.md` blocks, the git state and the merged pull requests. Then, in the session that adds the hooks:
    - an edit that writes `sys.action.primary.bg.hover` into `modes/light.json` gets `inkhr/naming` back before the next step, and the edit is undone;
    - an edit to a file outside `packages/tokens/src/` runs no check;
-   - with a test broken on purpose, finishing is refused once with the failure, then allowed; the test is restored.
+   - with a test broken on purpose, finishing is refused once with the failure; the test is restored.
      If the `if` condition does not fire for the source edit, change it to `Edit(**/packages/tokens/src/**)` and repeat, and record which spelling fired in `design.md`.
 
 Commit: `build(repo): check token edits and tests in agent hooks`

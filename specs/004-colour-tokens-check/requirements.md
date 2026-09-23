@@ -11,7 +11,7 @@ Make gate 1 real for colour: one command checks the token source with Terrazzo's
 - The trials in `design.md` ran on 23 September 2026 against the source as merged, with `@terrazzo/cli` 2.7.1 from the design workspace harness. Three of their results change the plan: `core/descriptions` and `core/consistent-naming`'s function form cannot be limited to a type, and `core/duplicate-values` fails 152 times on the real files.
 - The Naming rules board states the grammar of a component role, `sys.{role}[.{variant}].{property}[-{state}]`, with two closed lists: five properties and two states. Eighteen of the 60 colour roles have another shape: the 17 roles under `sys.surface`, `sys.text` and `sys.border`, and `image.treatment.tint`. The grammar the check enforces is in `design.md`, the option the design lead chose on 23 September 2026; the board is brought in line in the design workspace.
 - Spec 002 set the pattern this spec follows: one checker, called by every layer, with tests for a passing and a failing case of every rule.
-- Claude Code hooks are snapshotted when a session starts, so the hooks this spec adds are verified in a new session.
+- Claude Code applied the hooks this spec adds to the session that added them, so they were verified there; the SessionStart hook runs only when a session starts, clears, compacts or resumes, so its script is verified by hand and its output is seen at the next start.
 
 ## Requirements
 
@@ -48,7 +48,7 @@ Make gate 1 real for colour: one command checks the token source with Terrazzo's
 - `npx nx run tokens:check` passes on both pairs of the source.
 - Each fixture in the table in `design.md` fails under the rule named there, or passes where the table says so, in `npx nx run tokens:test`; the tests failed in the commit that added them.
 - Staging a source file with a raw hex in a role makes `git commit` fail with `core/valid-color`; a commit that touches nothing under `packages/tokens/src/` does not run the check.
-- In a new Claude Code session, an edit that breaks `inkhr/naming` gets that rule name back from the after-edit hook, an edit outside `packages/tokens/src/` runs nothing, a finish with a failing test is refused once with the failures, and the session opens with the `PROGRESS.md` blocks, the git state and the merged pull requests.
+- In a Claude Code session in this repository, an edit that breaks `inkhr/naming` gets that rule name back from the after-edit hook, an edit outside `packages/tokens/src/` runs nothing, and a finish with a failing test is refused once with the failures. `tools/hooks/session-start.mjs` prints the `PROGRESS.md` blocks, the git state and the merged pull requests, and the next session opens with them.
 - `npm test` passes, including the hook script tests.
 - `npx nx run-many -t lint build typecheck test check` passes locally and in CI on the pull request.
 - `package.json` and the stack doc both say `@terrazzo/cli` 2.7.1.
