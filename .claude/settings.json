@@ -20,6 +20,39 @@
             "command": "node \"$CLAUDE_PROJECT_DIR/tools/format/format-edited-file.mjs\""
           }
         ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Edit(packages/tokens/src/**)",
+            "command": "node \"$CLAUDE_PROJECT_DIR/tools/hooks/after-token-edit.mjs\"",
+            "timeout": 60
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/tools/hooks/before-done.mjs\"",
+            "timeout": 300
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/tools/hooks/session-start.mjs\"",
+            "timeout": 30
+          }
+        ]
       }
     ],
     "PreToolUse": [
