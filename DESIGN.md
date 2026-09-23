@@ -4,7 +4,11 @@ description: Design system for an HR portfolio. Paper, ink and one cobalt.
 themes: [light, dark]
 densities: [comfortable, compact]
 source:
-  [tokens/inkhr.tokens.json, tokens/modes/light.json, tokens/modes/dark.json]
+  [
+    packages/tokens/src/inkhr.tokens.json,
+    packages/tokens/src/modes/light.json,
+    packages/tokens/src/modes/dark.json,
+  ]
 maintained: by hand; every token name is checked against the token files in CI
 ---
 
@@ -17,7 +21,7 @@ maintained: by hand; every token name is checked against the token files in CI
 - **How Claude Design uses it.** Claude Design is always set up from the repository, never from this file alone: it reads the token files, the generated CSS and the components next to this file, and this file tells it how to use them.
 - **How it is kept.** Edited by hand when a role, a component recipe or a rule changes. Current state only: when something changes, rewrite the passage, never add history. Sections keep this order. Roles and CSS variables only: no hex values, no sizes that exist as tokens, no primitives. A CI check fails when a token name or CSS variable mentioned here does not exist in the token files. Copy follows the InkHR copy guide.
 
-Numbers appear only where no token exists yet, such as control heights and design frame sizes.
+Numbers appear only where no token exists yet, such as design frame sizes.
 
 ## Overview
 
@@ -29,21 +33,21 @@ People: employees requesting time off and checking payslips, managers approving 
 
 ## Colour
 
-Paper and ink carry the interface; cobalt is the only action and signal hue. Status and data colours never fill a button and never colour body text. Components read the role through its CSS variable and never a hex value or a primitive such as `color.cobalt.700`; the token files hold the values.
+Paper and ink carry the interface; cobalt is the only action and signal hue. Status and data colours never colour body text and never fill a button, with one exception: brick fills the destructive button, `sys.action.danger.bg`. Components read the role through its CSS variable and never a hex value or a primitive such as `ref.color.cobalt.700`; the token files hold the values.
 
-| Name                | Role                          | CSS variable                         | Use                                                                          |
-| ------------------- | ----------------------------- | ------------------------------------ | ---------------------------------------------------------------------------- |
-| Paper               | `sys.surface.page`            | `var(--sys-surface-page)`            | The canvas of every screen. Near-white, neutral, never tinted.               |
-| Card                | `sys.surface.default`         | `var(--sys-surface-default)`         | Cards, fields, dialogs, the app bar. The surface text is measured against.   |
-| Sunken              | `sys.surface.sunken`          | `var(--sys-surface-sunken)`          | Recessed areas inside a card, one step below it.                             |
-| Ink                 | `sys.text.primary`            | `var(--sys-text-primary)`            | Body text, headings, values. The mark a person makes.                        |
-| Quiet ink           | `sys.text.secondary`          | `var(--sys-text-secondary)`          | Metadata, captions, secondary labels.                                        |
-| Hairline            | `sys.border.subtle`           | `var(--sys-border-subtle)`           | Dividers between rows and sections.                                          |
-| Edge                | `sys.border.default`          | `var(--sys-border-default)`          | Field and card boundaries.                                                   |
-| Cobalt              | `sys.action.primary.bg`       | `var(--sys-action-primary-bg)`       | The one action colour: the primary button, links, selection, focus and tabs. |
-| Cobalt, pressed ink | `sys.action.primary.bg-hover` | `var(--sys-action-primary-bg-hover)` | Primary button on hover; link text.                                          |
-| Selected wash       | `sys.selected.bg`             | `var(--sys-selected-bg)`             | Selected rows, nav items and chips, with text.on-selected.                   |
-| Inverse             | `sys.surface.inverse`         | `var(--sys-surface-inverse)`         | Tooltips and toasts.                                                         |
+| Name                | Role                          | CSS variable                             | Use                                                                                                                                                            |
+| ------------------- | ----------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Paper               | `sys.surface.page`            | `var(--ink-sys-surface-page)`            | The canvas of every screen. Near-white, neutral, never tinted.                                                                                                 |
+| Card                | `sys.surface.default`         | `var(--ink-sys-surface-default)`         | Cards, fields, dialogs, the app bar. The surface text is measured against.                                                                                     |
+| Sunken              | `sys.surface.sunken`          | `var(--ink-sys-surface-sunken)`          | Recessed areas inside a card, one step below it.                                                                                                               |
+| Ink                 | `sys.text.primary`            | `var(--ink-sys-text-primary)`            | Body text, headings, values. The mark a person makes.                                                                                                          |
+| Quiet ink           | `sys.text.secondary`          | `var(--ink-sys-text-secondary)`          | Metadata, captions, secondary labels.                                                                                                                          |
+| Hairline            | `sys.border.subtle`           | `var(--ink-sys-border-subtle)`           | Dividers between rows and sections.                                                                                                                            |
+| Edge                | `sys.border.default`          | `var(--ink-sys-border-default)`          | Card boundaries. A field or other control reads `sys.border.strong`.                                                                                           |
+| Cobalt              | `sys.action.primary.bg`       | `var(--ink-sys-action-primary-bg)`       | The one action colour: the primary button and tabs. Links read `sys.text.link`, selection `sys.selected.bg` and `sys.selected.border`, focus `sys.focus.ring`. |
+| Cobalt, pressed ink | `sys.action.primary.bg-hover` | `var(--ink-sys-action-primary-bg-hover)` | Primary button on hover.                                                                                                                                       |
+| Selected wash       | `sys.selected.bg`             | `var(--ink-sys-selected-bg)`             | Selected rows, nav items and chips, with `sys.text.on-selected`.                                                                                               |
+| Inverse             | `sys.surface.inverse`         | `var(--ink-sys-surface-inverse)`         | Tooltips and toasts.                                                                                                                                           |
 
 Contrast on the card surface: ink 18.4:1 light and 15.8:1 dark, quiet ink 6.7:1 and 12.8:1, white on cobalt 7.0:1, ink on dark cobalt 10.5:1.
 
@@ -56,9 +60,9 @@ Status, always with a dot or an icon and a word:
 | Danger  | `sys.status.danger.text` on `sys.status.danger.bg`   | `sys.status.danger.border`, `sys.status.danger.icon`   | 6.7:1           | 9.6:1          |
 | Info    | `sys.status.info.text` on `sys.status.info.bg`       | `sys.status.info.border`, `sys.status.info.icon`       | 8.9:1           | 10.0:1         |
 
-Data colours tell leave types, departments and chart series apart, used in this order; never a button fill, never text:
+Data colours tell leave types, departments and chart series apart, used in this order; never a button fill, never text. They are theme roles, and each reaches 3:1 against the surface in both themes:
 
-`data.1`, `data.2`, `data.3`, `data.4`, `data.5`, `data.6`.
+`sys.data.1.bg`, `sys.data.2.bg`, `sys.data.3.bg`, `sys.data.4.bg`, `sys.data.5.bg`, `sys.data.6.bg`.
 
 ## Typography
 
@@ -93,7 +97,7 @@ A role never carries colour; colour comes from `sys.text.*`.
 The product canvas is flat; depth only says that something floats.
 
 - `elevation.1` cards and hovered rows, `elevation.2` menus and popovers, `elevation.3` side panels and toasts, `elevation.4` dialogs.
-- Shadows are two layers tinted with ink (`color.ink.900`, read only by the elevation tokens) in light. In dark they use black at the same strength and the surface steps up one level instead.
+- Shadows are two layers tinted with ink (`ref.color.ink.900`, read only by the elevation tokens) in light. In dark they use black at the same strength and the surface steps up one level instead.
 - Layers use `z.base`, `z.raised`, `z.dropdown`, `z.sticky`, `z.overlay`, `z.modal`, `z.popover` and `z.toast`, in that order.
 - Motion is short and caused by the person: `motion.duration.fast` for a press, `motion.duration.base` for most changes, `motion.duration.slow` for panels, with `motion.easing.standard`. Reduced motion turns every duration to `motion.duration.instant`.
 
@@ -112,22 +116,22 @@ Recipes for the components people meet most. Every component is an Angular compo
 - **Data grid** (`ink-data-grid`): rows 44 px, compact 36; sticky header in `sys.type.label.sm` on the paper tone; tabular figures, amounts right-aligned; row checkboxes and menus are named with the row ("Select Bram de Vries").
 - **Badge** (`ink-badge`): a dot and a word on the status background, `sys.type.label.sm`, `radius.button`. "Pending", "Approved".
 - **App bar** (`ink-app-bar`): 56 px, card surface, hairline below, lock-up at the left, search, notifications and the avatar at the right.
-- **Tabs and side navigation**: the selected item uses the selected wash with `text.on-selected`; cobalt marks the current item, nothing else does.
+- **Tabs and side navigation**: the selected item uses the selected wash with `sys.text.on-selected`; cobalt marks the current item, nothing else does.
 - **Dialog** (`ink-dialog`): card surface, `radius.xl`, `elevation.4`, a title that names the action, buttons that name the outcome: "Keep request" and "Reject request".
 - **Toast** (`ink-toast`): inverse surface, `elevation.3`, the outcome plus one action where it can be undone: "Request sent. Undo".
 - **Empty state** (`ink-empty-state`): the ink drop, what this is, why it is empty, one button.
 - **KPI tile** (`ink-kpi-tile`): the figure in `sys.type.display`, a label, and a delta with a sign, never an arrow alone.
-- **Avatar** (`ink-avatar`): initials on cobalt 100, or a photograph through the duotone.
+- **Avatar** (`ink-avatar`): initials in `sys.avatar.text` on `sys.avatar.bg`, or a photograph through the duotone.
 
 ## Do's and don'ts
 
-- Do use one cobalt primary per view. Don't add a second accent colour or colour a button with a status or data colour.
+- Do use one cobalt primary per view. Don't add a second accent colour or fill a button with a status or data colour; the destructive button is the one exception.
 - Do let paper and ink carry the screen. Don't put texture, gradients or photographs behind a table, form or chart.
 - Do show status with a dot or icon and a word. Don't rely on colour alone.
 - Do put the label above the field and help below it. Don't use the placeholder as the label.
 - Do write sentence case, verbs on buttons and errors that say what to do next. Don't use exclamation marks, emoji, em dashes or chains of middle dots.
 - Do use Instrument Serif for one italic phrase on welcome surfaces. Don't use it for headings, labels or body copy.
-- Do read tokens by their role (`sys.text.secondary`). Don't write hex values, px radii or shadows in a component, or read a primitive such as `color.cobalt.700`.
+- Do read tokens by their role (`sys.text.secondary`). Don't write hex values, px radii or shadows in a component, or read a primitive such as `ref.color.cobalt.700`.
 - Do keep focus visible: a 2 px ring outside a 2 px surface gap. Don't remove outlines.
 - Do move only what the person caused. Don't animate on load or loop anything.
 
@@ -135,7 +139,7 @@ Recipes for the components people meet most. Every component is an Angular compo
 
 - Ink art is real ink photographed on white or charcoal paper: the wash (16:9), the stroke (21:9), the drop and the ring (1:1). It appears only on welcome, onboarding and empty surfaces, one asset per surface. The ring means done, never progress, and never moves.
 - A wash that carries text sits under the white scrim, and the mark never sits on a wash.
-- Photography in a cobalt duotone: the photo goes grey, cobalt.700 is screened over it, so shadows turn cobalt and highlights stay paper. Radius 16. Welcome, onboarding, empty states and the profile header only.
+- Photography in a cobalt duotone: the photo goes grey, `image.treatment.tint` is screened over it, so shadows turn cobalt and highlights stay paper. Radius 16. Welcome, onboarding, empty states and the profile header only.
 - Ink is never drawn or generated by code, and photographs are never shown untreated.
 
 ## Voice and copy
@@ -165,19 +169,19 @@ Example prompts:
 
 ## Quick start
 
-`@inkhr/tokens` defines the variables for light under `:root` and for dark under `[data-theme="dark"]`. Styles only read them:
+`@inkhr/tokens` defines the variables for light under `:root` and for dark under `[data-ink-theme="dark"]`. Styles only read them:
 
 ```css
 .leave-summary {
-  background: var(--sys-surface-default);
-  color: var(--sys-text-primary);
-  border: 1px solid var(--sys-border-default);
+  background: var(--ink-sys-surface-default);
+  color: var(--ink-sys-text-primary);
+  border: 1px solid var(--ink-sys-border-default);
   border-radius: var(--radius-lg);
   padding: var(--space-4);
   box-shadow: var(--elevation-1);
 }
 .leave-summary .caption {
-  color: var(--sys-text-secondary);
+  color: var(--ink-sys-text-secondary);
   font: var(--sys-type-body-sm);
 }
 ```
@@ -200,14 +204,16 @@ Other web frameworks use the same stylesheets from `@inkhr/styles`; their class 
 The closed set. Values are in the token files; never invent a name.
 
 - `sys.surface.*`: page, default, raised, sunken, inverse
-- `sys.text.*`: primary, secondary, tertiary, disabled, on-accent, link, on-selected, placeholder, inverse
+- `sys.text.*`: primary, secondary, tertiary, disabled, link, on-selected, placeholder, inverse
 - `sys.border.*`: default, strong, subtle, focus
-- `sys.action.*`: primary.bg, primary.bg-hover, primary.bg-active, primary.text, secondary.bg, secondary.bg-hover, secondary.border, secondary.text, danger.bg, danger.bg-hover, danger.text
-- `sys.signal.*`: default, hover, active, text
+- `sys.action.*`: primary.bg, primary.bg-hover, primary.bg-pressed, primary.text, secondary.bg, secondary.bg-hover, secondary.border, secondary.text, danger.bg, danger.bg-hover, danger.text
+- `sys.signal.*`: bg, bg-hover, bg-pressed, text
 - `sys.status.*`: success.text, success.bg, success.border, success.icon, warning.text, warning.bg, warning.border, warning.icon, danger.text, danger.bg, danger.border, danger.icon, info.text, info.bg, info.border, info.icon
 - `sys.selected.*`: bg, border
 - `sys.focus.*`: ring
+- `sys.avatar.*`: bg, text
+- `sys.data.*`: 1.bg, 2.bg, 3.bg, 4.bg, 5.bg, 6.bg
 - `sys.type.*`: display, heading.lg, heading.md, heading.sm, body.lg, body.md, body.sm, label.md, label.sm, code, display-serif
 - `space.0` to `space.12`; `radius.xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `image`, `button`, `full`
 - `elevation.1` to `elevation.4`; `z.*`; `motion.duration.*`, `motion.easing.*`
-- `texture.ink.wash`, `texture.ink.stroke`, `texture.ink.drop`, `texture.ink.ring`, `texture.scrim`; `image.treatment.duotone`; `data.1` to `data.6`
+- `texture.ink.wash`, `texture.ink.stroke`, `texture.ink.drop`, `texture.ink.ring`, `texture.scrim`; `image.treatment.*`
