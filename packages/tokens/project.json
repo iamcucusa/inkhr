@@ -41,6 +41,9 @@
         "{projectRoot}/src/**/*",
         "{projectRoot}/build.mjs",
         "{projectRoot}/covered-types.mjs",
+        "{projectRoot}/check.mjs",
+        "{projectRoot}/terrazzo.config.mjs",
+        "{projectRoot}/lint/**/*",
         "{projectRoot}/tests/**/*",
         "{projectRoot}/vitest.config.mts"
       ],
