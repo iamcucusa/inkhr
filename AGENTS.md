@@ -8,9 +8,9 @@ A bracket is a placeholder until the project it needs exists; replace it with th
 
 - Install: `npm ci`
 - Build all packages: `npx nx run-many -t build`
-- Build the tokens: [token build command]
+- Build the tokens: `npx nx run tokens:build`
 - Lint: `npx nx affected -t lint`
-- Type-check: [type-check command]
+- Type-check: `npx nx affected -t typecheck`
 - Test: `npx nx affected -t test`; the repository tools: `npm test`
 - Visual and axe checks: [e2e command]
 - Format: `npm run format`; check formatting: `npm run format:check`
@@ -52,7 +52,7 @@ A pull request is done when all seven CI gates pass. People and agents pass the 
 
 ## Rules
 
-- Read tokens by role (`sys.text.secondary`). Never write a hex, px radius or shadow, and never read a primitive such as `color.cobalt.700`. Enforced by `ink/no-raw-color`, `ink/no-primitive-token` and `no-literal-radius` (gate 5).
+- Read tokens by role (`sys.text.secondary`). Never write a hex, px radius or shadow, and never read a primitive such as `ref.color.cobalt.700`. Enforced by `ink/no-raw-color`, `ink/no-primitive-token` and `no-literal-radius` (gate 5).
 - Components are standalone and on signals. No NgModule, `ngClass` or `HostBinding`. Enforced by angular-eslint and `tsc` (after-edit hook, gate 5).
 - Upgrade Angular only with `ng update`, all `@angular/*` packages together, in one pull request. Checked by the reviewer subagent.
 - Every package change carries a changeset. A breaking change ships with an `ng update` migration. Enforced by gate 7.
