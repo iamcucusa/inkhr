@@ -10,6 +10,7 @@ A bracket is a placeholder until the project it needs exists; replace it with th
 - Build all packages: `npx nx run-many -t build`
 - Build the tokens: `npx nx run tokens:build`
 - Check the tokens: `npx nx run tokens:check`
+- Check the names in the docs: `npm run check:names`
 - Lint: `npx nx affected -t lint`
 - Type-check: `npx nx affected -t typecheck`
 - Test: `npx nx affected -t test`; the repository tools: `npm test`
