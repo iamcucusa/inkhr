@@ -77,7 +77,8 @@ const FIXTURES = [
   [
     'a referenced primitive of an unknown type',
     { [SHARED]: (d) => (d.ref.color.cobalt['700'].$type = 'banana') },
-    ['parser:init'],
+    // Light references cobalt 700, so its parser stops; no dark role does, so the dark run reaches the rule.
+    ['inkhr/known-type', 'parser:init'],
   ],
   [
     'a colour role without a description',
