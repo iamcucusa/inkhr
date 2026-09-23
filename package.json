@@ -11,7 +11,8 @@
     "prepare": "git rev-parse --git-dir > /dev/null 2>&1 && git config core.hooksPath .githooks || true; node tools/commit-rules/init-local.mjs",
     "format": "nx format:write --all",
     "format:check": "nx format:check --all",
-    "test": "vitest run"
+    "test": "vitest run",
+    "check:names": "node tools/name-check/check-names.mjs"
   },
   "lint-staged": {
     "*": "prettier --write --ignore-unknown",
