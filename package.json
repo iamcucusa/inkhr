@@ -14,7 +14,8 @@
     "test": "vitest run"
   },
   "lint-staged": {
-    "*": "prettier --write --ignore-unknown"
+    "*": "prettier --write --ignore-unknown",
+    "packages/tokens/src/**/*.json": "node packages/tokens/check.mjs"
   },
   "devDependencies": {
     "@changesets/cli": "3.0.3",
