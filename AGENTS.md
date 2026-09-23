@@ -9,6 +9,7 @@ A bracket is a placeholder until the project it needs exists; replace it with th
 - Install: `npm ci`
 - Build all packages: `npx nx run-many -t build`
 - Build the tokens: `npx nx run tokens:build`
+- Check the tokens: `npx nx run tokens:check`
 - Lint: `npx nx affected -t lint`
 - Type-check: `npx nx affected -t typecheck`
 - Test: `npx nx affected -t test`; the repository tools: `npm test`
@@ -33,7 +34,7 @@ Formatting is automatic: a Claude Code hook formats every file an agent edits, a
 1. A person approves the spec in `specs/NNN-feature/`. Names it uses must exist in the token files, `components.json` and `docs/stack-and-dependencies.md`.
 2. Plan, then commit failing tests.
 3. Implement with InkHR components and token roles only.
-4. Verify: after each edit the hook runs `tsc` and the token lint; before you finish, the tests must pass. Attach axe results and screenshots as evidence.
+4. Verify: after each edit under `packages/tokens/src/` the hook runs the token check; before you finish, the Stop hook runs the tests once, and they must pass or you say why not. Attach axe results and screenshots as evidence.
 5. Add a changeset, open a pull request, and let the reviewer subagent check accessibility and the API contract. A person merges.
 
 One agent does the work. Subagents only review or run bulk audits.
