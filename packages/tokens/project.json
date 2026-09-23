@@ -18,6 +18,21 @@
         "cwd": "packages/tokens"
       }
     },
+    "check": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": [
+        "{projectRoot}/src/**/*",
+        "{projectRoot}/check.mjs",
+        "{projectRoot}/terrazzo.config.mjs",
+        "{projectRoot}/lint/**/*",
+        "{projectRoot}/covered-types.mjs"
+      ],
+      "options": {
+        "command": "node check.mjs",
+        "cwd": "packages/tokens"
+      }
+    },
     "typecheck": {
       "executor": "nx:run-commands",
       "cache": true,
