@@ -25,7 +25,7 @@ The reasons for every other stack choice are in its dependency entry below.
 | Dependency                                                                                    | Version                 | Runs in                                              | Status                       | Stage        |
 | --------------------------------------------------------------------------------------------- | ----------------------- | ---------------------------------------------------- | ---------------------------- | ------------ |
 | DTCG                                                                                          | 2025.10                 | Token source format                                  | Pinned by `$schema`          | 0            |
-| `style-dictionary`                                                                            | 5.5.3                   | Token build                                          | Chosen                       | 0            |
+| `style-dictionary`                                                                            | 5.5.4                   | Token build                                          | Chosen                       | 0            |
 | `@terrazzo/cli`                                                                               | 2.7.1                   | After-edit hook, gate 1                              | Chosen                       | 0            |
 | Angular (`@angular/*`)                                                                        | 22.1.6, and 21          | Components, apps                                     | Chosen                       | 0            |
 | `typescript`, Node                                                                            | 6.0.3, 22.22.1 or later | Every build; `tsc` in the after-edit hook and gate 5 | Required by Angular 22       | 0            |
@@ -75,7 +75,7 @@ Each entry answers the same questions: **Use** (what it does in InkHR), **Human 
 - **Why.** The first stable W3C format, read by both `style-dictionary` and `@terrazzo/cli`.
 - **Gaps.** No type for the spring easing, so it is a `linear()` string with a fallback note.
 
-#### `style-dictionary` 5.5.3
+#### `style-dictionary` 5.5.4
 
 - **Use.** Builds each theme into CSS custom properties (light under `:root`, dark under `[data-theme="dark"]`), TypeScript, Swift and Kotlin in `packages/tokens`.
 - **Human loop.** Outputs are reviewed when a transform changes.
