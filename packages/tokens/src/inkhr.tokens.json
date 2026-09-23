@@ -1,0 +1,2779 @@
+{
+  "$schema": "https://www.designtokens.org/schema/2025.10",
+  "ref": {
+    "color": {
+      "base": {
+        "$description": "White, black and transparent. No ramp owns them, so each is a token of its own.",
+        "white": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "hex": "#FFFFFF"
+          },
+          "$description": "The surface of cards, panels and overlays in light, and the label on cobalt and brick. The lightest value there is; paper starts one step below it."
+        },
+        "black": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "hex": "#000000"
+          },
+          "$description": "The shadow under every level on ink, and nothing else. Never a surface, never text: the darkest surface is ref.color.ink.975."
+        },
+        "transparent": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "alpha": 0,
+            "hex": "#FFFFFF"
+          },
+          "$description": "White at no opacity. The fill of a control that has none, such as the tertiary button, and the far end of the scrim over a wash."
+        }
+      },
+      "paper": {
+        "$description": "The light half of the neutral axis. In light it is the canvas, the sunken surface, every hairline and the 3:1 boundary of a control; in dark it is the text, the strong border and the inverse surface. Step 50 is the canvas.",
+        "50": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9765,
+              0.9804,
+              0.9882
+            ],
+            "hex": "#F9FAFC"
+          },
+          "$description": "The canvas, and the anchor the rest of the ramp is built from."
+        },
+        "100": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9333,
+              0.9412,
+              0.9529
+            ],
+            "hex": "#EEF0F3"
+          },
+          "$description": "One step under the canvas, near enough to still read as paper. A dark screen recesses into ink instead, so nothing reads this there."
+        },
+        "200": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.8824,
+              0.8902,
+              0.902
+            ],
+            "hex": "#E1E3E6"
+          },
+          "$description": "The hairline weight on paper. Far enough from ink to carry secondary text once the axis turns over."
+        },
+        "300": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.8118,
+              0.8196,
+              0.8314
+            ],
+            "hex": "#CFD1D4"
+          },
+          "$description": "A line meant to be seen on paper. Far enough from ink for the quietest text that still has to clear 4.5:1."
+        },
+        "400": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.6588,
+              0.6627,
+              0.6706
+            ],
+            "hex": "#A8A9AB"
+          },
+          "$description": "Below every text floor on the canvas, so in light only disabled text takes it, which the contrast list leaves out. On ink it clears 3:1 and marks a data series."
+        },
+        "500": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.549,
+              0.5569,
+              0.5647
+            ],
+            "hex": "#8C8E90"
+          },
+          "$description": "The lightest paper that clears 3:1 on the canvas, and it clears it on ink too, which is why one step draws the boundary of a control in both themes."
+        }
+      },
+      "ink": {
+        "$description": "The dark half of the same axis, tinted toward cobalt. In light it is the text and the inverse surface; in dark it is the four surfaces, the hairlines and the disabled text. Step 900 is the charcoal. Past 800 it moves in half steps, 850, 950 and 975, because dark surfaces sit closer together than light ones.",
+        "600": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.4,
+              0.4118,
+              0.4314
+            ],
+            "hex": "#66696E"
+          },
+          "$description": "The quietest ink that still clears 4.5:1 on the canvas. On a dark card it falls to a boundary's floor, too little for text and right for disabled, which the list exempts anyway."
+        },
+        "700": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.349,
+              0.3608,
+              0.3804
+            ],
+            "hex": "#595C61"
+          },
+          "$description": "A step darker, for text on paper that carries more than metadata, and for a line on ink that has to be seen."
+        },
+        "800": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.2627,
+              0.2784,
+              0.298
+            ],
+            "hex": "#43474C"
+          },
+          "$description": "Last full step before the surfaces begin. On ink it draws the hairline, because the four surfaces below it sit too close together for a line to come from among them."
+        },
+        "850": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1647,
+              0.1804,
+              0.2039
+            ],
+            "hex": "#2A2E34"
+          },
+          "$description": "First of the half steps, and the highest of the four dark surfaces. It sits so near the one below that a whole step would have pushed it out of the band the four share."
+        },
+        "900": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1098,
+              0.1216,
+              0.1451
+            ],
+            "hex": "#1C1F25"
+          },
+          "$description": "The charcoal the ramp is named for, and its anchor. On paper it is the one inverse surface; on ink it is the surface a card takes."
+        },
+        "950": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0667,
+              0.0784,
+              0.098
+            ],
+            "hex": "#111419"
+          },
+          "$description": "A half step, because the page has to sit under a card with no visible edge between them. On paper the same value is the darkest text there is."
+        },
+        "975": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0353,
+              0.0431,
+              0.0588
+            ],
+            "hex": "#090B0F"
+          },
+          "$description": "The floor of the axis and the last half step: the well a dark screen recesses into, under the page. Nothing on paper goes this dark."
+        }
+      },
+      "cobalt": {
+        "$description": "The one action and signal colour. Step 700 is the cobalt of the mark and the primary button; focus and the selected border read 600, links 800. It darkens on hover and press in light and lightens in dark. It also carries the info status and the duotone tint.",
+        "50": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9255,
+              0.949,
+              1.0
+            ],
+            "hex": "#ECF2FF"
+          },
+          "$description": "The palest cobalt, a wash rather than a colour: the tint under an info message, a selected row and a hovered secondary button. A dark screen washes with 950 instead."
+        },
+        "100": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.8706,
+              0.9098,
+              1.0
+            ],
+            "hex": "#DEE8FF"
+          },
+          "$description": "The disc behind initials in light, and the pressed step in dark. The ramp is read from both ends, so a background on paper is a state on ink."
+        },
+        "200": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.8078,
+              0.8627,
+              1.0
+            ],
+            "hex": "#CEDCFF"
+          },
+          "$description": "Dark's hover step, one lighter than its action, mirroring the one darker that light uses. The light half of this ramp belongs to dark screens."
+        },
+        "300": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.6745,
+              0.7647,
+              0.9961
+            ],
+            "hex": "#ACC3FE"
+          },
+          "$description": "Dark's action, and with it the link, the focus ring, the selected border and the info text. Where light spreads these over 600 to 800, dark lands them all on one step."
+        },
+        "400": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.5216,
+              0.6471,
+              0.9961
+            ],
+            "hex": "#85A5FE"
+          },
+          "$description": "Between dark's action and dark's info border sits the info mark on ink, the same order the status ladder keeps in light."
+        },
+        "500": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.3882,
+              0.5255,
+              0.9412
+            ],
+            "hex": "#6386F0"
+          },
+          "$description": "The info border on ink, the outermost rung of the dark half's status ladder. Light's ladder starts at 600 and climbs the other way."
+        },
+        "600": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.2706,
+              0.4039,
+              0.8902
+            ],
+            "hex": "#4567E3"
+          },
+          "$description": "Where light draws every cobalt boundary: focus, selection and the info edge, one step back from the action itself."
+        },
+        "700": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1725,
+              0.2784,
+              0.8431
+            ],
+            "hex": "#2C47D7"
+          },
+          "$description": "The cobalt: the mark, the primary button and the signal in light, and the tint every photograph passes through. The anchor the ramp is built from."
+        },
+        "800": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1176,
+              0.1961,
+              0.6706
+            ],
+            "hex": "#1E32AB"
+          },
+          "$description": "Light's hover, one step past the action, and the link at rest. A link is darker than the button beside it because running text must clear 4.5:1 where a fill need only be seen."
+        },
+        "900": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0667,
+              0.1137,
+              0.5059
+            ],
+            "hex": "#111D81"
+          },
+          "$description": "Light's pressed step, and the disc behind initials on ink. The far end of the pair that 100 begins."
+        },
+        "950": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0275,
+              0.0392,
+              0.3529
+            ],
+            "hex": "#070A5A"
+          },
+          "$description": "The wash on ink: the tint under an info message and a selected row, as 50 is on paper. The darkest cobalt there is."
+        }
+      },
+      "moss": {
+        "$description": "Success: text on a tinted fill, with the border and icon between them.",
+        "50": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9451,
+              0.9765,
+              0.949
+            ],
+            "hex": "#F1F9F2"
+          },
+          "$description": "The tint a success message sits on in light, and the floor its edge, mark and words are all measured against."
+        },
+        "100": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.8863,
+              0.949,
+              0.8941
+            ],
+            "hex": "#E2F2E4"
+          },
+          "$description": "No role reads this step, in either theme. A status ramp keeps all eleven, a data hue only what it uses; nothing reaches for this until a role does, and giving it one is a decision, not an edit."
+        },
+        "200": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.7961,
+              0.8941,
+              0.8118
+            ],
+            "hex": "#CBE4CF"
+          },
+          "$description": "No role reads this step, in either theme. A status ramp keeps all eleven, a data hue only what it uses; nothing reaches for this until a role does, and giving it one is a decision, not an edit."
+        },
+        "300": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.6784,
+              0.8078,
+              0.698
+            ],
+            "hex": "#ADCEB2"
+          },
+          "$description": "Dark's success words, furthest from its tint, as the light ladder's words are furthest from theirs."
+        },
+        "400": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.549,
+              0.7137,
+              0.5765
+            ],
+            "hex": "#8CB693"
+          },
+          "$description": "Dark's success mark. The ladder climbs the same way in both themes, edge then mark then words, away from the tint."
+        },
+        "500": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.4118,
+              0.6118,
+              0.451
+            ],
+            "hex": "#699C73"
+          },
+          "$description": "Dark's success edge, the rung nearest its tint. It and the mark clear 3:1 where the words have to clear 4.5:1."
+        },
+        "600": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.2824,
+              0.5176,
+              0.3373
+            ],
+            "hex": "#488456"
+          },
+          "$description": "Light's success edge, nearest the light tint, doing the job 500 does on ink."
+        },
+        "700": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1412,
+              0.4314,
+              0.2275
+            ],
+            "hex": "#246E3A"
+          },
+          "$description": "Light's success mark, between the edge and the words. Every status keeps this order, in both themes."
+        },
+        "800": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0784,
+              0.3294,
+              0.1608
+            ],
+            "hex": "#145429"
+          },
+          "$description": "Light's success words, the darkest moss any role reads and the top of the light ladder."
+        },
+        "900": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0196,
+              0.2314,
+              0.0941
+            ],
+            "hex": "#053B18"
+          },
+          "$description": "No role reads this step, in either theme. A status ramp keeps all eleven, a data hue only what it uses; nothing reaches for this until a role does, and giving it one is a decision, not an edit."
+        },
+        "950": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0,
+              0.1451,
+              0.0431
+            ],
+            "hex": "#00250B"
+          },
+          "$description": "Dark's tint for a success message, and the floor its edge, mark and words are measured against."
+        }
+      },
+      "amber": {
+        "$description": "Warning. The same shape as moss: text 800 on the 50 fill in light, 300 on 950 in dark.",
+        "50": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9961,
+              0.9608,
+              0.9216
+            ],
+            "hex": "#FEF5EB"
+          },
+          "$description": "The tint a warning message sits on in light, and the floor its edge, mark and words are all measured against."
+        },
+        "100": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9804,
+              0.9176,
+              0.8431
+            ],
+            "hex": "#FAEAD7"
+          },
+          "$description": "No role reads this step, in either theme. A status ramp keeps all eleven, a data hue only what it uses; nothing reaches for this until a role does, and giving it one is a decision, not an edit."
+        },
+        "200": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9961,
+              0.8314,
+              0.6353
+            ],
+            "hex": "#FED4A2"
+          },
+          "$description": "No role reads this step, in either theme. A status ramp keeps all eleven, a data hue only what it uses; nothing reaches for this until a role does, and giving it one is a decision, not an edit."
+        },
+        "300": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9333,
+              0.7255,
+              0.4627
+            ],
+            "hex": "#EEB976"
+          },
+          "$description": "Dark's warning words, furthest from its tint, as the light ladder's words are furthest from theirs."
+        },
+        "400": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.851,
+              0.6118,
+              0.2863
+            ],
+            "hex": "#D99C49"
+          },
+          "$description": "Dark's warning mark. The ladder climbs the same way in both themes, edge then mark then words, away from the tint."
+        },
+        "500": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.7765,
+              0.5059,
+              0.0078
+            ],
+            "hex": "#C68102"
+          },
+          "$description": "Dark's warning edge, the rung nearest its tint. It and the mark clear 3:1 where the words have to clear 4.5:1."
+        },
+        "600": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.6196,
+              0.4039,
+              0.0627
+            ],
+            "hex": "#9E6710"
+          },
+          "$description": "Light's warning edge, nearest the light tint, doing the job 500 does on ink."
+        },
+        "700": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.4941,
+              0.3216,
+              0.0392
+            ],
+            "hex": "#7E520A"
+          },
+          "$description": "Light's warning mark, between the edge and the words. Every status keeps this order, in both themes."
+        },
+        "800": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.3804,
+              0.2431,
+              0.0275
+            ],
+            "hex": "#613E07"
+          },
+          "$description": "Light's warning words, the darkest amber any role reads and the top of the light ladder."
+        },
+        "900": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.2667,
+              0.1647,
+              0.0118
+            ],
+            "hex": "#442A03"
+          },
+          "$description": "No role reads this step, in either theme. A status ramp keeps all eleven, a data hue only what it uses; nothing reaches for this until a role does, and giving it one is a decision, not an edit."
+        },
+        "950": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.1686,
+              0.0941,
+              0.0
+            ],
+            "hex": "#2B1800"
+          },
+          "$description": "Dark's tint for a warning message, and the floor its edge, mark and words are measured against."
+        }
+      },
+      "brick": {
+        "$description": "Danger: the destructive button and the error status. Step 600 is the button in light, 400 in dark.",
+        "50": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              1.0,
+              0.9569,
+              0.949
+            ],
+            "hex": "#FFF4F2"
+          },
+          "$description": "The tint an error message sits on in light, and the floor its edge, mark and words are all measured against."
+        },
+        "100": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              1.0,
+              0.902,
+              0.8902
+            ],
+            "hex": "#FFE6E3"
+          },
+          "$description": "No role reads this step, in either theme. A status ramp keeps all eleven, a data hue only what it uses; nothing reaches for this until a role does, and giving it one is a decision, not an edit."
+        },
+        "200": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9961,
+              0.8157,
+              0.7882
+            ],
+            "hex": "#FED0C9"
+          },
+          "$description": "No role reads this step, in either theme. A status ramp keeps all eleven, a data hue only what it uses; nothing reaches for this until a role does, and giving it one is a decision, not an edit."
+        },
+        "300": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9922,
+              0.6745,
+              0.6314
+            ],
+            "hex": "#FDACA1"
+          },
+          "$description": "Dark's error words, and the destructive button under the pointer: brick is the one status hue that also fills a button."
+        },
+        "400": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.9451,
+              0.5255,
+              0.4745
+            ],
+            "hex": "#F18679"
+          },
+          "$description": "Dark's error mark, and the destructive button at rest, so one step is both a state and a thing to press."
+        },
+        "500": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.8627,
+              0.3843,
+              0.3333
+            ],
+            "hex": "#DC6255"
+          },
+          "$description": "Dark's error edge, the rung nearest its tint, where the dark ladder climbs exactly as moss and amber climb."
+        },
+        "600": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.702,
+              0.1412,
+              0.1216
+            ],
+            "hex": "#B3241F"
+          },
+          "$description": "Light's error edge, its mark and the destructive button, all on one step, where moss and amber give the edge and the mark a step each."
+        },
+        "700": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.6353,
+              0.1686,
+              0.1412
+            ],
+            "hex": "#A22B24"
+          },
+          "$description": "Light's error words, and the destructive button under the pointer. It sits so close to the step above that this ladder barely climbs where the other two spread."
+        },
+        "800": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.498,
+              0.1137,
+              0.0941
+            ],
+            "hex": "#7F1D18"
+          },
+          "$description": "Skipped, not spare: the light ladder stops at 700, a rung earlier than moss and amber, so nothing reaches here. Giving it a role is a decision, not an edit."
+        },
+        "900": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.3608,
+              0.0588,
+              0.0471
+            ],
+            "hex": "#5C0F0C"
+          },
+          "$description": "No role reads this step, in either theme. A status ramp keeps all eleven, a data hue only what it uses; nothing reaches for this until a role does, and giving it one is a decision, not an edit."
+        },
+        "950": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.2353,
+              0.0157,
+              0.0118
+            ],
+            "hex": "#3C0403"
+          },
+          "$description": "Dark's tint for an error message, and the floor its edge, mark and words are measured against."
+        }
+      },
+      "teal": {
+        "$description": "The first data colour, the same step in both themes. A blue-green that leans away from the moss of success.",
+        "500": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.2824,
+              0.6157,
+              0.6314
+            ],
+            "hex": "#489DA1"
+          },
+          "$description": "Series 1, and the one data step both themes read. Every step in the set was found by a search for the largest distance between the two closest series, under typical and simulated colour vision."
+        }
+      },
+      "plum": {
+        "$description": "The second data colour and the darkest in light, the warmest hue of the set. Step 800 in light, 300 in dark.",
+        "300": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.8863,
+              0.7098,
+              0.8078
+            ],
+            "hex": "#E2B5CE"
+          },
+          "$description": "Plum on ink, series 2. It splits the widest of the five hues, five steps from the one light reads."
+        },
+        "800": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.3843,
+              0.2078,
+              0.3137
+            ],
+            "hex": "#623550"
+          },
+          "$description": "The darkest value any data series takes, series 2 on paper, five steps from its counterpart on ink."
+        }
+      },
+      "olive": {
+        "$description": "The third data colour: a yellow-green that is neither the amber of a warning nor the moss of success, and the one colour every kind of colour vision keeps apart from the blues. Step 500 in light, 200 in dark.",
+        "200": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.8667,
+              0.8784,
+              0.7373
+            ],
+            "hex": "#DDE0BC"
+          },
+          "$description": "Olive on ink, series 3, and the one colour in the set that no kind of colour vision merges with the blues."
+        },
+        "500": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.5647,
+              0.5765,
+              0.3216
+            ],
+            "hex": "#909352"
+          },
+          "$description": "Series 3 on paper, three steps down from the same hue on ink."
+        }
+      },
+      "violet": {
+        "$description": "The fourth data colour, on the purple side of cobalt and never cobalt itself. Step 700 in light, 500 in dark.",
+        "500": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.6078,
+              0.4706,
+              0.8353
+            ],
+            "hex": "#9B78D5"
+          },
+          "$description": "Violet on ink, series 4, two steps from the one light reads, which with azure is the narrowest split the set has."
+        },
+        "700": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.4118,
+              0.2706,
+              0.6196
+            ],
+            "hex": "#69459E"
+          },
+          "$description": "With plum, the pair of dark steps that light alternates against teal's and olive's mid ones. Series 4 on paper."
+        }
+      },
+      "azure": {
+        "$description": "The sixth data colour, on the green side of cobalt. Step 600 in light, 400 in dark.",
+        "400": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.451,
+              0.6941,
+              0.8667
+            ],
+            "hex": "#73B1DD"
+          },
+          "$description": "Azure on ink, series 6, and the last hue of the set: series 5 takes the neutral axis instead of a hue of its own."
+        },
+        "600": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.0784,
+              0.4863,
+              0.7059
+            ],
+            "hex": "#147CB4"
+          },
+          "$description": "Series 6 on paper, two steps from its counterpart on ink, as violet's pair is."
+        }
+      }
+    },
+    "space": {
+      "0": {
+        "$type": "dimension",
+        "$value": {
+          "value": 0,
+          "unit": "px"
+        }
+      },
+      "1": {
+        "$type": "dimension",
+        "$value": {
+          "value": 4,
+          "unit": "px"
+        }
+      },
+      "2": {
+        "$type": "dimension",
+        "$value": {
+          "value": 8,
+          "unit": "px"
+        }
+      },
+      "3": {
+        "$type": "dimension",
+        "$value": {
+          "value": 12,
+          "unit": "px"
+        }
+      },
+      "4": {
+        "$type": "dimension",
+        "$value": {
+          "value": 16,
+          "unit": "px"
+        }
+      },
+      "5": {
+        "$type": "dimension",
+        "$value": {
+          "value": 20,
+          "unit": "px"
+        }
+      },
+      "6": {
+        "$type": "dimension",
+        "$value": {
+          "value": 24,
+          "unit": "px"
+        }
+      },
+      "7": {
+        "$type": "dimension",
+        "$value": {
+          "value": 32,
+          "unit": "px"
+        }
+      },
+      "8": {
+        "$type": "dimension",
+        "$value": {
+          "value": 40,
+          "unit": "px"
+        }
+      },
+      "9": {
+        "$type": "dimension",
+        "$value": {
+          "value": 48,
+          "unit": "px"
+        }
+      },
+      "10": {
+        "$type": "dimension",
+        "$value": {
+          "value": 64,
+          "unit": "px"
+        }
+      },
+      "11": {
+        "$type": "dimension",
+        "$value": {
+          "value": 80,
+          "unit": "px"
+        }
+      },
+      "12": {
+        "$type": "dimension",
+        "$value": {
+          "value": 96,
+          "unit": "px"
+        }
+      }
+    },
+    "size": {
+      "6": {
+        "$type": "dimension",
+        "$value": {
+          "value": 6,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "8": {
+        "$type": "dimension",
+        "$value": {
+          "value": 8,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "12": {
+        "$type": "dimension",
+        "$value": {
+          "value": 12,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "14": {
+        "$type": "dimension",
+        "$value": {
+          "value": 14,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "18": {
+        "$type": "dimension",
+        "$value": {
+          "value": 18,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "20": {
+        "$type": "dimension",
+        "$value": {
+          "value": 20,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "24": {
+        "$type": "dimension",
+        "$value": {
+          "value": 24,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "28": {
+        "$type": "dimension",
+        "$value": {
+          "value": 28,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "32": {
+        "$type": "dimension",
+        "$value": {
+          "value": 32,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "36": {
+        "$type": "dimension",
+        "$value": {
+          "value": 36,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "40": {
+        "$type": "dimension",
+        "$value": {
+          "value": 40,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "44": {
+        "$type": "dimension",
+        "$value": {
+          "value": 44,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "48": {
+        "$type": "dimension",
+        "$value": {
+          "value": 48,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "56": {
+        "$type": "dimension",
+        "$value": {
+          "value": 56,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "64": {
+        "$type": "dimension",
+        "$value": {
+          "value": 64,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "240": {
+        "$type": "dimension",
+        "$value": {
+          "value": 240,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "360": {
+        "$type": "dimension",
+        "$value": {
+          "value": 360,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "380": {
+        "$type": "dimension",
+        "$value": {
+          "value": 380,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "480": {
+        "$type": "dimension",
+        "$value": {
+          "value": 480,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "560": {
+        "$type": "dimension",
+        "$value": {
+          "value": 560,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      },
+      "720": {
+        "$type": "dimension",
+        "$value": {
+          "value": 720,
+          "unit": "px"
+        },
+        "$description": "Size primitive, named by value"
+      }
+    },
+    "radius": {
+      "xs": {
+        "$type": "dimension",
+        "$value": {
+          "value": 2,
+          "unit": "px"
+        }
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": {
+          "value": 4,
+          "unit": "px"
+        }
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": {
+          "value": 8,
+          "unit": "px"
+        }
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": {
+          "value": 12,
+          "unit": "px"
+        }
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": {
+          "value": 16,
+          "unit": "px"
+        }
+      },
+      "2xl": {
+        "$type": "dimension",
+        "$value": {
+          "value": 24,
+          "unit": "px"
+        }
+      },
+      "image": {
+        "$type": "dimension",
+        "$value": {
+          "value": 16,
+          "unit": "px"
+        }
+      },
+      "button": {
+        "$type": "dimension",
+        "$value": {
+          "value": 999,
+          "unit": "px"
+        }
+      },
+      "full": {
+        "$type": "dimension",
+        "$value": {
+          "value": 999,
+          "unit": "px"
+        }
+      }
+    },
+    "elevation": {
+      "paper": {
+        "1": {
+          "$type": "shadow",
+          "$value": [
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.1098,
+                  0.1216,
+                  0.1451
+                ],
+                "alpha": 0.1,
+                "hex": "#1C1F25"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 1.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 2.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 0.0,
+                "unit": "px"
+              }
+            },
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.1098,
+                  0.1216,
+                  0.1451
+                ],
+                "alpha": 0.08,
+                "hex": "#1C1F25"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 1.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 3.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 1.0,
+                "unit": "px"
+              }
+            }
+          ],
+          "$description": "Level 1 on paper: two layers tinted ref.color.ink.900."
+        },
+        "2": {
+          "$type": "shadow",
+          "$value": [
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.1098,
+                  0.1216,
+                  0.1451
+                ],
+                "alpha": 0.12,
+                "hex": "#1C1F25"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 2.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 6.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 0.0,
+                "unit": "px"
+              }
+            },
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.1098,
+                  0.1216,
+                  0.1451
+                ],
+                "alpha": 0.06,
+                "hex": "#1C1F25"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 1.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 2.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 0.0,
+                "unit": "px"
+              }
+            }
+          ],
+          "$description": "Level 2 on paper: two layers tinted ref.color.ink.900."
+        },
+        "3": {
+          "$type": "shadow",
+          "$value": [
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.1098,
+                  0.1216,
+                  0.1451
+                ],
+                "alpha": 0.14,
+                "hex": "#1C1F25"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 6.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 16.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 0.0,
+                "unit": "px"
+              }
+            },
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.1098,
+                  0.1216,
+                  0.1451
+                ],
+                "alpha": 0.06,
+                "hex": "#1C1F25"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 2.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 4.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 0.0,
+                "unit": "px"
+              }
+            }
+          ],
+          "$description": "Level 3 on paper: two layers tinted ref.color.ink.900."
+        },
+        "4": {
+          "$type": "shadow",
+          "$value": [
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.1098,
+                  0.1216,
+                  0.1451
+                ],
+                "alpha": 0.18,
+                "hex": "#1C1F25"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 16.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 40.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 0.0,
+                "unit": "px"
+              }
+            },
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.1098,
+                  0.1216,
+                  0.1451
+                ],
+                "alpha": 0.06,
+                "hex": "#1C1F25"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 4.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 8.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 0.0,
+                "unit": "px"
+              }
+            }
+          ],
+          "$description": "Level 4 on paper: two layers tinted ref.color.ink.900."
+        }
+      },
+      "ink": {
+        "1": {
+          "$type": "shadow",
+          "$value": [
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "alpha": 0.48,
+                "hex": "#000000"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 1.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 2.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 0.0,
+                "unit": "px"
+              }
+            },
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "alpha": 0.24,
+                "hex": "#000000"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 1.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 3.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 1.0,
+                "unit": "px"
+              }
+            },
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "alpha": 0.05,
+                "hex": "#FFFFFF"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 1.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "inset": true
+            }
+          ],
+          "$description": "Level 1 on ink: two black layers and a hairline of light along the top edge."
+        },
+        "2": {
+          "$type": "shadow",
+          "$value": [
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "alpha": 0.52,
+                "hex": "#000000"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 2.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 6.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 0.0,
+                "unit": "px"
+              }
+            },
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "alpha": 0.32,
+                "hex": "#000000"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 1.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 2.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 0.0,
+                "unit": "px"
+              }
+            },
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "alpha": 0.06,
+                "hex": "#FFFFFF"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 1.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "inset": true
+            }
+          ],
+          "$description": "Level 2 on ink: two black layers and a hairline of light along the top edge."
+        },
+        "3": {
+          "$type": "shadow",
+          "$value": [
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "alpha": 0.56,
+                "hex": "#000000"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 6.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 16.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 0.0,
+                "unit": "px"
+              }
+            },
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "alpha": 0.32,
+                "hex": "#000000"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 2.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 4.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 0.0,
+                "unit": "px"
+              }
+            },
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "alpha": 0.07,
+                "hex": "#FFFFFF"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 1.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "inset": true
+            }
+          ],
+          "$description": "Level 3 on ink: two black layers and a hairline of light along the top edge."
+        },
+        "4": {
+          "$type": "shadow",
+          "$value": [
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "alpha": 0.64,
+                "hex": "#000000"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 16.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 40.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 0.0,
+                "unit": "px"
+              }
+            },
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "alpha": 0.36,
+                "hex": "#000000"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 4.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 8.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 0.0,
+                "unit": "px"
+              }
+            },
+            {
+              "color": {
+                "colorSpace": "srgb",
+                "components": [
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "alpha": 0.08,
+                "hex": "#FFFFFF"
+              },
+              "offsetX": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "offsetY": {
+                "value": 1.0,
+                "unit": "px"
+              },
+              "blur": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "spread": {
+                "value": 0.0,
+                "unit": "px"
+              },
+              "inset": true
+            }
+          ],
+          "$description": "Level 4 on ink: two black layers and a hairline of light along the top edge."
+        }
+      }
+    },
+    "z": {
+      "base": {
+        "$type": "number",
+        "$value": 0
+      },
+      "raised": {
+        "$type": "number",
+        "$value": 1
+      },
+      "dropdown": {
+        "$type": "number",
+        "$value": 1000
+      },
+      "sticky": {
+        "$type": "number",
+        "$value": 1100
+      },
+      "overlay": {
+        "$type": "number",
+        "$value": 1200
+      },
+      "modal": {
+        "$type": "number",
+        "$value": 1300
+      },
+      "popover": {
+        "$type": "number",
+        "$value": 1400
+      },
+      "toast": {
+        "$type": "number",
+        "$value": 1500
+      }
+    },
+    "motion": {
+      "duration": {
+        "instant": {
+          "$type": "duration",
+          "$value": {
+            "value": 0.0,
+            "unit": "ms"
+          }
+        },
+        "fast": {
+          "$type": "duration",
+          "$value": {
+            "value": 100.0,
+            "unit": "ms"
+          }
+        },
+        "base": {
+          "$type": "duration",
+          "$value": {
+            "value": 200.0,
+            "unit": "ms"
+          }
+        },
+        "slow": {
+          "$type": "duration",
+          "$value": {
+            "value": 320.0,
+            "unit": "ms"
+          }
+        },
+        "deliberate": {
+          "$type": "duration",
+          "$value": {
+            "value": 500.0,
+            "unit": "ms"
+          }
+        },
+        "delay": {
+          "$type": "duration",
+          "$value": {
+            "value": 300.0,
+            "unit": "ms"
+          }
+        },
+        "loop": {
+          "$type": "duration",
+          "$value": {
+            "value": 1200.0,
+            "unit": "ms"
+          }
+        },
+        "dismiss": {
+          "$type": "duration",
+          "$value": {
+            "value": 6000.0,
+            "unit": "ms"
+          }
+        }
+      },
+      "easing": {
+        "standard": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.2,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "emphasized": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.3,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "exit": {
+          "$type": "cubicBezier",
+          "$value": [
+            0.4,
+            0.0,
+            1.0,
+            1.0
+          ]
+        },
+        "spring": {
+          "$type": "string",
+          "$value": "linear(0,.6 15%,1.05 40%,1)",
+          "$description": "CSS linear() easing; DTCG 2025.10 has no type for a multi-point curve, so platforms without linear() fall back to easing.standard"
+        }
+      }
+    },
+    "font": {
+      "family": {
+        "sans": {
+          "$type": "fontFamily",
+          "$value": [
+            "Open Sans",
+            "Segoe UI",
+            "Arial",
+            "sans-serif"
+          ]
+        },
+        "display": {
+          "$type": "fontFamily",
+          "$value": [
+            "Instrument Serif",
+            "Georgia",
+            "Times New Roman",
+            "serif"
+          ],
+          "$description": "Display role only: welcome, onboarding, empty states. 400 regular and italic."
+        },
+        "mono": {
+          "$type": "fontFamily",
+          "$value": [
+            "ui-monospace",
+            "SF Mono",
+            "Menlo",
+            "Consolas",
+            "monospace"
+          ]
+        }
+      },
+      "size": {
+        "12": {
+          "$type": "dimension",
+          "$value": {
+            "value": 0.75,
+            "unit": "rem"
+          },
+          "$description": "12px on a 16px root"
+        },
+        "13": {
+          "$type": "dimension",
+          "$value": {
+            "value": 0.8125,
+            "unit": "rem"
+          },
+          "$description": "13px on a 16px root"
+        },
+        "14": {
+          "$type": "dimension",
+          "$value": {
+            "value": 0.875,
+            "unit": "rem"
+          },
+          "$description": "14px on a 16px root"
+        },
+        "16": {
+          "$type": "dimension",
+          "$value": {
+            "value": 1.0,
+            "unit": "rem"
+          },
+          "$description": "16px on a 16px root"
+        },
+        "18": {
+          "$type": "dimension",
+          "$value": {
+            "value": 1.125,
+            "unit": "rem"
+          },
+          "$description": "18px on a 16px root"
+        },
+        "22": {
+          "$type": "dimension",
+          "$value": {
+            "value": 1.375,
+            "unit": "rem"
+          },
+          "$description": "22px on a 16px root"
+        },
+        "28": {
+          "$type": "dimension",
+          "$value": {
+            "value": 1.75,
+            "unit": "rem"
+          },
+          "$description": "28px on a 16px root"
+        },
+        "36": {
+          "$type": "dimension",
+          "$value": {
+            "value": 2.25,
+            "unit": "rem"
+          },
+          "$description": "36px on a 16px root"
+        },
+        "44": {
+          "$type": "dimension",
+          "$value": {
+            "value": 2.75,
+            "unit": "rem"
+          },
+          "$description": "44px on a 16px root, display-serif only"
+        }
+      },
+      "leading": {
+        "16": {
+          "$type": "dimension",
+          "$value": {
+            "value": 1.0,
+            "unit": "rem"
+          },
+          "$description": "16px, a multiple of 4"
+        },
+        "20": {
+          "$type": "dimension",
+          "$value": {
+            "value": 1.25,
+            "unit": "rem"
+          },
+          "$description": "20px, a multiple of 4"
+        },
+        "24": {
+          "$type": "dimension",
+          "$value": {
+            "value": 1.5,
+            "unit": "rem"
+          },
+          "$description": "24px, a multiple of 4"
+        },
+        "28": {
+          "$type": "dimension",
+          "$value": {
+            "value": 1.75,
+            "unit": "rem"
+          },
+          "$description": "28px, a multiple of 4"
+        },
+        "36": {
+          "$type": "dimension",
+          "$value": {
+            "value": 2.25,
+            "unit": "rem"
+          },
+          "$description": "36px, a multiple of 4"
+        },
+        "44": {
+          "$type": "dimension",
+          "$value": {
+            "value": 2.75,
+            "unit": "rem"
+          },
+          "$description": "44px, a multiple of 4"
+        },
+        "48": {
+          "$type": "dimension",
+          "$value": {
+            "value": 3.0,
+            "unit": "rem"
+          },
+          "$description": "48px, display-serif only"
+        }
+      },
+      "weight": {
+        "regular": {
+          "$type": "fontWeight",
+          "$value": 400
+        },
+        "semibold": {
+          "$type": "fontWeight",
+          "$value": 600
+        },
+        "bold": {
+          "$type": "fontWeight",
+          "$value": 700
+        }
+      },
+      "tracking": {
+        "tight": {
+          "$type": "dimension",
+          "$value": {
+            "value": -0.0225,
+            "unit": "rem"
+          }
+        },
+        "snug": {
+          "$type": "dimension",
+          "$value": {
+            "value": -0.0075,
+            "unit": "rem"
+          }
+        },
+        "normal": {
+          "$type": "dimension",
+          "$value": {
+            "value": 0,
+            "unit": "rem"
+          }
+        },
+        "wide": {
+          "$type": "dimension",
+          "$value": {
+            "value": 0.0075,
+            "unit": "rem"
+          }
+        }
+      },
+      "numeric": {
+        "tabular": {
+          "$type": "string",
+          "$value": "tabular-nums",
+          "$description": "font-variant-numeric"
+        },
+        "proportional": {
+          "$type": "string",
+          "$value": "proportional-nums",
+          "$description": "font-variant-numeric"
+        }
+      }
+    }
+  },
+  "sys": {
+    "size": {
+      "tab": {
+        "$type": "dimension",
+        "$value": "{ref.size.44}",
+        "$description": "The height of a tab."
+      },
+      "bar": {
+        "$type": "dimension",
+        "$value": "{ref.size.56}",
+        "$description": "The height of the app bar and the width of the side navigation rail."
+      },
+      "check": {
+        "$type": "dimension",
+        "$value": "{ref.size.18}",
+        "$description": "The box of a checkbox or radio; its hit area is the whole row."
+      },
+      "icon": {
+        "sm": {
+          "$type": "dimension",
+          "$value": "{ref.size.14}",
+          "$description": "An icon inside a dense control: the sort arrows of a table header, the mark in a checkbox, the close of a chip."
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{ref.size.18}",
+          "$description": "An icon beside a label, in a button, a field or a menu item, and the spinner that stands in for it while the button loads."
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{ref.size.20}",
+          "$description": "An icon that stands alone or leads a block of text: the app bar, the side navigation, an icon-only button, the mark of an alert."
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "{ref.size.28}",
+          "$description": "The icon of an empty state, inside the sys.size.empty disc."
+        }
+      },
+      "avatar": {
+        "sm": {
+          "$type": "dimension",
+          "$value": "{ref.size.24}",
+          "$description": "An avatar in a table cell or a stack."
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{ref.size.32}",
+          "$description": "An avatar in the app bar and lists."
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{ref.size.40}",
+          "$description": "An avatar in a card header."
+        },
+        "xl": {
+          "$type": "dimension",
+          "$value": "{ref.size.64}",
+          "$description": "The avatar in the profile header."
+        }
+      },
+      "target": {
+        "$type": "dimension",
+        "$value": "{ref.size.24}",
+        "$description": "The smallest hit area of a pointer target, the WCAG 2.2 AA floor: the remove button on a chip, a checkbox or radio row."
+      },
+      "badge": {
+        "$type": "dimension",
+        "$value": "{ref.size.20}",
+        "$description": "The height of a badge, and of a count in tabs and navigation."
+      },
+      "switch": {
+        "$type": "dimension",
+        "$value": "{ref.size.40}",
+        "$description": "The width of a switch track; the track is sys.size.target high."
+      },
+      "knob": {
+        "$type": "dimension",
+        "$value": "{ref.size.20}",
+        "$description": "The knob of a switch."
+      },
+      "step": {
+        "$type": "dimension",
+        "$value": "{ref.size.28}",
+        "$description": "The marker of a stepper step."
+      },
+      "empty": {
+        "$type": "dimension",
+        "$value": "{ref.size.56}",
+        "$description": "The disc that holds the icon of an empty state."
+      },
+      "nav": {
+        "$type": "dimension",
+        "$value": "{ref.size.240}",
+        "$description": "The width of the expanded side navigation."
+      },
+      "panel": {
+        "min": {
+          "$type": "dimension",
+          "$value": "{ref.size.360}",
+          "$description": "The narrowest a side panel gets."
+        },
+        "max": {
+          "$type": "dimension",
+          "$value": "{ref.size.560}",
+          "$description": "The widest a side panel gets."
+        }
+      },
+      "dialog": {
+        "sm": {
+          "$type": "dimension",
+          "$value": "{ref.size.480}",
+          "$description": "The width of a dialog that confirms."
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{ref.size.720}",
+          "$description": "The width of a dialog that holds a form."
+        }
+      },
+      "toast": {
+        "$type": "dimension",
+        "$value": "{ref.size.380}",
+        "$description": "The width of a toast."
+      },
+      "menu": {
+        "$type": "dimension",
+        "$value": "{ref.size.240}",
+        "$description": "The width of a menu."
+      },
+      "dot": {
+        "sm": {
+          "$type": "dimension",
+          "$value": "{ref.size.6}",
+          "$description": "The dot in a status badge."
+        },
+        "md": {
+          "$type": "dimension",
+          "$value": "{ref.size.8}",
+          "$description": "The status dot in a toast, and the mark of a checked radio."
+        },
+        "lg": {
+          "$type": "dimension",
+          "$value": "{ref.size.12}",
+          "$description": "A marker on a timeline."
+        }
+      }
+    },
+    "type": {
+      "display": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{ref.font.family.sans}",
+          "fontSize": "{ref.font.size.36}",
+          "lineHeight": "{ref.font.leading.44}",
+          "fontWeight": "{ref.font.weight.semibold}",
+          "letterSpacing": "{ref.font.tracking.tight}"
+        }
+      },
+      "heading": {
+        "lg": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ref.font.family.sans}",
+            "fontSize": "{ref.font.size.28}",
+            "lineHeight": "{ref.font.leading.36}",
+            "fontWeight": "{ref.font.weight.semibold}",
+            "letterSpacing": "{ref.font.tracking.snug}"
+          }
+        },
+        "md": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ref.font.family.sans}",
+            "fontSize": "{ref.font.size.22}",
+            "lineHeight": "{ref.font.leading.28}",
+            "fontWeight": "{ref.font.weight.semibold}",
+            "letterSpacing": "{ref.font.tracking.normal}"
+          }
+        },
+        "sm": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ref.font.family.sans}",
+            "fontSize": "{ref.font.size.18}",
+            "lineHeight": "{ref.font.leading.24}",
+            "fontWeight": "{ref.font.weight.semibold}",
+            "letterSpacing": "{ref.font.tracking.normal}"
+          }
+        }
+      },
+      "body": {
+        "lg": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ref.font.family.sans}",
+            "fontSize": "{ref.font.size.16}",
+            "lineHeight": "{ref.font.leading.24}",
+            "fontWeight": "{ref.font.weight.regular}",
+            "letterSpacing": "{ref.font.tracking.normal}"
+          }
+        },
+        "md": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ref.font.family.sans}",
+            "fontSize": "{ref.font.size.14}",
+            "lineHeight": "{ref.font.leading.20}",
+            "fontWeight": "{ref.font.weight.regular}",
+            "letterSpacing": "{ref.font.tracking.normal}"
+          }
+        },
+        "sm": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ref.font.family.sans}",
+            "fontSize": "{ref.font.size.12}",
+            "lineHeight": "{ref.font.leading.16}",
+            "fontWeight": "{ref.font.weight.regular}",
+            "letterSpacing": "{ref.font.tracking.normal}"
+          }
+        }
+      },
+      "label": {
+        "md": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ref.font.family.sans}",
+            "fontSize": "{ref.font.size.14}",
+            "lineHeight": "{ref.font.leading.20}",
+            "fontWeight": "{ref.font.weight.semibold}",
+            "letterSpacing": "{ref.font.tracking.normal}"
+          }
+        },
+        "sm": {
+          "$type": "typography",
+          "$value": {
+            "fontFamily": "{ref.font.family.sans}",
+            "fontSize": "{ref.font.size.12}",
+            "lineHeight": "{ref.font.leading.16}",
+            "fontWeight": "{ref.font.weight.semibold}",
+            "letterSpacing": "{ref.font.tracking.wide}"
+          }
+        }
+      },
+      "code": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{ref.font.family.mono}",
+          "fontSize": "{ref.font.size.13}",
+          "lineHeight": "{ref.font.leading.20}",
+          "fontWeight": "{ref.font.weight.regular}",
+          "letterSpacing": "{ref.font.tracking.normal}"
+        }
+      },
+      "display-serif": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{ref.font.family.display}",
+          "fontSize": "{ref.font.size.44}",
+          "lineHeight": "{ref.font.leading.48}",
+          "fontWeight": "{ref.font.weight.regular}",
+          "letterSpacing": {
+            "value": -0.0275,
+            "unit": "rem"
+          }
+        },
+        "$description": "One italic phrase per headline, never a whole line, never body copy. Tracking -0.0275rem is -0.01em at 44px"
+      }
+    },
+    "space": {
+      "0": {
+        "$type": "dimension",
+        "$value": "{ref.space.0}",
+        "$description": "No space."
+      },
+      "1": {
+        "$type": "dimension",
+        "$value": "{ref.space.1}",
+        "$description": "Layout space for small gaps inside a group."
+      },
+      "2": {
+        "$type": "dimension",
+        "$value": "{ref.space.2}",
+        "$description": "Layout space for small gaps inside a group."
+      },
+      "3": {
+        "$type": "dimension",
+        "$value": "{ref.space.3}",
+        "$description": "Layout space for small gaps inside a group."
+      },
+      "4": {
+        "$type": "dimension",
+        "$value": "{ref.space.4}",
+        "$description": "Layout space for small gaps inside a group."
+      },
+      "5": {
+        "$type": "dimension",
+        "$value": "{ref.space.5}",
+        "$description": "Layout space for small gaps inside a group."
+      },
+      "6": {
+        "$type": "dimension",
+        "$value": "{ref.space.6}",
+        "$description": "Layout space for gaps between groups."
+      },
+      "7": {
+        "$type": "dimension",
+        "$value": "{ref.space.7}",
+        "$description": "Layout space for gaps between groups."
+      },
+      "8": {
+        "$type": "dimension",
+        "$value": "{ref.space.8}",
+        "$description": "Layout space for gaps between groups."
+      },
+      "9": {
+        "$type": "dimension",
+        "$value": "{ref.space.9}",
+        "$description": "Layout space for gaps between groups."
+      },
+      "10": {
+        "$type": "dimension",
+        "$value": "{ref.space.10}",
+        "$description": "Layout space for gaps between groups and section rhythm."
+      },
+      "11": {
+        "$type": "dimension",
+        "$value": "{ref.space.11}",
+        "$description": "Layout space for section rhythm."
+      },
+      "12": {
+        "$type": "dimension",
+        "$value": "{ref.space.12}",
+        "$description": "Layout space for section rhythm."
+      }
+    },
+    "radius": {
+      "xs": {
+        "$type": "dimension",
+        "$value": "{ref.radius.xs}",
+        "$description": "The corner radius for tags inside inputs."
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "{ref.radius.sm}",
+        "$description": "The corner radius for checkboxes."
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{ref.radius.md}",
+        "$description": "The corner radius for inputs and other controls."
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{ref.radius.lg}",
+        "$description": "The corner radius for cards, alerts and other containers."
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "{ref.radius.xl}",
+        "$description": "The corner radius for dialogs, side panels, menus, listboxes, toasts and tooltips."
+      },
+      "2xl": {
+        "$type": "dimension",
+        "$value": "{ref.radius.2xl}",
+        "$description": "The corner radius for large surfaces; no component reads it yet."
+      },
+      "image": {
+        "$type": "dimension",
+        "$value": "{ref.radius.image}",
+        "$description": "The corner radius for photographs."
+      },
+      "button": {
+        "$type": "dimension",
+        "$value": "{ref.radius.button}",
+        "$description": "The corner radius for buttons and chips."
+      },
+      "full": {
+        "$type": "dimension",
+        "$value": "{ref.radius.full}",
+        "$description": "The corner radius for avatars."
+      }
+    },
+    "z": {
+      "base": {
+        "$type": "number",
+        "$value": "{ref.z.base}",
+        "$description": "The layer for page content."
+      },
+      "raised": {
+        "$type": "number",
+        "$value": "{ref.z.raised}",
+        "$description": "The layer for the sticky header of a table, above its rows."
+      },
+      "dropdown": {
+        "$type": "number",
+        "$value": "{ref.z.dropdown}",
+        "$description": "The layer for selects, comboboxes and menus."
+      },
+      "sticky": {
+        "$type": "number",
+        "$value": "{ref.z.sticky}",
+        "$description": "The layer for the app bar."
+      },
+      "overlay": {
+        "$type": "number",
+        "$value": "{ref.z.overlay}",
+        "$description": "The layer for the scrim behind panels and dialogs."
+      },
+      "modal": {
+        "$type": "number",
+        "$value": "{ref.z.modal}",
+        "$description": "The layer for dialogs and side panels."
+      },
+      "popover": {
+        "$type": "number",
+        "$value": "{ref.z.popover}",
+        "$description": "The layer for tooltips, popovers and date pickers."
+      },
+      "toast": {
+        "$type": "number",
+        "$value": "{ref.z.toast}",
+        "$description": "The layer for the toast stack."
+      }
+    },
+    "motion": {
+      "duration": {
+        "instant": {
+          "$type": "duration",
+          "$value": "{ref.motion.duration.instant}",
+          "$description": "The duration for colour on hover."
+        },
+        "fast": {
+          "$type": "duration",
+          "$value": "{ref.motion.duration.fast}",
+          "$description": "The duration for focus rings, checkbox ticks and button presses."
+        },
+        "base": {
+          "$type": "duration",
+          "$value": "{ref.motion.duration.base}",
+          "$description": "The duration for menus, tooltips and toggles."
+        },
+        "slow": {
+          "$type": "duration",
+          "$value": "{ref.motion.duration.slow}",
+          "$description": "The duration for panels and dialogs entering."
+        },
+        "deliberate": {
+          "$type": "duration",
+          "$value": "{ref.motion.duration.deliberate}",
+          "$description": "The duration for page transitions and the skeleton pulse."
+        },
+        "delay": {
+          "$type": "duration",
+          "$value": "{ref.motion.duration.delay}",
+          "$description": "The duration for the wait before a tooltip or hover card shows."
+        },
+        "loop": {
+          "$type": "duration",
+          "$value": "{ref.motion.duration.loop}",
+          "$description": "The duration for one turn of a spinner."
+        },
+        "dismiss": {
+          "$type": "duration",
+          "$value": "{ref.motion.duration.dismiss}",
+          "$description": "The duration for a toast to stay before it dismisses itself."
+        }
+      },
+      "easing": {
+        "standard": {
+          "$type": "cubicBezier",
+          "$value": "{ref.motion.easing.standard}",
+          "$description": "The curve for most things entering and moving."
+        },
+        "emphasized": {
+          "$type": "cubicBezier",
+          "$value": "{ref.motion.easing.emphasized}",
+          "$description": "The curve for dialogs and side panels."
+        },
+        "exit": {
+          "$type": "cubicBezier",
+          "$value": "{ref.motion.easing.exit}",
+          "$description": "The curve for anything leaving."
+        },
+        "spring": {
+          "$type": "string",
+          "$value": "{ref.motion.easing.spring}",
+          "$description": "The curve for the toggle knob and chips."
+        }
+      }
+    }
+  },
+  "texture": {
+    "ink": {
+      "drop": {
+        "$type": "asset",
+        "$value": "ink-drop.jpg",
+        "$description": "1:1; empty and loading states"
+      },
+      "ring": {
+        "$type": "asset",
+        "$value": "ink-ring.jpg",
+        "$description": "1:1; sign-in and completed flows; never animated, never progress"
+      }
+    },
+    "scrim": {
+      "$type": "string",
+      "$value": "linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 42%, rgba(255,255,255,0) 78%)",
+      "$description": "over a wash that carries text"
+    }
+  },
+  "image": {
+    "treatment": {
+      "filter": {
+        "$type": "string",
+        "$value": "grayscale(1) contrast(1.08)",
+        "$description": "The first half of the duotone: a CSS filter that turns a photograph grey and lifts its contrast, the same in both themes."
+      }
+    },
+    "ratio": {
+      "photo": {
+        "$type": "number",
+        "$value": 1.5,
+        "$description": "3:2, photographs such as the profile portrait. The container crops, never stretches."
+      },
+      "mark": {
+        "$type": "number",
+        "$value": 1.0,
+        "$description": "1:1, the ink drop and ring. The container crops, never stretches."
+      },
+      "wash": {
+        "$type": "number",
+        "$value": 1.7778,
+        "$description": "16:9, the ink washes on welcome and onboarding surfaces. The container crops, never stretches."
+      },
+      "stroke": {
+        "$type": "number",
+        "$value": 2.3333,
+        "$description": "21:9, the ink strokes on section marks and empty states. The container crops, never stretches."
+      }
+    }
+  }
+}
