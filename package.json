@@ -16,7 +16,11 @@
   },
   "lint-staged": {
     "*": "prettier --write --ignore-unknown",
-    "packages/tokens/src/**/*.json": "node packages/tokens/check.mjs"
+    "{DESIGN,GAPS,AGENTS}.md": "node tools/name-check/check-names.mjs",
+    "packages/tokens/src/**/*.json": [
+      "node packages/tokens/check.mjs",
+      "node tools/name-check/check-names.mjs"
+    ]
   },
   "devDependencies": {
     "@changesets/cli": "3.0.3",

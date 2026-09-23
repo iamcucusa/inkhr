@@ -5,7 +5,11 @@ import { execSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-export const COMMANDS = ['npm test', 'npx nx run-many -t check typecheck test'];
+export const COMMANDS = [
+  'npm test',
+  'npm run check:names',
+  'npx nx run-many -t check typecheck test',
+];
 const TAIL = 40;
 
 const tail = (text) =>
