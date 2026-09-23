@@ -18,6 +18,21 @@
         "cwd": "packages/tokens"
       }
     },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "dependsOn": ["build"],
+      "inputs": [
+        "{projectRoot}/src/**/*",
+        "{projectRoot}/build.mjs",
+        "{projectRoot}/covered-types.mjs",
+        "{projectRoot}/tsconfig.json"
+      ],
+      "options": {
+        "command": "tsc -p tsconfig.json",
+        "cwd": "packages/tokens"
+      }
+    },
     "test": {
       "executor": "nx:run-commands",
       "cache": true,
