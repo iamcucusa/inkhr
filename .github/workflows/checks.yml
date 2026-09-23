@@ -47,4 +47,4 @@ jobs:
 
       - run: npm test
 
-      - run: npx nx run-many -t lint build typecheck test
+      - run: npx nx run-many -t lint build typecheck test check
