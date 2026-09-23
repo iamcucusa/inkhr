@@ -47,7 +47,7 @@ Commit: `feat(tokens): build colour outputs for css, ts, swift and kotlin`
 Depends on task 4.
 
 1. Write `packages/tokens/tsconfig.json` as in "Type-check" in `design.md` and add the `typecheck` target.
-2. Check: `npx nx run tokens:typecheck` passes. Append `export const X: number;` twice to `dist/ts/dark.d.ts`, run it again and see `TS2451`; then `npx nx run tokens:build --skip-nx-cache` and see it pass.
+2. Check: `npx nx run tokens:typecheck` passes. Append `export const X: number;` twice to `dist/ts/dark.d.ts` and run `npx nx run tokens:typecheck --skip-nx-cache --exclude-task-dependencies`: it fails with `TS2451`. Both flags are needed: a plain run hits the cache for `build` and `typecheck`, restores `dist/` from the cache and reports a pass. Then `npx nx run tokens:build --skip-nx-cache` and see `typecheck` pass again.
 
 Commit: `build(tokens): type-check the built declarations`
 
