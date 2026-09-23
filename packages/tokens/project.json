@@ -3,5 +3,21 @@
   "name": "tokens",
   "sourceRoot": "packages/tokens/src",
   "projectType": "library",
-  "targets": {}
+  "targets": {
+    "test": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": [
+        "{projectRoot}/src/**/*",
+        "{projectRoot}/build.mjs",
+        "{projectRoot}/covered-types.mjs",
+        "{projectRoot}/tests/**/*",
+        "{projectRoot}/vitest.config.mts"
+      ],
+      "options": {
+        "command": "vitest run",
+        "cwd": "packages/tokens"
+      }
+    }
+  }
 }
