@@ -38,11 +38,12 @@ The check also runs after an agent edits `src/`, before a commit that stages `sr
 - Every `$type` is a DTCG type, `string` or `asset` (`inkhr/known-type`); a `$deprecated` token names its replacement in braces (`inkhr/deprecated-replacement`).
 - Both theme files declare the same names (`inkhr/theme-parity`).
 - The outputs carry only the covered types, the dark CSS block only the dark file's tokens as `var()` references, and no description (`tokens:test`).
+- Every token name and CSS variable the docs mention exists; a line that shows wrong names on purpose ends in `<!-- name-check: skip -->` (`npm run check:names`).
 - A role that is not in the files is not missing by accident. Read `../../GAPS.md`, then ask before adding one.
 
 ## Common failures
 
-- `inkhr/naming` on `sys.action.primary.bg.hover`: a state is a hyphen, `sys.action.primary.bg-hover`. On `sys.button.bg` or `…background`: the role or word is not in the lists; ask, do not invent.
+- `inkhr/naming` on `sys.action.primary.bg.hover`: a state is a hyphen, `sys.action.primary.bg-hover`. On `sys.button.bg` or `…background`: the role or word is not in the lists; ask, do not invent. <!-- name-check: skip -->
 - `inkhr/references` on a `ref`: turn it round, the role references the primitive. On a `sys` pointing at a `sys`: point it at the primitive that role uses.
 - `parser:init` "Could not resolve alias": the step does not exist; choose one the ramp has.
 - `core/valid-color` with a file and line: a hex or colour object in a role; replace it with a reference.
