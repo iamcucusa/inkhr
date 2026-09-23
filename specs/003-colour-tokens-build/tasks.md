@@ -76,7 +76,7 @@ Commit: `docs(tokens): add the package agent map`
 
 ## 8. Add the changeset
 
-1. `npx changeset`, choosing `@inkhr/tokens`, minor, with the summary from "Documentation" in `design.md`.
+1. Write `.changeset/colour-tokens-build.md` by hand: `@inkhr/tokens`, minor, with the summary from "Documentation" in `design.md`. `npx changeset` is interactive only, as spec 001 found for `changeset init`, so an agent cannot answer its prompts.
 2. Check: `npx changeset status` lists `@inkhr/tokens`.
 
 Commit: `chore(tokens): add a changeset for the colour outputs`
