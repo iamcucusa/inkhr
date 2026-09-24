@@ -35,6 +35,7 @@ export default defineConfig({
       'inkhr/descriptions': 'error',
       'inkhr/naming': 'error',
       'inkhr/references': 'error',
+      'inkhr/role-reference': 'error',
       'inkhr/known-type': 'error',
       'inkhr/deprecated-replacement': 'error',
       'inkhr/theme-parity': 'error',
