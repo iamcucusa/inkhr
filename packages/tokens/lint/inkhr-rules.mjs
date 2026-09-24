@@ -1,6 +1,6 @@
 // The InkHR rules for gate 1, as a local Terrazzo plugin. Each rule's severity is set in terrazzo.config.mjs.
-// The grammar is the one in specs/004-colour-tokens-check/design.md; descriptions and naming cover the types in
-// covered-types.mjs, and the other rules cover every token.
+// The grammar is the one in specs/004-colour-tokens-check/design.md; descriptions, naming and role references
+// cover the types in covered-types.mjs, and the other rules cover every token.
 import { readFileSync } from 'node:fs';
 import { basename, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -159,6 +159,24 @@ export default function inkhrRules() {
                   node: token.source.node,
                 });
               }
+            }
+          },
+        ),
+
+        // Only the value as written tells a reference from a value; the parser resolves the alias away.
+        'inkhr/role-reference': rule(
+          'Every token of a covered type outside ref references a token.',
+          '{{ id }} holds a value, not a reference; point it at a ref primitive in braces',
+          ({ tokens, report }) => {
+            for (const token of Object.values(tokens)) {
+              if (!covered(token) || token.id.startsWith('ref.')) continue;
+              const raw = token.originalValue?.$value;
+              if (typeof raw === 'string' && ALIAS.test(raw)) continue;
+              report({
+                messageId: 'broken',
+                data: { id: token.id },
+                node: token.source.node,
+              });
             }
           },
         ),
