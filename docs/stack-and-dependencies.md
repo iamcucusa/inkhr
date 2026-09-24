@@ -85,11 +85,11 @@ Each entry answers the same questions: **Use** (what it does in InkHR), **Human 
 
 #### `@terrazzo/cli` 2.7.1
 
-- **Use.** Gate 1: `npx nx run tokens:check` checks the shared file with one theme file at a time. Its format rules, `required-type` and kebab-case `consistent-naming` run on every token, and the InkHR rules run inside it as a local plugin (`packages/tokens/lint/inkhr-rules.mjs`): descriptions and the naming grammar for the covered types, one-way references, known types, deprecation replacements and theme parity for every token.
+- **Use.** Gate 1: `npx nx run tokens:check` checks the shared file with one theme file at a time. Its format rules, `required-type` and kebab-case `consistent-naming` run on every token, and the InkHR rules run inside it as a local plugin (`packages/tokens/lint/inkhr-rules.mjs`): descriptions, the naming grammar and role references for the covered types, one-way references, known types, deprecation replacements and theme parity for every token.
 - **Human loop.** The pre-commit hook and CI print one line per failure: theme, rule, token or file and line.
 - **Agent loop.** Runs in the after-edit hook for files under `packages/tokens/src/` and in CI, so an agent is told the rule it broke before it continues.
 - **Why.** The strictest reader of the 2025.10 format, and independent of the build tool.
-- **Gaps.** On its own it does not check reference direction, the grammar, theme parity or an invented type nothing references; the InkHR plugin adds those. An unknown reference and a referenced unknown type stop its parser, so they fail as `parser:init` rather than under a rule name. Setting `lint.rules` replaces its recommended set, so the config lists every rule. `core/duplicate-values` stays off, because roles share values by design. One maintainer, and a 2.x plugin API that has changed before: the version stays pinned, and each rule has a failing fixture so a rule that stops firing is noticed.
+- **Gaps.** On its own it does not check reference direction, that a role holds a reference, the grammar, theme parity or an invented type nothing references; the InkHR plugin adds those. An unknown reference and a referenced unknown type stop its parser, so they fail as `parser:init` rather than under a rule name. Setting `lint.rules` replaces its recommended set, so the config lists every rule. `core/duplicate-values` stays off, because roles share values by design. One maintainer, and a 2.x plugin API that has changed before: the version stays pinned, and each rule has a failing fixture so a rule that stops firing is noticed.
 
 ### Angular platform
 
