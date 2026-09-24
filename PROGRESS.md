@@ -4,13 +4,14 @@ State across sessions, for people and agents. Read this, then `git log --oneline
 
 ## Now
 
-Stage 0, colour slice 1 done: specs 003 to 005 merged on 23 September 2026. Spec 006, approved on 24 September 2026, closes a gap found in gate 1 after the slice. Next action: finish spec 006; the design lead chooses what comes next, colour slice 2 (the contrast gate) or the next token group.
+Stage 0, colour slice 1 done: specs 003 to 005 merged on 23 September 2026, and spec 006, which closes a gap found in gate 1 after the slice, on 24 September 2026. Next action: the design lead chooses what comes next, colour slice 2 (the contrast gate) or the next token group.
 
 ## Specs
 
-| Stage | Spec                         | Status    | Next action                   | Who   | Updated    |
-| ----- | ---------------------------- | --------- | ----------------------------- | ----- | ---------- |
-| 0     | `006-colour-role-references` | in review | Task 6: open the pull request | agent | 2026-09-24 |
+| Stage | Spec | Status | Next action | Who | Updated |
+| ----- | ---- | ------ | ----------- | --- | ------- |
+
+No spec is in progress.
 
 Status, and who sets it: not started (nobody yet); drafted (the agent, in the commit that adds the spec folder); approved (the design lead, or the agent in its next commit on the design lead's word); tests committed (the agent, with the failing tests); implementing (the agent; each task commit moves Next action to the next task); in review (the agent, in the last commit before the pull request opens); blocked (the agent or a person; Next action names what unblocks it and who).
 
@@ -24,11 +25,12 @@ Empty when every task ended in a commit. Otherwise: spec and task, the `git stat
 
 Human correction rounds after a spec was approved, the measure decision 17 sets at two or fewer. Counted in each pull request.
 
-| Spec                      | Rounds | Pull request |
-| ------------------------- | ------ | ------------ |
-| `003-colour-tokens-build` | 1      | #4           |
-| `004-colour-tokens-check` | 1      | #5           |
-| `005-colour-tokens-names` | 0      | #6           |
+| Spec                         | Rounds | Pull request |
+| ---------------------------- | ------ | ------------ |
+| `003-colour-tokens-build`    | 1      | #4           |
+| `004-colour-tokens-check`    | 1      | #5           |
+| `005-colour-tokens-names`    | 0      | #6           |
+| `006-colour-role-references` | 0      | #8           |
 
 ## Stages
 
