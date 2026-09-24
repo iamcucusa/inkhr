@@ -55,6 +55,12 @@ const colour = (value, description = 'A fixture role.') => ({
   $value: value,
   $description: description,
 });
+// A well-formed DTCG colour, the value a role must never hold.
+const COBALT_700 = {
+  colorSpace: 'srgb',
+  components: [0.1725, 0.2784, 0.8431],
+  hex: '#2C47D7',
+};
 const LIGHT = 'modes/light.json';
 const DARK = 'modes/dark.json';
 const SHARED = 'inkhr.tokens.json';
@@ -64,7 +70,33 @@ const FIXTURES = [
   [
     'a raw hex in a role',
     { [LIGHT]: (d) => (d.sys.action.primary.bg.$value = '#2C47D7') },
-    ['core/valid-color'],
+    ['core/valid-color', 'inkhr/role-reference'],
+  ],
+  [
+    'a colour object in a role',
+    { [LIGHT]: (d) => (d.sys.action.primary.bg.$value = COBALT_700) },
+    ['inkhr/role-reference'],
+  ],
+  [
+    'a JSON Pointer reference in a role',
+    {
+      [LIGHT]: (d) =>
+        (d.sys.action.primary.bg.$value = { $ref: '#/ref/color/cobalt/700' }),
+    },
+    ['inkhr/role-reference'],
+  ],
+  [
+    'a colour object in the duotone tint',
+    { [DARK]: (d) => (d.image.treatment.tint.$value = COBALT_700) },
+    ['inkhr/role-reference'],
+  ],
+  [
+    'a raw duration in a role',
+    {
+      [SHARED]: (d) =>
+        (d.sys.motion.duration.fast.$value = { value: 120, unit: 'ms' }),
+    },
+    [],
   ],
   [
     'a reference to a name that does not exist',

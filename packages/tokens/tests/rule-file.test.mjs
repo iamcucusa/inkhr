@@ -85,7 +85,7 @@ async function tokenCheck(root) {
 
 // How each check is run on one form: returns the rules that failed.
 const RUNNERS = {
-  'core/valid-color': (form) => {
+  'inkhr/role-reference': (form) => {
     const { $value } = JSON.parse(`{${span(form)}}`);
     return tokenCheck(copy((source) => (at(source, ROLE).$value = $value)));
   },
