@@ -32,7 +32,7 @@ The check also runs after an agent edits `src/`, before a commit that stages `sr
 ## Rules, each with what enforces it
 
 - A check or a build takes `inkhr.tokens.json` with one theme file, never both: the second silently overrides the first (`check.mjs`, `build.mjs`).
-- A colour value is written only in a `ref.color` primitive; a role references it (`core/valid-color` for a raw value, `inkhr/references`).
+- A colour value is written only in a `ref.color` primitive; every other colour token holds one reference to it in braces (`inkhr/role-reference`). A colour inside a composite value, such as a shadow layer, is not checked.
 - `ref` references nothing, and `sys` references only `ref` (`inkhr/references`); every reference resolves (`parser:init`).
 - Every covered token has a `$description` saying what it paints and what it never paints (`inkhr/descriptions`).
 - Every `$type` is a DTCG type, `string` or `asset` (`inkhr/known-type`); a `$deprecated` token names its replacement in braces (`inkhr/deprecated-replacement`).
@@ -46,7 +46,8 @@ The check also runs after an agent edits `src/`, before a commit that stages `sr
 - `inkhr/naming` on `sys.action.primary.bg.hover`: a state is a hyphen, `sys.action.primary.bg-hover`. On `sys.button.bg` or `…background`: the role or word is not in the lists; ask, do not invent. <!-- name-check: skip -->
 - `inkhr/references` on a `ref`: turn it round, the role references the primitive. On a `sys` pointing at a `sys`: point it at the primitive that role uses.
 - `parser:init` "Could not resolve alias": the step does not exist; choose one the ramp has.
-- `core/valid-color` with a file and line: a hex or colour object in a role; replace it with a reference.
+- `inkhr/role-reference`: a hex or colour object in a role; replace it with a reference to the primitive in braces.
+- `core/valid-color` with a file and line: a hex string in a primitive; write it as a colour object.
 - `inkhr/theme-parity`: add the role to the other theme file under the same name, with that theme's primitive.
 - `inkhr/descriptions`: write the sentence; do not copy the name into it.
 - Style Dictionary warns "filtered out token references were found" for `dark.css`, and "Unknown CSS Font Shorthand properties found for 11 tokens" once per theme. Both are expected; any other warning is not.
@@ -54,4 +55,4 @@ The check also runs after an agent edits `src/`, before a commit that stages `sr
 ## Where to look next
 
 - `../../DESIGN.md`: what each role is for. `../../GAPS.md`: before adding a role.
-- `../../specs/003-colour-tokens-build/` and `../../specs/004-colour-tokens-check/`: why the build and the check are shaped as they are.
+- `../../specs/003-colour-tokens-build/`, `../../specs/004-colour-tokens-check/` and `../../specs/006-colour-role-references/`: why the build and the check are shaped as they are.
