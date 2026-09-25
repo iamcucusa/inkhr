@@ -191,6 +191,35 @@ const FIXTURES = [
     ['inkhr/naming', 'inkhr/theme-parity'],
   ],
   [
+    'a neutral state written with a dot',
+    {
+      [LIGHT]: (d) =>
+        (d.sys.border.strong.hover = colour('{ref.color.ink.700}')),
+    },
+    ['inkhr/naming'],
+  ],
+  [
+    'a state on a neutral variant that has none',
+    {
+      [LIGHT]: (d) =>
+        (d.sys.text['link-hover'] = colour('{ref.color.cobalt.800}')),
+    },
+    ['inkhr/naming', 'inkhr/theme-parity'],
+  ],
+  [
+    'a neutral state outside the list',
+    {
+      [LIGHT]: (d) =>
+        (d.sys.border['strong-pressed'] = colour('{ref.color.ink.700}')),
+    },
+    ['inkhr/naming', 'inkhr/theme-parity'],
+  ],
+  [
+    'the new role in one theme only',
+    { [DARK]: (d) => delete d.sys.border['strong-hover'] },
+    ['inkhr/theme-parity'],
+  ],
+  [
     'a role missing from the dark file',
     { [DARK]: (d) => delete d.sys.surface.inverse },
     ['inkhr/theme-parity'],
