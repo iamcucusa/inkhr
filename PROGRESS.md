@@ -4,7 +4,7 @@ State across sessions, for people and agents. Read this, then `git log --oneline
 
 ## Now
 
-Stage 0, colour slice 1 done: specs 003 to 005 merged on 23 September 2026, and spec 006, which closes a gap found in gate 1 after the slice, on 24 September 2026. Specs 007 to 009, the field hover role, the dark boundary step and the non-colour cues, are in review on the branch `007-field-hover-role`, from decision 26 in the design workspace. Next action: open the pull request for the three; then colour slice 2 (the contrast gate) or the next token group, as the design lead chooses.
+Stage 0, colour slice 1 done: specs 003 to 005 merged on 23 September 2026, and spec 006, which closes a gap found in gate 1 after the slice, on 24 September 2026. Specs 007 to 009, the field hover role, the dark boundary step and the non-colour cues, are in review on the branch `007-field-hover-role`, from decision 26 in the design workspace. Next action: a person reviews and merges pull request #10; then colour slice 2 (the contrast gate) or the next token group, as the design lead chooses.
 
 ## Specs
 
@@ -32,6 +32,9 @@ Human correction rounds after a spec was approved, the measure decision 17 sets 
 | `004-colour-tokens-check`    | 1      | #5           |
 | `005-colour-tokens-names`    | 0      | #6           |
 | `006-colour-role-references` | 0      | #8           |
+| `007-field-hover-role`       | 0      | #10          |
+| `008-dark-boundary-step`     | 0      | #10          |
+| `009-colour-never-alone`     | 0      | #10          |
 
 ## Stages
 
