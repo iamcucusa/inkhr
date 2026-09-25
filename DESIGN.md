@@ -35,19 +35,20 @@ People: employees requesting time off and checking payslips, managers approving 
 
 Paper and ink carry the interface; cobalt is the only action and signal hue. Status and data colours never colour body text and never fill a button, with one exception: brick fills the destructive button, `sys.action.danger.bg`. Components read the role through its CSS variable and never a hex value or a primitive such as `ref.color.cobalt.700`; the token files hold the values.
 
-| Name                | Role                          | CSS variable                             | Use                                                                                                                                                            |
-| ------------------- | ----------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Paper               | `sys.surface.page`            | `var(--ink-sys-surface-page)`            | The canvas of every screen. Near-white, neutral, never tinted.                                                                                                 |
-| Card                | `sys.surface.default`         | `var(--ink-sys-surface-default)`         | Cards, fields, dialogs, the app bar. The surface text is measured against.                                                                                     |
-| Sunken              | `sys.surface.sunken`          | `var(--ink-sys-surface-sunken)`          | Recessed areas inside a card, one step below it.                                                                                                               |
-| Ink                 | `sys.text.primary`            | `var(--ink-sys-text-primary)`            | Body text, headings, values. The mark a person makes.                                                                                                          |
-| Quiet ink           | `sys.text.secondary`          | `var(--ink-sys-text-secondary)`          | Metadata, captions, secondary labels.                                                                                                                          |
-| Hairline            | `sys.border.subtle`           | `var(--ink-sys-border-subtle)`           | Dividers between rows and sections.                                                                                                                            |
-| Edge                | `sys.border.default`          | `var(--ink-sys-border-default)`          | Card boundaries. A field or other control reads `sys.border.strong`.                                                                                           |
-| Cobalt              | `sys.action.primary.bg`       | `var(--ink-sys-action-primary-bg)`       | The one action colour: the primary button and tabs. Links read `sys.text.link`, selection `sys.selected.bg` and `sys.selected.border`, focus `sys.focus.ring`. |
-| Cobalt, pressed ink | `sys.action.primary.bg-hover` | `var(--ink-sys-action-primary-bg-hover)` | Primary button on hover.                                                                                                                                       |
-| Selected wash       | `sys.selected.bg`             | `var(--ink-sys-selected-bg)`             | Selected rows, nav items and chips, with `sys.text.on-selected`.                                                                                               |
-| Inverse             | `sys.surface.inverse`         | `var(--ink-sys-surface-inverse)`         | Tooltips and toasts.                                                                                                                                           |
+| Name                    | Role                          | CSS variable                             | Use                                                                                                                                                            |
+| ----------------------- | ----------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Paper                   | `sys.surface.page`            | `var(--ink-sys-surface-page)`            | The canvas of every screen. Near-white, neutral, never tinted.                                                                                                 |
+| Card                    | `sys.surface.default`         | `var(--ink-sys-surface-default)`         | Cards, fields, dialogs, the app bar. The surface text is measured against.                                                                                     |
+| Sunken                  | `sys.surface.sunken`          | `var(--ink-sys-surface-sunken)`          | Recessed areas inside a card, one step below it.                                                                                                               |
+| Ink                     | `sys.text.primary`            | `var(--ink-sys-text-primary)`            | Body text, headings, values. The mark a person makes.                                                                                                          |
+| Quiet ink               | `sys.text.secondary`          | `var(--ink-sys-text-secondary)`          | Metadata, captions, secondary labels.                                                                                                                          |
+| Hairline                | `sys.border.subtle`           | `var(--ink-sys-border-subtle)`           | Dividers between rows and sections.                                                                                                                            |
+| Edge                    | `sys.border.default`          | `var(--ink-sys-border-default)`          | Card boundaries. A field or other control reads `sys.border.strong`.                                                                                           |
+| Edge, under the pointer | `sys.border.strong-hover`     | `var(--ink-sys-border-strong-hover)`     | The edge of a field under the pointer. Focus reads `sys.border.focus` and the ring.                                                                            |
+| Cobalt                  | `sys.action.primary.bg`       | `var(--ink-sys-action-primary-bg)`       | The one action colour: the primary button and tabs. Links read `sys.text.link`, selection `sys.selected.bg` and `sys.selected.border`, focus `sys.focus.ring`. |
+| Cobalt, pressed ink     | `sys.action.primary.bg-hover` | `var(--ink-sys-action-primary-bg-hover)` | Primary button on hover.                                                                                                                                       |
+| Selected wash           | `sys.selected.bg`             | `var(--ink-sys-selected-bg)`             | Selected rows, nav items and chips, with `sys.text.on-selected`.                                                                                               |
+| Inverse                 | `sys.surface.inverse`         | `var(--ink-sys-surface-inverse)`         | Tooltips and toasts.                                                                                                                                           |
 
 Contrast on the card surface: ink 18.4:1 light and 15.8:1 dark, quiet ink 6.7:1 and 12.8:1, white on cobalt 7.0:1, ink on dark cobalt 10.5:1.
 
@@ -112,7 +113,7 @@ Recipes for the components people meet most. Every component is an Angular compo
 - **Primary button** (`ink-button variant="primary"`): cobalt fill, `sys.action.primary.text` label in `sys.type.label.md`, `radius.button`, 40 px high (32 small, 48 large). Hover deepens to `sys.action.primary.bg-hover`; pressed moves down 1 px for `motion.duration.fast`. One per view. Label starts with a verb: "Request time off".
 - **Secondary button**: card fill, ink label, a `sys.action.secondary.border` edge, pill. For the second action, such as "Save draft".
 - **Danger button**: `sys.action.danger.bg` fill, only for irreversible actions and always inside a confirmation dialog: "Reject request".
-- **Field** (`ink-field`): label above in `sys.type.label.md`, a 40 px control with `radius.md` and a `sys.border.default` edge, help or error below in `sys.type.body.sm`. Errors combine text, an icon and the danger colour. The placeholder is never the label.
+- **Field** (`ink-field`): label above in `sys.type.label.md`, a 40 px control with `radius.md` and a `sys.border.strong` edge, `sys.border.strong-hover` under the pointer, and `sys.border.focus` with the focus ring when focused, help or error below in `sys.type.body.sm`. Errors combine text, an icon and the danger colour. The placeholder is never the label.
 - **Data grid** (`ink-data-grid`): rows 44 px, compact 36; sticky header in `sys.type.label.sm` on the paper tone; tabular figures, amounts right-aligned; row checkboxes and menus are named with the row ("Select Bram de Vries").
 - **Badge** (`ink-badge`): a dot and a word on the status background, `sys.type.label.sm`, `radius.button`. "Pending", "Approved".
 - **App bar** (`ink-app-bar`): 56 px, card surface, hairline below, lock-up at the left, search, notifications and the avatar at the right.
@@ -132,7 +133,7 @@ Recipes for the components people meet most. Every component is an Angular compo
 - Do write sentence case, verbs on buttons and errors that say what to do next. Don't use exclamation marks, emoji, em dashes or chains of middle dots.
 - Do use Instrument Serif for one italic phrase on welcome surfaces. Don't use it for headings, labels or body copy.
 - Do read tokens by their role (`sys.text.secondary`). Don't write hex values, px radii or shadows in a component, or read a primitive such as `ref.color.cobalt.700`.
-- Do keep focus visible: a 2 px ring outside a 2 px surface gap. Don't remove outlines.
+- Do keep focus visible: a 2 px ring outside a 2 px surface gap on every control, fields included. Don't remove outlines.
 - Do move only what the person caused. Don't animate on load or loop anything.
 
 ## Imagery and texture
@@ -205,7 +206,7 @@ The closed set. Values are in the token files; never invent a name.
 
 - `sys.surface.*`: page, default, raised, sunken, inverse
 - `sys.text.*`: primary, secondary, tertiary, disabled, link, on-selected, placeholder, inverse
-- `sys.border.*`: default, strong, subtle, focus
+- `sys.border.*`: default, strong, strong-hover, subtle, focus
 - `sys.action.*`: primary.bg, primary.bg-hover, primary.bg-pressed, primary.text, secondary.bg, secondary.bg-hover, secondary.border, secondary.text, danger.bg, danger.bg-hover, danger.text
 - `sys.signal.*`: bg, bg-hover, bg-pressed, text
 - `sys.status.*`: success.text, success.bg, success.border, success.icon, warning.text, warning.bg, warning.border, warning.icon, danger.text, danger.bg, danger.border, danger.icon, info.text, info.bg, info.border, info.icon
