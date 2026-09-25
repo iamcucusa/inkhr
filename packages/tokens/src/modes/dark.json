@@ -81,6 +81,11 @@
         "$value": "{ref.color.paper.500}",
         "$description": "The 3:1 boundary of a control: a field, a checkbox, a secondary button's edge. It holds one value in both themes, because that floor has to be cleared on paper and on ink alike."
       },
+      "strong-hover": {
+        "$type": "color",
+        "$value": "{ref.color.paper.300}",
+        "$description": "The edge of a field, a select or a textarea under the pointer: two steps further along the neutral axis than `sys.border.strong`. Never cobalt, which is kept for `sys.border.focus`."
+      },
       "subtle": {
         "$type": "color",
         "$value": "{ref.color.ink.800}",
@@ -89,7 +94,7 @@
       "focus": {
         "$type": "color",
         "$value": "{ref.color.cobalt.300}",
-        "$description": "A field, a select and a textarea change their own border to this while they are hovered or focused. Not the ring, which sits outside the control and is `sys.focus.ring`."
+        "$description": "A focused field, select or textarea draws this border on itself, inside the `sys.focus.ring` it takes like every control. Under the pointer it reads `sys.border.strong-hover` instead."
       }
     },
     "action": {
@@ -283,7 +288,7 @@
       "ring": {
         "$type": "color",
         "$value": "{ref.color.cobalt.300}",
-        "$description": "Drawn outside a control with keyboard focus, held off it by two pixels of the surface behind. A button, a checkbox and a switch take it; a field changes its own border instead."
+        "$description": "Drawn outside a control with keyboard focus, held off it by two pixels of the surface behind. Every control takes it, and a field also turns its own border to `sys.border.focus`."
       }
     },
     "avatar": {

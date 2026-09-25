@@ -97,7 +97,7 @@
             ],
             "hex": "#CFD1D4"
           },
-          "$description": "A line meant to be seen on paper. Far enough from ink for the quietest text that still has to clear 4.5:1."
+          "$description": "A line meant to be seen on paper. Far enough from ink for the quietest text that still has to clear 4.5:1, and for the edge of a field under the pointer."
         },
         "400": {
           "$type": "color",
@@ -152,7 +152,7 @@
             ],
             "hex": "#595C61"
           },
-          "$description": "A step darker, for text on paper that carries more than metadata, and for a line on ink that has to be seen."
+          "$description": "A step darker, for text on paper that carries more than metadata and for the edge of a field under the pointer. On ink, a line that has to be seen."
         },
         "800": {
           "$type": "color",
