@@ -4,15 +4,14 @@ State across sessions, for people and agents. Read this, then `git log --oneline
 
 ## Now
 
-Stage 0, colour slice 1 done: specs 003 to 005 merged on 23 September 2026, and spec 006, which closes a gap found in gate 1 after the slice, on 24 September 2026. Specs 007 to 009, the field hover role, the dark boundary step and the non-colour cues, are in review on the branch `007-field-hover-role`, from decision 26 in the design workspace. Next action: a person reviews and merges pull request #10; then colour slice 2 (the contrast gate) or the next token group, as the design lead chooses.
+Stage 0, colour slice 1 done: specs 003 to 005 merged on 23 September 2026, and spec 006, which closes a gap found in gate 1 after the slice, on 24 September 2026. Specs 007 to 009, the field hover role, the dark boundary step and the non-colour cues from decision 26 in the design workspace, merged on 25 September 2026. Next action: the design lead chooses what comes next, colour slice 2 (the contrast gate) or the next token group.
 
 ## Specs
 
-| Stage | Spec                     | Status    | Next action                    | Who   | Updated    |
-| ----- | ------------------------ | --------- | ------------------------------ | ----- | ---------- |
-| 0     | `007-field-hover-role`   | in review | pull request, with 008 and 009 | agent | 2026-09-25 |
-| 0     | `008-dark-boundary-step` | in review | pull request, with 007 and 009 | agent | 2026-09-25 |
-| 0     | `009-colour-never-alone` | in review | pull request, with 007 and 008 | agent | 2026-09-25 |
+| Stage | Spec | Status | Next action | Who | Updated |
+| ----- | ---- | ------ | ----------- | --- | ------- |
+
+No spec is in progress.
 
 Status, and who sets it: not started (nobody yet); drafted (the agent, in the commit that adds the spec folder); approved (the design lead, or the agent in its next commit on the design lead's word); tests committed (the agent, with the failing tests); implementing (the agent; each task commit moves Next action to the next task); in review (the agent, in the last commit before the pull request opens); blocked (the agent or a person; Next action names what unblocks it and who).
 
