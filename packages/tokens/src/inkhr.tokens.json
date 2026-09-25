@@ -221,7 +221,7 @@
         }
       },
       "cobalt": {
-        "$description": "The one action and signal colour. Step 700 is the cobalt of the mark and the primary button; focus and the selected border read 600, links 800. It darkens on hover and press in light and lightens in dark. It also carries the info status and the duotone tint.",
+        "$description": "The one action and signal colour. Step 700 is the cobalt of the mark and the primary button; focus and the selected border read 600, links 800. On ink the action and links read 300, and focus and the selected border 400. It darkens on hover and press in light and lightens in dark. It also carries the info status and the duotone tint.",
         "50": {
           "$type": "color",
           "$value": {
@@ -272,7 +272,7 @@
             ],
             "hex": "#ACC3FE"
           },
-          "$description": "Dark's action, and with it the link, the focus ring, the selected border and the info text. Where light spreads these over 600 to 800, dark lands them all on one step."
+          "$description": "Dark's action, and with it the signal, the link, the info text and the duotone tint. Dark's boundaries sit a step darker on 400, as light's sit a step lighter on 600."
         },
         "400": {
           "$type": "color",
@@ -285,7 +285,7 @@
             ],
             "hex": "#85A5FE"
           },
-          "$description": "Between dark's action and dark's info border sits the info mark on ink, the same order the status ladder keeps in light."
+          "$description": "One step back from dark's action, as 600 is on paper: the focus border, the focus ring and the selected edge on ink, and the info mark."
         },
         "500": {
           "$type": "color",

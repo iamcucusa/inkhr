@@ -93,7 +93,7 @@
       },
       "focus": {
         "$type": "color",
-        "$value": "{ref.color.cobalt.300}",
+        "$value": "{ref.color.cobalt.400}",
         "$description": "A focused field, select or textarea draws this border on itself, inside the `sys.focus.ring` it takes like every control. Under the pointer it reads `sys.border.strong-hover` instead."
       }
     },
@@ -280,14 +280,14 @@
       },
       "border": {
         "$type": "color",
-        "$value": "{ref.color.cobalt.300}",
+        "$value": "{ref.color.cobalt.400}",
         "$description": "Cobalt on the edge of a chosen row or option. The same value as `sys.focus.ring` in both themes, so selection and focus are told apart by where the colour sits, not by the colour."
       }
     },
     "focus": {
       "ring": {
         "$type": "color",
-        "$value": "{ref.color.cobalt.300}",
+        "$value": "{ref.color.cobalt.400}",
         "$description": "Drawn outside a control with keyboard focus, held off it by two pixels of the surface behind. Every control takes it, and a field also turns its own border to `sys.border.focus`."
       }
     },
