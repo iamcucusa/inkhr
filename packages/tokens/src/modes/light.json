@@ -52,7 +52,7 @@
       "link": {
         "$type": "color",
         "$value": "{ref.color.cobalt.800}",
-        "$description": "A link in running text. In light it is a step darker than `sys.action.primary.bg` so it holds at body size; in dark the two are one value, and only their jobs differ."
+        "$description": "A link in running text, always underlined. In light it is a step darker than `sys.action.primary.bg` so it holds at body size; in dark the two are one value."
       },
       "on-selected": {
         "$type": "color",
@@ -253,7 +253,7 @@
         "text": {
           "$type": "color",
           "$value": "{ref.color.cobalt.800}",
-          "$description": "Words on an informative tint, at 4.5:1. In light the same value as `sys.text.link`, which it is not: an alert links only where a link is written."
+          "$description": "Words on an informative tint, at 4.5:1. It shares its value with `sys.text.link` in both themes, so a link inside an alert is underlined to stand apart."
         },
         "bg": {
           "$type": "color",
@@ -276,12 +276,12 @@
       "bg": {
         "$type": "color",
         "$value": "{ref.color.cobalt.50}",
-        "$description": "The fill of a row, option or chip the user has chosen, which stays until they choose otherwise. Its label reads `sys.text.on-selected` and its edge `sys.selected.border`."
+        "$description": "The fill of a row, option or chip the user has chosen. Too faint to carry the choice alone, so a check or a heavier label goes with it; its label reads `sys.text.on-selected`."
       },
       "border": {
         "$type": "color",
         "$value": "{ref.color.cobalt.600}",
-        "$description": "Cobalt on the edge of a chosen row or option. The same value as `sys.focus.ring` in both themes, so selection and focus are told apart by where the colour sits, not by the colour."
+        "$description": "Cobalt on the edge of a chosen row or option, the same value as `sys.focus.ring` in both themes. The two part by form: a selection carries a check or a heavier label, and the ring sits outside."
       }
     },
     "focus": {
