@@ -56,7 +56,7 @@ These `$description`s change, word for word:
 | `ref.color.ink.700`   | shared file      | A step darker, for text on paper that carries more than metadata and for the edge of a field under the pointer. On ink, a line that has to be seen.                                     |
 | `ref.color.paper.300` | shared file      | A line meant to be seen on paper. Far enough from ink for the quietest text that still has to clear 4.5:1, and for the edge of a field under the pointer.                               |
 
-After specs 007 to 009 the three source files are byte for byte the design workspace's export of 25 September 2026, which is how the package map says `src/` is kept.
+After specs 007 to 009 the three source files are the design workspace's export of 25 September 2026, which is how the package map says `src/` is kept; the only difference is the newline prettier adds at the end of each file.
 
 ## Tests
 

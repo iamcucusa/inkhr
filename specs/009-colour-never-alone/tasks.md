@@ -5,7 +5,7 @@ Work on the branch `007-field-hover-role`, after the tasks of specs 007 and 008.
 ## 1. Rewrite the four sentences
 
 1. Change the four `$description`s in both theme files as in "The sentences" in `design.md`. The after-edit hook runs the check on each edit.
-2. Check: `npx nx run tokens:check` passes; the three source files are byte for byte the design workspace's export.
+2. Check: `npx nx run tokens:check` passes; the three source files match the design workspace's export, apart from the newline prettier adds at the end of each file.
 
 Commit: `docs(tokens): say what tells a link and a selection apart besides colour`
 
