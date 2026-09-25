@@ -129,6 +129,9 @@ Recipes for the components people meet most. Every component is an Angular compo
 - Do use one cobalt primary per view. Don't add a second accent colour or fill a button with a status or data colour; the destructive button is the one exception.
 - Do let paper and ink carry the screen. Don't put texture, gradients or photographs behind a table, form or chart.
 - Do show status with a dot or icon and a word. Don't rely on colour alone.
+- Do underline a link in running text or inside an alert. Don't let colour be a link's only cue.
+- Do give a selected option a check or a heavier label. Don't rely on the selection wash, which barely shows.
+- Do mark the current page on an icon-only rail with a marker on its leading edge, and show the entry under the arrow keys in a list or a menu with the focus ring. Don't use the selection wash for it.
 - Do put the label above the field and help below it. Don't use the placeholder as the label.
 - Do write sentence case, verbs on buttons and errors that say what to do next. Don't use exclamation marks, emoji, em dashes or chains of middle dots.
 - Do use Instrument Serif for one italic phrase on welcome surfaces. Don't use it for headings, labels or body copy.
@@ -154,7 +157,7 @@ Recipes for the components people meet most. Every component is an Angular compo
 
 ## Accessibility
 
-WCAG 2.2 AA is the floor. Every text pairing reaches 4.5:1 on its surface and every boundary and focus indicator 3:1, in both themes, computed from the tokens. Every control is at least 24 by 24 px, and touch layouts use controls of 40 px and up. Every control has a name; repeated controls carry the row's name. Status is never colour alone, and reduced motion is respected.
+WCAG 2.2 AA is the floor. Every text pairing reaches 4.5:1 on its surface and every boundary and focus indicator 3:1, in both themes, computed from the tokens. Every control is at least 24 by 24 px, and touch layouts use controls of 40 px and up. Every control has a name; repeated controls carry the row's name. Status is never colour alone, and reduced motion is respected. Colour is never the only cue: a link carries an underline, a selection a check or a heavier label, a status its icon and word, and focus the ring.
 
 ## Agent prompt guide
 
