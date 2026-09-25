@@ -7,7 +7,7 @@ The order follows the dependencies: the failing tests, the lint and the role, th
 ## 1. Write the failing tests
 
 1. In `packages/tokens/tests/check.test.mjs`, add the four fixtures from "Tests" in `design.md` beside the naming fixtures.
-2. Check: `npx nx run tokens:test` fails on the three fixtures that expect `inkhr/naming` with rules that do not match, and on "the new role in one theme only", which passes a source that has no such role; every other test passes.
+2. Check: `npx nx run tokens:test` fails on "the new role in one theme only", which passes a source that has no such role; every other test passes. The three naming fixtures pass before and after the lint change, since the grammar rejects every neutral state today; that the lint accepts `sys.border.strong-hover` is shown by the source passing once the role is added, and by the rule file row.
 
 Commit: `test(tokens): add failing tests for the field hover role`
 
