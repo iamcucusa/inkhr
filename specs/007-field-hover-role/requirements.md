@@ -39,7 +39,7 @@ Give a field under the pointer an edge of its own. Today `sys.border.focus` is d
 - Every fixture in "Tests" in `design.md` gives the rules named there in `npx nx run tokens:test`, and the new fixtures failed in the commit that added them.
 - Every row of the rule file passes its test, the new row of rule 3 included.
 - After `npx nx run tokens:build`, `dist/css/light.css` declares `--ink-sys-border-strong-hover` under `:root` and `dist/css/dark.css` under `[data-ink-theme="dark"]`, and the TypeScript, Swift and Kotlin outputs carry the role.
-- `git grep -n "hovered or focused"` finds nothing.
+- `git grep -n "hovered or focused" -- packages` finds nothing.
 - `npm test`, `npm run check:names` and `npx nx run-many -t lint build typecheck test check` pass locally and in CI.
 - `packages/tokens/AGENTS.md` stays under 60 lines.
 - `npx changeset status` passes.

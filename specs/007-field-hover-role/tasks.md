@@ -21,7 +21,7 @@ Depends on task 1. Two commits.
 Commit: `feat(tokens): let a neutral name carry a state where the list allows it`
 
 3. Add `sys.border.strong-hover` to both theme files, and change the four descriptions, as in "The role" and "The sentences" in `design.md`. The after-edit hook runs the check on each edit.
-4. Check: `npx nx run tokens:check` passes; every `check.test.mjs` fixture passes; `git grep -n "hovered or focused"` finds nothing; after `npx nx run tokens:build`, the four outputs carry the role at the values in "Done when" in `requirements.md`.
+4. Check: `npx nx run tokens:check` passes; every `check.test.mjs` fixture passes; `git grep -n "hovered or focused" -- packages` finds nothing; after `npx nx run tokens:build`, the four outputs carry the role at the values in "Done when" in `requirements.md`.
 
 Commit: `feat(tokens): add the field hover role`
 
