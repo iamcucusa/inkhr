@@ -1,6 +1,6 @@
 // The InkHR rules for gate 1, as a local Terrazzo plugin. Each rule's severity is set in terrazzo.config.mjs.
-// The grammar is the one in specs/004-colour-tokens-check/design.md; descriptions, naming and role references
-// cover the types in covered-types.mjs, and the other rules cover every token.
+// The grammar is the one in specs/004-colour-tokens-check/design.md plus the neutral states of spec 007;
+// descriptions, naming and role references cover the types in covered-types.mjs, and the other rules cover every token.
 import { readFileSync } from 'node:fs';
 import { basename, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -62,6 +62,8 @@ const NEUTRAL = {
   ],
   border: ['default', 'strong', 'subtle', 'focus'],
 };
+// A neutral name takes a state after its variant only where the product draws one.
+const NEUTRAL_STATES = { border: { strong: ['hover'] } };
 
 const oneOf = (words) => `(${words.join('|')})`;
 // A component variant is one kebab-case word or a number, but never a property word.
@@ -75,6 +77,12 @@ const GRAMMAR = [
   ...Object.entries(NEUTRAL).map(
     ([family, variants]) =>
       new RegExp(`^sys\\.${family}\\.${oneOf(variants)}$`),
+  ),
+  ...Object.entries(NEUTRAL_STATES).flatMap(([family, variants]) =>
+    Object.entries(variants).map(
+      ([variant, states]) =>
+        new RegExp(`^sys\\.${family}\\.${variant}-${oneOf(states)}$`),
+    ),
   ),
   /^image\.treatment\.tint$/,
 ];
