@@ -26,7 +26,7 @@ The check also runs after an agent edits `src/`, before a commit that stages `sr
 
 - `ref.color.base.{white|black|transparent}`; `ref.color.{hue}.{step}`, hue one of `paper`, `ink`, `cobalt`, `moss`, `amber`, `brick`, `teal`, `plum`, `olive`, `violet`, `azure`.
 - `sys.{role}[.{variant}].{property}[-{state}]`: role `action`, `status`, `data`, `signal`, `selected`, `focus`, `avatar`; property `bg`, `text`, `border`, `icon`, `ring`; state `hover`, `pressed`. `sys.action.primary.bg-hover`, `sys.data.1.bg`.
-- `sys.surface.{page|default|raised|sunken|inverse}`, `sys.text.{primary|secondary|tertiary|disabled|link|on-selected|placeholder|inverse}`, `sys.border.{default|strong|subtle|focus}`.
+- `sys.surface.{page|default|raised|sunken|inverse}`, `sys.text.{primary|secondary|tertiary|disabled|link|on-selected|placeholder|inverse}`, `sys.border.{default|strong|strong-hover|subtle|focus}`. A neutral name takes a state only where `NEUTRAL_STATES` in the lint lists one: `strong-hover` today.
 - `image.treatment.tint`, the duotone tint, the one colour token outside `sys`.
 
 ## Rules, each with what enforces it
@@ -55,4 +55,4 @@ The check also runs after an agent edits `src/`, before a commit that stages `sr
 ## Where to look next
 
 - `../../DESIGN.md`: what each role is for. `../../GAPS.md`: before adding a role.
-- `../../specs/003-colour-tokens-build/`, `../../specs/004-colour-tokens-check/` and `../../specs/006-colour-role-references/`: why the build and the check are shaped as they are.
+- `../../specs/003-colour-tokens-build/`, `../../specs/004-colour-tokens-check/`, `../../specs/006-colour-role-references/` and `../../specs/007-field-hover-role/`: why the build and the check are shaped as they are.
