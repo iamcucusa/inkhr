@@ -25,6 +25,7 @@ Ask before building anything that depends on these.
 - **`ink-icon`.** Icons are a sprite with CSS classes; whether a component is needed is decided when the icon work starts. It is in no stage of the roadmap yet: a person adds it before work starts.
 - **Control height tokens.** Heights 32, 40 and 48 (compact 28, 32 and 40) are not tokens, so there are no density token files; density is the `data-density` attribute. They arrive in Stage 0, with the density pair.
 - **Components outside the inventory.** `components.json` is the full list; a component or variant that is not in it does not exist. Stage 1 builds the components it lists; anything else needs a decision first.
+- **A check for non-colour cues.** Nothing yet fails a link in running text without an underline or a selected option without a check or heavier label; axe's `link-in-text-block` rule covers links once gate 3 runs component examples in Stage 1.
 - **Unchosen tools.** Rows marked "To choose" in `docs/stack-and-dependencies.md` are open; do not pick one. Each row's stage is in that file's Stage column.
 
 ## When you hit a gap
