@@ -142,6 +142,13 @@
           "$description": "A secondary button's label, sitting on the surface and not on a fill, so it takes the same value as `sys.text.primary` in both themes."
         }
       },
+      "tertiary": {
+        "bg": {
+          "$type": "color",
+          "$value": "{ref.color.base.transparent}",
+          "$description": "The tertiary button at rest has no fill, so the surface behind shows through and only its label marks it. It reads quieter than the secondary button, which draws `sys.action.secondary.border`."
+        }
+      },
       "danger": {
         "bg": {
           "$type": "color",
