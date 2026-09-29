@@ -8,9 +8,9 @@ Stage 0, colour slice 1 done: specs 003 to 005 merged on 23 September 2026, and 
 
 ## Specs
 
-| Stage | Spec                      | Status       | Next action           | Who   | Updated    |
-| ----- | ------------------------- | ------------ | --------------------- | ----- | ---------- |
-| 0     | `010-colour-descriptions` | implementing | task 4, the changeset | agent | 2026-09-29 |
+| Stage | Spec                      | Status    | Next action              | Who   | Updated    |
+| ----- | ------------------------- | --------- | ------------------------ | ----- | ---------- |
+| 0     | `010-colour-descriptions` | in review | task 5, the pull request | agent | 2026-09-29 |
 
 Status, and who sets it: not started (nobody yet); drafted (the agent, in the commit that adds the spec folder); approved (the design lead, or the agent in its next commit on the design lead's word); tests committed (the agent, with the failing tests); implementing (the agent; each task commit moves Next action to the next task); in review (the agent, in the last commit before the pull request opens); blocked (the agent or a person; Next action names what unblocks it and who).
 
