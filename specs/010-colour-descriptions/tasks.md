@@ -2,10 +2,10 @@
 
 Work on the branch `010-colour-descriptions`. One commit per task unless a task says otherwise. Every task commit also moves the 010 row in `PROGRESS.md`. When a task finds the spec wrong, the correction is its own `docs(repo)` commit. Open one pull request at the end; a person merges it with a rebase merge.
 
-## 1. Write the verification and the failing test
+## 1. Write the comparison and the failing test
 
-1. Add `changes.mjs` and `verify.mjs` to this folder as in "The scripts" in `design.md`, and the fixture in "Tests" to `packages/tokens/tests/check.test.mjs`.
-2. Check: `node specs/010-colour-descriptions/verify.mjs` fails, naming the missing role and the 59 unchanged sentences; `npx nx run tokens:test` fails on "the tertiary fill in one theme only" and passes everything else.
+1. Write the comparison in "How it is applied and checked" in `design.md`, outside the repository, and add the fixture in "Tests" to `packages/tokens/tests/check.test.mjs`.
+2. Check: the comparison fails, naming the missing role and the 59 unchanged sentences; `npx nx run tokens:test` fails on "the tertiary fill in one theme only" and passes everything else.
 
 Commit: `test(tokens): add failing checks for the tertiary fill and the sentences`
 
@@ -13,13 +13,13 @@ Commit: `test(tokens): add failing checks for the tertiary fill and the sentence
 
 Depends on task 1. Two commits.
 
-1. Add `apply.mjs` to this folder and run `node specs/010-colour-descriptions/apply.mjs role`.
-2. Check: `npx nx run tokens:check` passes; every `check.test.mjs` fixture passes; `verify.mjs` now fails only on the 58 sentences still to come.
+1. Write the role and the sentence of `ref.color.base.transparent` by script, as in "How it is applied and checked" in `design.md`.
+2. Check: `npx nx run tokens:check` passes; every `check.test.mjs` fixture passes; the comparison now fails only on the 58 sentences still to come.
 
 Commit: `feat(tokens): add the tertiary fill role`
 
-3. Run `node specs/010-colour-descriptions/apply.mjs descriptions`.
-4. Check: `verify.mjs` passes; `npx nx run tokens:check` passes; after `npx nx run tokens:build`, the outputs carry the role as in "Done when" in `requirements.md`, and `npx nx run tokens:test` passes.
+3. Write the other 58 sentences by the same script.
+4. Check: the comparison passes; `npx nx run tokens:check` passes; after `npx nx run tokens:build`, the outputs carry the role as in "Done when" in `requirements.md`, and `npx nx run tokens:test` passes.
 
 Commit: `docs(tokens): rewrite the colour descriptions after the workspace audit`
 
