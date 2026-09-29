@@ -4,13 +4,14 @@ State across sessions, for people and agents. Read this, then `git log --oneline
 
 ## Now
 
-Stage 0, colour slice 1 done: specs 003 to 005 merged on 23 September 2026, and spec 006, which closes a gap found in gate 1 after the slice, on 24 September 2026. Specs 007 to 009, the field hover role, the dark boundary step and the non-colour cues from decision 26 in the design workspace, merged on 25 September 2026. Spec 010, the colour descriptions from the design workspace's audit and the tertiary fill role, is in progress. Next action: the tasks below, then colour slice 2 (the contrast gate) or the next token group, as the design lead chooses.
+Stage 0, colour slice 1 done: specs 003 to 005 merged on 23 September 2026, and spec 006, which closes a gap found in gate 1 after the slice, on 24 September 2026. Specs 007 to 009, the field hover role, the dark boundary step and the non-colour cues from decision 26 in the design workspace, merged on 25 September 2026. Spec 010, the colour descriptions from the design workspace's audit and the tertiary fill role, merged on 29 September 2026. Next action: the design lead chooses what comes next, colour slice 2 (the contrast gate) or the next token group.
 
 ## Specs
 
-| Stage | Spec                      | Status    | Next action              | Who   | Updated    |
-| ----- | ------------------------- | --------- | ------------------------ | ----- | ---------- |
-| 0     | `010-colour-descriptions` | in review | task 5, the pull request | agent | 2026-09-29 |
+| Stage | Spec | Status | Next action | Who | Updated |
+| ----- | ---- | ------ | ----------- | --- | ------- |
+
+No spec is in progress.
 
 Status, and who sets it: not started (nobody yet); drafted (the agent, in the commit that adds the spec folder); approved (the design lead, or the agent in its next commit on the design lead's word); tests committed (the agent, with the failing tests); implementing (the agent; each task commit moves Next action to the next task); in review (the agent, in the last commit before the pull request opens); blocked (the agent or a person; Next action names what unblocks it and who).
 
@@ -33,6 +34,7 @@ Human correction rounds after a spec was approved, the measure decision 17 sets 
 | `007-field-hover-role`       | 0      | #10          |
 | `008-dark-boundary-step`     | 0      | #10          |
 | `009-colour-never-alone`     | 0      | #10          |
+| `010-colour-descriptions`    | 1      | #12          |
 
 ## Stages
 
