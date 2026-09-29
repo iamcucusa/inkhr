@@ -42,7 +42,7 @@
       "tertiary": {
         "$type": "color",
         "$value": "{ref.color.ink.600}",
-        "$description": "Metadata and help: a timestamp, a count, the line under a field saying what to enter. It shares a value with `sys.text.placeholder` in both themes, and only the job tells them apart."
+        "$description": "Metadata and help: a timestamp, a count, the line under a field saying what to enter. The same value as `sys.text.placeholder` in both themes, which sits inside the field and goes on the first keystroke."
       },
       "disabled": {
         "$type": "color",
@@ -74,12 +74,12 @@
       "default": {
         "$type": "color",
         "$value": "{ref.color.paper.300}",
-        "$description": "Between the hairline of `sys.border.subtle` and the 3:1 boundary a control needs: a divider that should be seen and is not itself something to use."
+        "$description": "A divider between sections that has to be seen, with more contrast on its surface than the hairline of `sys.border.subtle`. Never the edge of a control, which needs 3:1 and reads `sys.border.strong`."
       },
       "strong": {
         "$type": "color",
         "$value": "{ref.color.paper.500}",
-        "$description": "The 3:1 boundary of a control: a field, a checkbox, a secondary button's edge. It holds one value in both themes, because that floor has to be cleared on paper and on ink alike."
+        "$description": "The 3:1 boundary of a control: a field, a checkbox, a secondary button's edge. It holds one value in both themes, because that minimum has to be met on paper and on ink alike."
       },
       "strong-hover": {
         "$type": "color",
@@ -107,7 +107,7 @@
         "bg-hover": {
           "$type": "color",
           "$value": "{ref.color.cobalt.800}",
-          "$description": "One ramp step further under the pointer, so the change reads in either theme. In light it is the same value as `sys.text.link`; in dark the two part."
+          "$description": "One ramp step further under the pointer, so the change reads in either theme. In light it is the same value as `sys.text.link`; in dark they differ."
         },
         "bg-pressed": {
           "$type": "color",
@@ -129,7 +129,7 @@
         "bg-hover": {
           "$type": "color",
           "$value": "{ref.color.cobalt.50}",
-          "$description": "What a secondary button owns outright, and its only part. In light the same value as `sys.selected.bg`, so a hovered button and a selected row match; in dark it steps up the neutral axis instead."
+          "$description": "A secondary button under the pointer changes its fill and nothing else, so its edge and label stay. In light the same value as `sys.selected.bg`; in dark the same value as `sys.surface.raised`."
         },
         "border": {
           "$type": "color",
@@ -171,12 +171,12 @@
       "bg": {
         "$type": "color",
         "$value": "{ref.color.cobalt.700}",
-        "$description": "Cobalt where it reports rather than invites: a checked box, a switch that is on, a tab underline, a count badge. The same value as `sys.action.primary.bg`, which is the thing to press."
+        "$description": "Cobalt where it reports rather than invites: a checked box, a switch that is on, a tab underline, a progress fill, a count badge. The same value as `sys.action.primary.bg`, the thing to press."
       },
       "bg-hover": {
         "$type": "color",
         "$value": "{ref.color.cobalt.800}",
-        "$description": "One ramp step further when the pointer is on a signal that can be changed, a checkbox or a switch. The same value as `sys.action.primary.bg-hover` in both themes."
+        "$description": "Hovering a checkbox or a switch that can be changed takes its fill one ramp step further. The same value as `sys.action.primary.bg-hover` in both themes."
       },
       "bg-pressed": {
         "$type": "color",
@@ -204,7 +204,7 @@
         "border": {
           "$type": "color",
           "$value": "{ref.color.moss.600}",
-          "$description": "Around a success message, at 3:1 on its tint, the same floor its mark clears."
+          "$description": "Around a success message, at least 3:1 against its tint, as its mark is."
         },
         "icon": {
           "$type": "color",
@@ -226,7 +226,7 @@
         "border": {
           "$type": "color",
           "$value": "{ref.color.amber.600}",
-          "$description": "Around a warning message, at 3:1 on its tint, the same floor its mark clears."
+          "$description": "Around a warning message, at least 3:1 against its tint, as its mark is."
         },
         "icon": {
           "$type": "color",
@@ -248,7 +248,7 @@
         "border": {
           "$type": "color",
           "$value": "{ref.color.brick.600}",
-          "$description": "Around an error message, at 3:1 on its tint. In light the same value as `sys.status.danger.icon`, the only one of the four where the edge and the mark do not part."
+          "$description": "Around an error message, at least 3:1 against its tint, as its mark is. In light the same value as `sys.status.danger.icon`, the one status that draws its edge and mark in one colour."
         },
         "icon": {
           "$type": "color",
@@ -270,12 +270,12 @@
         "border": {
           "$type": "color",
           "$value": "{ref.color.cobalt.600}",
-          "$description": "Around an informative message, at 3:1 on its tint, the same floor its mark clears."
+          "$description": "Around an informative message, at least 3:1 against its tint, as its mark is. In light the same value as `sys.focus.ring`, which appears only on a control that has focus."
         },
         "icon": {
           "$type": "color",
           "$value": "{ref.color.cobalt.700}",
-          "$description": "Drawn at 3:1 on the tint, the info mark. The four status marks have four different outlines, so a status reads in greyscale and never rests on its colour."
+          "$description": "Drawn at 3:1 on the tint, the info mark, in dark the same value as `sys.focus.ring`. The four status marks have four different outlines, so a status reads in greyscale and never rests on its colour."
         }
       }
     },
@@ -283,12 +283,12 @@
       "bg": {
         "$type": "color",
         "$value": "{ref.color.cobalt.50}",
-        "$description": "The fill of a row, option or chip the user has chosen. Too faint to carry the choice alone, so a check or a heavier label goes with it; its label reads `sys.text.on-selected`."
+        "$description": "Behind a row, option or chip the user has chosen. Too faint to carry the choice alone, so a check or a heavier label goes with it; its label reads `sys.text.on-selected`."
       },
       "border": {
         "$type": "color",
         "$value": "{ref.color.cobalt.600}",
-        "$description": "Cobalt on the edge of a chosen row or option, the same value as `sys.focus.ring` in both themes. The two part by form: a selection carries a check or a heavier label, and the ring sits outside."
+        "$description": "Cobalt on the edge of a chosen row or option, the same value as `sys.focus.ring` in both themes. They differ by form: a selection carries a check or a heavier label, and the ring sits outside."
       }
     },
     "focus": {
@@ -315,42 +315,42 @@
         "bg": {
           "$type": "color",
           "$value": "{ref.color.teal.500}",
-          "$description": "The fill of the mark of data series 1: a bar, a segment, a line or a key. For leave types, departments and chart series, assigned in order. Never a button fill, never text."
+          "$description": "Data series 1 fills its bar, segment, line or legend swatch: leave types, departments and chart series, in order. Never a button fill or text: the label beside its swatch reads `sys.text.primary`."
         }
       },
       "2": {
         "bg": {
           "$type": "color",
           "$value": "{ref.color.plum.800}",
-          "$description": "The fill of the mark of data series 2: a bar, a segment, a line or a key. For leave types, departments and chart series, assigned in order. Never a button fill, never text."
+          "$description": "Data series 2 fills its bar, segment, line or legend swatch: leave types, departments and chart series, in order. Never a button fill or text: the label beside its swatch reads `sys.text.primary`."
         }
       },
       "3": {
         "bg": {
           "$type": "color",
           "$value": "{ref.color.olive.500}",
-          "$description": "The fill of the mark of data series 3: a bar, a segment, a line or a key. For leave types, departments and chart series, assigned in order. Never a button fill, never text."
+          "$description": "Data series 3 fills its bar, segment, line or legend swatch: leave types, departments and chart series, in order. Never a button fill or text: the label beside its swatch reads `sys.text.primary`."
         }
       },
       "4": {
         "bg": {
           "$type": "color",
           "$value": "{ref.color.violet.700}",
-          "$description": "The fill of the mark of data series 4: a bar, a segment, a line or a key. For leave types, departments and chart series, assigned in order. Never a button fill, never text."
+          "$description": "Data series 4 fills its bar, segment, line or legend swatch: leave types, departments and chart series, in order. Never a button fill or text: the label beside its swatch reads `sys.text.primary`."
         }
       },
       "5": {
         "bg": {
           "$type": "color",
           "$value": "{ref.color.ink.600}",
-          "$description": "The fill of the mark of data series 5: a bar, a segment, a line or a key. For leave types, departments and chart series, assigned in order. Never a button fill, never text."
+          "$description": "Data series 5, the one grey series, fills its bar, segment, line or legend swatch in order. In light the same value as `sys.text.tertiary`, yet never text: its label reads `sys.text.primary`."
         }
       },
       "6": {
         "bg": {
           "$type": "color",
           "$value": "{ref.color.azure.600}",
-          "$description": "The fill of the mark of data series 6: a bar, a segment, a line or a key. For leave types, departments and chart series, assigned in order. Never a button fill, never text."
+          "$description": "Data series 6 fills its bar, segment, line or legend swatch: leave types, departments and chart series, in order. Never a button fill or text: the label beside its swatch reads `sys.text.primary`."
         }
       }
     },
@@ -396,7 +396,7 @@
       "tint": {
         "$type": "color",
         "$value": "{ref.color.cobalt.700}",
-        "$description": "The second half of the duotone: the cobalt laid over the grey photograph. Never a colour for anything else."
+        "$description": "The second half of the duotone: the cobalt laid over the grey photograph. It holds the same value as `sys.action.primary.bg` in both themes, and nothing but a photograph reads it."
       },
       "blend": {
         "$type": "string",
