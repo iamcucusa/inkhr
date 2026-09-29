@@ -42,7 +42,7 @@
             "alpha": 0,
             "hex": "#FFFFFF"
           },
-          "$description": "White at no opacity. The fill of a control that has none, such as the tertiary button, and the far end of the scrim over a wash."
+          "$description": "White at no opacity, so whatever sits behind shows through, in both themes. A component never reads it: the tertiary button at rest reads `sys.action.tertiary.bg`, which points here."
         }
       },
       "paper": {
