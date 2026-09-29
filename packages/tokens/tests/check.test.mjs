@@ -220,6 +220,11 @@ const FIXTURES = [
     ['inkhr/theme-parity'],
   ],
   [
+    'the tertiary fill in one theme only',
+    { [DARK]: (d) => delete d.sys.action.tertiary },
+    ['inkhr/theme-parity'],
+  ],
+  [
     'a role missing from the dark file',
     { [DARK]: (d) => delete d.sys.surface.inverse },
     ['inkhr/theme-parity'],
