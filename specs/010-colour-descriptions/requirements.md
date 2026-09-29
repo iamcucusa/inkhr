@@ -25,7 +25,7 @@ Bring the colour descriptions of the design workspace into the package: the `$de
 1. The `$description` of the 38 tokens in `packages/tokens/src/inkhr.tokens.json` and of the 21 roles in `src/modes/light.json` and `src/modes/dark.json` listed in `design.md` equals, byte for byte, the workspace's at `789e6ef`. The role sentences are the same in both theme files.
 2. Both theme files declare `sys.action.tertiary.bg` after `sys.action.secondary` and before `sys.action.danger`, with `$type` `color`, `$value` `{ref.color.base.transparent}` and the sentence in `design.md`, as the workspace has it.
 3. Nothing else in the three files changes: no other token is added or removed, and every other part of every token, and the order of the tokens, stays as main has it. After the change the three files equal the workspace's export at `789e6ef` apart from the newline prettier adds at the end of each file.
-4. A script in this spec folder compares main's source with the branch's and the workspace's, and fails unless requirements 1 to 3 hold and light and dark sentences are byte-identical for every role. It is written and committed before the source changes.
+4. Before the source changes, a comparison of main's source with the branch's and the workspace's fails, and after it passes only when requirements 1 to 3 hold and light and dark sentences are byte-identical for every role.
 5. `packages/tokens/tests/check.test.mjs` has a fixture for the new role in one theme only.
 6. `DESIGN.md` names the role in the colour table and the token names; `packages/tokens/AGENTS.md` names this spec in "Where to look next".
 7. The package change carries a changeset: minor, since a token is added and none is removed or renamed.
@@ -39,7 +39,7 @@ Bring the colour descriptions of the design workspace into the package: the `$de
 
 ## Done when
 
-- `node specs/010-colour-descriptions/verify.mjs` passes, and failed in the commit that added it.
+- Each of the three source files equals the workspace's export at `789e6ef` apart from the final newline: `diff <(git -C <workspace> show 789e6ef:tokens/<file>) packages/tokens/src/<file>` reports only the newline.
 - `npx nx run tokens:check` passes on both pairs of the source.
 - `npx nx run tokens:test` passes, and the new fixture failed in the commit that added it.
 - After `npx nx run tokens:build`, `dist/css/light.css` declares `--ink-sys-action-tertiary-bg` under `:root` and `dist/css/dark.css` under `[data-ink-theme="dark"]`, the TypeScript, Swift and Kotlin outputs carry the role, and no output carries a description.

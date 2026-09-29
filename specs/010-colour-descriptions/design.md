@@ -20,7 +20,7 @@ The value and the sentence are the same in both files. The role has no ratio of 
 
 ## The sentences
 
-Each token below takes the workspace's `$description` at `789e6ef`, byte for byte. The list is also `changes.mjs` in this folder, which the scripts read. The sentences themselves are not repeated here: the workspace export is their source, and `verify.mjs` compares each one with it.
+Each token below takes the workspace's `$description` at `789e6ef`, byte for byte. The sentences themselves are not repeated here: the workspace export is their source.
 
 ### `inkhr.tokens.json`, 38 tokens
 
@@ -49,18 +49,17 @@ Each token below takes the workspace's `$description` at `789e6ef`, byte for byt
 
 `sys.action.secondary.text` keeps main's sentence. At `143f519` the workspace's differed from main only by the pasted fragment `'action.tertiary.bg':'transparent',`; `789e6ef` removes it.
 
-## The scripts
+## How it is applied and checked
 
-Three files in this folder, run from the repository root. They are a record of how this change was made and checked, not part of the package, and they are not run in CI: they read main at `83485c3` and the design workspace, and once this work merges the comparison they make is spent.
+The sentences and the role are written by a script from the workspace export, editing the text of the source so no byte outside them moves: first the role and the sentence of `ref.color.base.transparent`, then the other 58 sentences, one commit each. A second script compares main at `83485c3`, the branch and the export at `789e6ef`, and fails unless:
 
-- **`changes.mjs`:** the two commits the change is measured against, `83485c3` in this repository and `789e6ef` in the workspace, and the token lists above.
-- **`verify.mjs`:** reads main's three source files with `git show 83485c3:<path>`, the branch's from the working tree and the workspace's with `git show 789e6ef:<path>` in the workspace, found at `--workspace <path>`, `INKHR_DESIGN` or `../inkhr-design` beside the main checkout. It prints one line per failure and exits 1 unless:
-  1. no token is removed, and the only token added is `sys.action.tertiary.bg`, in both theme files and equal to the workspace's, key for key;
-  2. the tokens whose `$description` differs from main are exactly the listed ones, per file, and every other key of every existing token, and the order of the tokens, is main's;
-  3. every changed or new sentence equals the workspace's;
-  4. every role's sentence is byte-identical in the light and dark files;
-  5. each file, parsed, equals the workspace's export, parsed, key order included.
-- **`apply.mjs`:** writes the change from the workspace export. `node specs/010-colour-descriptions/apply.mjs role` adds the role to both theme files and the new sentence of `ref.color.base.transparent`; `… apply.mjs descriptions` writes the other 58 sentences. It changes only those fields, then formats the three files with prettier.
+1. no token is removed, and the only token added is `sys.action.tertiary.bg`, in both theme files and equal to the workspace's, key for key;
+2. the tokens whose `$description` differs from main are exactly the listed ones, per file, and every other key of every existing token, and the order of the tokens, is main's;
+3. every changed or new sentence equals the workspace's;
+4. every role's sentence is byte-identical in the light and dark files;
+5. each file, parsed, equals the workspace's export, parsed, key order included.
+
+Both scripts are one-off and stay out of the repository: they read a fixed commit of main and a checkout of the design workspace, and once this work merges the comparison is spent. What lasts is the parity fixture below, and the check any later reader can repeat: the source equals the export at `789e6ef` apart from the final newline.
 
 ## Tests
 
@@ -102,6 +101,6 @@ For the design lead's approval with the spec:
 1. **The source is `789e6ef`, not `143f519`.** The fragment in `sys.action.secondary.text` was an editing slip, fixed in the workspace before the sentences came over, so the source still equals the export apart from the final newline.
 2. **The role lands with the sentence that names it,** in one commit, rather than in a later spec.
 3. **No lint change.** The grammar's variant slot takes any kebab-case word, so `tertiary` needs no list entry, as `primary` and `secondary` have none.
-4. **The verification lives in the spec folder, not in `tokens:test`.** It compares against a fixed commit of main and a checkout of the design workspace, which CI does not have. The lasting test is the parity fixture.
+4. **The scripts stay out of the repository and out of `tokens:test`.** They compare against a fixed commit of main and a checkout of the design workspace, which CI does not have, and have no use once the work merges. The lasting test is the parity fixture.
 5. **The design guide names the role, and no recipe.** `DESIGN.md` has no tertiary button recipe; writing one is component work for Stage 1.
 6. **`feat(tokens)` for the role, `docs(tokens)` for the sentences, and one minor changeset** for the pull request, since consumers gain a variable.
