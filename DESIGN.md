@@ -47,6 +47,7 @@ Paper and ink carry the interface; cobalt is the only action and signal hue. Sta
 | Edge, under the pointer | `sys.border.strong-hover`     | `var(--ink-sys-border-strong-hover)`     | The edge of a field under the pointer. Focus reads `sys.border.focus` and the ring.                                                                            |
 | Cobalt                  | `sys.action.primary.bg`       | `var(--ink-sys-action-primary-bg)`       | The one action colour: the primary button and tabs. Links read `sys.text.link`, selection `sys.selected.bg` and `sys.selected.border`, focus `sys.focus.ring`. |
 | Cobalt, pressed ink     | `sys.action.primary.bg-hover` | `var(--ink-sys-action-primary-bg-hover)` | Primary button on hover.                                                                                                                                       |
+| Tertiary fill           | `sys.action.tertiary.bg`      | `var(--ink-sys-action-tertiary-bg)`      | No fill: the tertiary button at rest shows the surface behind. A component never reads `ref.color.base.transparent`.                                           |
 | Selected wash           | `sys.selected.bg`             | `var(--ink-sys-selected-bg)`             | Selected rows, nav items and chips, with `sys.text.on-selected`.                                                                                               |
 | Inverse                 | `sys.surface.inverse`         | `var(--ink-sys-surface-inverse)`         | Tooltips and toasts.                                                                                                                                           |
 
@@ -210,7 +211,7 @@ The closed set. Values are in the token files; never invent a name.
 - `sys.surface.*`: page, default, raised, sunken, inverse
 - `sys.text.*`: primary, secondary, tertiary, disabled, link, on-selected, placeholder, inverse
 - `sys.border.*`: default, strong, strong-hover, subtle, focus
-- `sys.action.*`: primary.bg, primary.bg-hover, primary.bg-pressed, primary.text, secondary.bg, secondary.bg-hover, secondary.border, secondary.text, danger.bg, danger.bg-hover, danger.text
+- `sys.action.*`: primary.bg, primary.bg-hover, primary.bg-pressed, primary.text, secondary.bg, secondary.bg-hover, secondary.border, secondary.text, tertiary.bg, danger.bg, danger.bg-hover, danger.text
 - `sys.signal.*`: bg, bg-hover, bg-pressed, text
 - `sys.status.*`: success.text, success.bg, success.border, success.icon, warning.text, warning.bg, warning.border, warning.icon, danger.text, danger.bg, danger.border, danger.icon, info.text, info.bg, info.border, info.icon
 - `sys.selected.*`: bg, border
