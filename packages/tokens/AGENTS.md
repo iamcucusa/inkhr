@@ -55,4 +55,4 @@ The check also runs after an agent edits `src/`, before a commit that stages `sr
 ## Where to look next
 
 - `../../DESIGN.md`: what each role is for. `../../GAPS.md`: before adding a role.
-- `../../specs/003-colour-tokens-build/`, `../../specs/004-colour-tokens-check/`, `../../specs/006-colour-role-references/`, `../../specs/007-field-hover-role/`, `../../specs/008-dark-boundary-step/`, `../../specs/009-colour-never-alone/`, `../../specs/010-colour-descriptions/` and `../../specs/011-dark-selection-wash/`: why the build, the check, the values and the sentences are shaped as they are.
+- `../../specs/003-colour-tokens-build/`, `../../specs/004-colour-tokens-check/`, `../../specs/006-colour-role-references/`, `../../specs/007-field-hover-role/`, `../../specs/008-dark-boundary-step/`, `../../specs/009-colour-never-alone/`, `../../specs/010-colour-descriptions/`, `../../specs/011-dark-selection-wash/` and `../../specs/012-dark-avatar-disc/`: why the build, the check, the values and the sentences are shaped as they are.
