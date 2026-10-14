@@ -357,13 +357,13 @@
           "$value": {
             "colorSpace": "srgb",
             "components": [
-              0.0275,
-              0.0392,
-              0.3529
+              0.1098,
+              0.1451,
+              0.2471
             ],
-            "hex": "#070A5A"
+            "hex": "#1C253F"
           },
-          "$description": "The wash on ink: the tint under an info message and a selected row, as 50 is on paper. The darkest cobalt there is."
+          "$description": "The wash on ink: the tint under an info message and a selected row, as 50 is on paper. The darkest cobalt and among the least saturated, so on ink it reads as a tint, never as navy."
         }
       },
       "moss": {
