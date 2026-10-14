@@ -35,21 +35,21 @@ People: employees requesting time off and checking payslips, managers approving 
 
 Paper and ink carry the interface; cobalt is the only action and signal hue. Status and data colours never colour body text and never fill a button, with one exception: brick fills the destructive button, `sys.action.danger.bg`. Components read the role through its CSS variable and never a hex value or a primitive such as `ref.color.cobalt.700`; the token files hold the values.
 
-| Name                    | Role                          | CSS variable                             | Use                                                                                                                                                            |
-| ----------------------- | ----------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Paper                   | `sys.surface.page`            | `var(--ink-sys-surface-page)`            | The canvas of every screen. Near-white, neutral, never tinted.                                                                                                 |
-| Card                    | `sys.surface.default`         | `var(--ink-sys-surface-default)`         | Cards, fields, dialogs, the app bar. The surface text is measured against.                                                                                     |
-| Sunken                  | `sys.surface.sunken`          | `var(--ink-sys-surface-sunken)`          | Recessed areas inside a card, one step below it.                                                                                                               |
-| Ink                     | `sys.text.primary`            | `var(--ink-sys-text-primary)`            | Body text, headings, values. The mark a person makes.                                                                                                          |
-| Quiet ink               | `sys.text.secondary`          | `var(--ink-sys-text-secondary)`          | Metadata, captions, secondary labels.                                                                                                                          |
-| Hairline                | `sys.border.subtle`           | `var(--ink-sys-border-subtle)`           | Dividers between rows and sections.                                                                                                                            |
-| Edge                    | `sys.border.default`          | `var(--ink-sys-border-default)`          | Card boundaries. A field or other control reads `sys.border.strong`.                                                                                           |
-| Edge, under the pointer | `sys.border.strong-hover`     | `var(--ink-sys-border-strong-hover)`     | The edge of a field under the pointer. Focus reads `sys.border.focus` and the ring.                                                                            |
-| Cobalt                  | `sys.action.primary.bg`       | `var(--ink-sys-action-primary-bg)`       | The one action colour: the primary button and tabs. Links read `sys.text.link`, selection `sys.selected.bg` and `sys.selected.border`, focus `sys.focus.ring`. |
-| Cobalt, pressed ink     | `sys.action.primary.bg-hover` | `var(--ink-sys-action-primary-bg-hover)` | Primary button on hover.                                                                                                                                       |
-| Tertiary fill           | `sys.action.tertiary.bg`      | `var(--ink-sys-action-tertiary-bg)`      | No fill: the tertiary button at rest shows the surface behind. A component never reads `ref.color.base.transparent`.                                           |
-| Selected wash           | `sys.selected.bg`             | `var(--ink-sys-selected-bg)`             | Selected rows, nav items and chips, with `sys.text.on-selected`.                                                                                               |
-| Inverse                 | `sys.surface.inverse`         | `var(--ink-sys-surface-inverse)`         | Tooltips and toasts.                                                                                                                                           |
+| Name                    | Role                          | CSS variable                             | Use                                                                                                                                                                                                      |
+| ----------------------- | ----------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Paper                   | `sys.surface.page`            | `var(--ink-sys-surface-page)`            | The canvas of every screen. Near-white, neutral, never tinted.                                                                                                                                           |
+| Card                    | `sys.surface.default`         | `var(--ink-sys-surface-default)`         | Cards, fields, dialogs, the app bar. The surface text is measured against.                                                                                                                               |
+| Sunken                  | `sys.surface.sunken`          | `var(--ink-sys-surface-sunken)`          | Recessed areas inside a card, one step below it.                                                                                                                                                         |
+| Ink                     | `sys.text.primary`            | `var(--ink-sys-text-primary)`            | Body text, headings, values. The mark a person makes.                                                                                                                                                    |
+| Quiet ink               | `sys.text.secondary`          | `var(--ink-sys-text-secondary)`          | Metadata, captions, secondary labels.                                                                                                                                                                    |
+| Hairline                | `sys.border.subtle`           | `var(--ink-sys-border-subtle)`           | Dividers between rows and sections.                                                                                                                                                                      |
+| Edge                    | `sys.border.default`          | `var(--ink-sys-border-default)`          | Card boundaries. A field or other control reads `sys.border.strong`.                                                                                                                                     |
+| Edge, under the pointer | `sys.border.strong-hover`     | `var(--ink-sys-border-strong-hover)`     | The edge of a field under the pointer. Focus reads `sys.border.focus` and the ring.                                                                                                                      |
+| Cobalt                  | `sys.action.primary.bg`       | `var(--ink-sys-action-primary-bg)`       | The one action colour: the primary button. Tabs read the same cobalt through `sys.signal.bg`. Links read `sys.text.link`, selection `sys.selected.bg` and `sys.selected.border`, focus `sys.focus.ring`. |
+| Cobalt, pressed ink     | `sys.action.primary.bg-hover` | `var(--ink-sys-action-primary-bg-hover)` | Primary button on hover.                                                                                                                                                                                 |
+| Tertiary fill           | `sys.action.tertiary.bg`      | `var(--ink-sys-action-tertiary-bg)`      | No fill: the tertiary button at rest shows the surface behind. A component never reads `ref.color.base.transparent`.                                                                                     |
+| Selected wash           | `sys.selected.bg`             | `var(--ink-sys-selected-bg)`             | Selected rows, nav items and chips, with `sys.text.on-selected`.                                                                                                                                         |
+| Inverse                 | `sys.surface.inverse`         | `var(--ink-sys-surface-inverse)`         | Tooltips and toasts.                                                                                                                                                                                     |
 
 Contrast on the card surface: ink 18.4:1 light and 15.8:1 dark, quiet ink 6.7:1 and 12.8:1, white on cobalt 7.0:1, ink on dark cobalt 10.5:1.
 
@@ -70,26 +70,26 @@ Data colours tell leave types, departments and chart series apart, used in this 
 
 `font.family.sans` (Open Sans) for every component, in three weights. `font.family.display` (Instrument Serif) appears only at display size on welcome, onboarding and empty surfaces, as one italic phrase inside a headline ("Good morning, Ana. _Nothing waits on you today._"), never as a heading or body copy. Figures are tabular (`font.numeric.tabular`). Type sizes compile to rem, so 200 percent text size grows a control with its text. Components set a whole role through its variable, never a size, line height or weight of their own.
 
-| Role                     | CSS variable                    | Family                | Use                                                                            |
-| ------------------------ | ------------------------------- | --------------------- | ------------------------------------------------------------------------------ |
-| `sys.type.display`       | `var(--sys-type-display)`       | `font.family.sans`    | The one figure a view is about: a leave balance, a KPI value, a payslip total. |
-| `sys.type.heading.lg`    | `var(--sys-type-heading-lg)`    | `font.family.sans`    | The page title, once per page.                                                 |
-| `sys.type.heading.md`    | `var(--sys-type-heading-md)`    | `font.family.sans`    | Section titles, dialog titles.                                                 |
-| `sys.type.heading.sm`    | `var(--sys-type-heading-sm)`    | `font.family.sans`    | Card titles, group labels.                                                     |
-| `sys.type.body.lg`       | `var(--sys-type-body-lg)`       | `font.family.sans`    | Lead paragraphs on welcome and empty surfaces.                                 |
-| `sys.type.body.md`       | `var(--sys-type-body-md)`       | `font.family.sans`    | Default text, table cells, field values.                                       |
-| `sys.type.body.sm`       | `var(--sys-type-body-sm)`       | `font.family.sans`    | Help text, metadata, timestamps.                                               |
-| `sys.type.label.md`      | `var(--sys-type-label-md)`      | `font.family.sans`    | Buttons, field labels, tabs.                                                   |
-| `sys.type.label.sm`      | `var(--sys-type-label-sm)`      | `font.family.sans`    | Badges, table headers, small labels.                                           |
-| `sys.type.code`          | `var(--sys-type-code)`          | `font.family.mono`    | Employee numbers, IBANs, reference codes.                                      |
-| `sys.type.display-serif` | `var(--sys-type-display-serif)` | `font.family.display` | One italic phrase on welcome, onboarding and empty surfaces.                   |
+| Role                     | CSS variable                    | Family                | Use                                                                                                                      |
+| ------------------------ | ------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `sys.type.display`       | `var(--sys-type-display)`       | `font.family.sans`    | The one figure a view is about: a leave balance, a KPI value, a payslip total.                                           |
+| `sys.type.heading.lg`    | `var(--sys-type-heading-lg)`    | `font.family.sans`    | The page title, once per page.                                                                                           |
+| `sys.type.heading.md`    | `var(--sys-type-heading-md)`    | `font.family.sans`    | Section titles, dialog titles.                                                                                           |
+| `sys.type.heading.sm`    | `var(--sys-type-heading-sm)`    | `font.family.sans`    | Card titles, group labels.                                                                                               |
+| `sys.type.body.lg`       | `var(--sys-type-body-lg)`       | `font.family.sans`    | Lead paragraphs on welcome and empty surfaces.                                                                           |
+| `sys.type.body.md`       | `var(--sys-type-body-md)`       | `font.family.sans`    | Default text, table cells, field values, and the tabs, side navigation items and segmented options that are not current. |
+| `sys.type.body.sm`       | `var(--sys-type-body-sm)`       | `font.family.sans`    | Help text, metadata, timestamps.                                                                                         |
+| `sys.type.label.md`      | `var(--sys-type-label-md)`      | `font.family.sans`    | Buttons, field labels, the current tab, side navigation item and segmented option.                                       |
+| `sys.type.label.sm`      | `var(--sys-type-label-sm)`      | `font.family.sans`    | Badges, table headers, small labels.                                                                                     |
+| `sys.type.code`          | `var(--sys-type-code)`          | `font.family.mono`    | Token names and technical identifiers on admin screens. Never in employee-facing copy.                                   |
+| `sys.type.display-serif` | `var(--sys-type-display-serif)` | `font.family.display` | One italic phrase on welcome, onboarding and empty surfaces.                                                             |
 
 A role never carries colour; colour comes from `sys.text.*`.
 
 ## Layout and spacing
 
 - Spacing uses `space.0` to `space.12`, a 4 px scale read as `var(--space-4)` and so on. Control heights are 32 / 40 / 48, compact 28 / 32 / 40; they are not tokens yet and join the density files when they are.
-- Desktop screens are designed at 1440 by 900: a side navigation, a 56 px app bar with the lock-up at the left, and content in cards on paper.
+- Desktop screens are designed at 1440 by 900: a side navigation, a 56 px app bar with the lock-up at the left, and content on paper in sections divided by hairlines. A card holds one thing, such as an employee or a KPI tile.
 - The three core screens: request and approve (a form with the balance beside it), the people directory (a data grid), and the employee profile (a header with the duotone portrait, then description lists).
 - Phones are designed at 390 by 844. Tables stack into cards under 720 px, and touch layouts use comfortable density, with controls of 40 px and up.
 - Density is a scope: `data-density="compact"` on the root or a subtree tightens heights and padding, never type size.
@@ -118,7 +118,8 @@ Recipes for the components people meet most. Every component is an Angular compo
 - **Data grid** (`ink-data-grid`): rows 44 px, compact 36; sticky header in `sys.type.label.sm` on the paper tone; tabular figures, amounts right-aligned; row checkboxes and menus are named with the row ("Select Bram de Vries").
 - **Badge** (`ink-badge`): a dot and a word on the status background, `sys.type.label.sm`, `radius.button`. "Pending", "Approved".
 - **App bar** (`ink-app-bar`): 56 px, card surface, hairline below, lock-up at the left, search, notifications and the avatar at the right.
-- **Tabs and side navigation**: the selected item uses the selected wash with `sys.text.on-selected`; cobalt marks the current item, nothing else does.
+- **Side navigation** (`ink-side-nav`): the current item uses the selected wash with `sys.text.on-selected` in `sys.type.label.md`; the others are `sys.type.body.md`.
+- **Tabs** (`ink-tabs`): underline tabs. The current tab has a `sys.signal.bg` underline and `sys.text.primary` in `sys.type.label.md`; the others are `sys.text.secondary` in `sys.type.body.md`.
 - **Dialog** (`ink-dialog`): card surface, `radius.xl`, `elevation.4`, a title that names the action, buttons that name the outcome: "Keep request" and "Reject request".
 - **Toast** (`ink-toast`): inverse surface, `elevation.3`, the outcome plus one action where it can be undone: "Request sent. Undo".
 - **Empty state** (`ink-empty-state`): the ink drop, what this is, why it is empty, one button.
@@ -168,7 +169,7 @@ Shorthand, always as roles: paper is `sys.surface.page`, card `sys.surface.defau
 
 Example prompts:
 
-- "Build the leave request screen in InkHR: the request form in a card on paper, Ana Kuiper's balance beside it (16 days statutory, 5 requested, 11 left) as a KPI tile, one primary button, 'Request time off'."
+- "Build the leave request screen in InkHR: the request form on paper, Ana Kuiper's balance beside it as one display figure (16 days statutory, 5 requested, 11 left), sections divided by hairlines, one primary button, 'Request time off'."
 - "Show the manager inbox as an InkHR data grid with a pending badge per row and row actions named with the employee."
 - "Design the empty state for 'No requests yet' with the ink drop, one sentence and the button 'Request time off'. Light and dark."
 
