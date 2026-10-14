@@ -301,7 +301,7 @@
     "avatar": {
       "bg": {
         "$type": "color",
-        "$value": "{ref.color.cobalt.900}",
+        "$value": "{ref.color.ink.800}",
         "$description": "A disc behind a person's initials, drawn when there is no photograph to put through the duotone. One pair serves everyone: no colour per person, and never a data colour for a face."
       },
       "text": {

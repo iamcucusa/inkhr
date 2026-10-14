@@ -165,7 +165,7 @@
             ],
             "hex": "#43474C"
           },
-          "$description": "The last whole step of ink before 850, 900, 950 and 975, the four dark surfaces. On ink it draws the hairline, because those surfaces sit too close together for a line to come from among them."
+          "$description": "The last whole step of ink before the four dark surfaces, 850 to 975. On ink it draws the hairline and the disc behind initials, because those surfaces sit too close together to set either apart."
         },
         "850": {
           "$type": "color",
@@ -350,7 +350,7 @@
             ],
             "hex": "#111D81"
           },
-          "$description": "Light's pressed step, and the disc behind initials on ink. The far end of the pair that 100 begins."
+          "$description": "Light's pressed step and the label on a selected fill. The far end of the pair that 100 begins."
         },
         "950": {
           "$type": "color",
