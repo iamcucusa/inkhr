@@ -4,6 +4,7 @@ import {
   extractMessages,
   readHookInput,
 } from './claude-pre-commit.mjs';
+import { checkMessage } from './check-message.mjs';
 
 describe('extractMessages', () => {
   it('keeps each command separate instead of merging a script', () => {
@@ -15,6 +16,35 @@ describe('extractMessages', () => {
     expect(extractMessages(script)).toEqual([
       'docs(repo): add the guide',
       'chore: tidy',
+    ]);
+  });
+
+  it('reads a multi-line heredoc passed with -F -', () => {
+    const command = [
+      "git add -A && git commit -F - <<'EOF'",
+      'Docs(repo): Add the guide.',
+      '',
+      'One line.',
+      'EOF',
+    ].join('\n');
+    expect(extractMessages(command)).toEqual([
+      'Docs(repo): Add the guide.\n\nOne line.',
+    ]);
+  });
+
+  it('rejects a bad heredoc message and passes a good one', () => {
+    const commit = (message) =>
+      `git commit -F - <<'EOF'\n${message}\nEOF\necho done`;
+    const [bad] = extractMessages(commit('Update files.'));
+    expect(checkMessage(bad)).not.toEqual([]);
+    const [good] = extractMessages(commit('docs(repo): add the guide'));
+    expect(good).toBe('docs(repo): add the guide');
+    expect(checkMessage(good)).toEqual([]);
+  });
+
+  it('reads a commit after a separator in a script', () => {
+    expect(extractMessages('git add -A && git commit -m "Bad."')).toEqual([
+      'Bad.',
     ]);
   });
 

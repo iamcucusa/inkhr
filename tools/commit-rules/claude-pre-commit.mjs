@@ -4,12 +4,29 @@
 import { fileURLToPath } from 'node:url';
 import { checkMessage } from './check-message.mjs';
 
+const HEREDOC = /<<-?\s*'?(\w+)'?\n([\s\S]*?)\n\s*\1\b/g;
+const PLACEHOLDER = /<<__HEREDOC_(\d+)__/g;
+
 // A script may hold several commands; each `git commit` is checked on its own,
 // so repeated -m values are joined per commit and not across the script.
+// Heredocs are set aside before the split, since their bodies span lines, and
+// put back into the segment that held them; each segment is trimmed so a
+// commit after `&&` or `;` still starts its command.
 export function extractMessages(command) {
-  return command
+  const heredocs = [];
+  const flat = command.replace(HEREDOC, (heredoc) => {
+    heredocs.push(heredoc);
+    return `<<__HEREDOC_${heredocs.length - 1}__`;
+  });
+  return flat
     .split(/&&|\|\||;|\n/)
-    .map((segment) => extractMessage(segment))
+    .map((segment) =>
+      extractMessage(
+        segment
+          .trim()
+          .replace(PLACEHOLDER, (_, index) => heredocs[Number(index)]),
+      ),
+    )
     .filter((message) => message !== undefined);
 }
 
