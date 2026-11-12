@@ -66,19 +66,20 @@ Messages, branch names and pull request text are public and permanent.
 
 - No company or client names, no recruiter, interview, application or portfolio framing, no possessive framing about an employer.
 - Name the domain, not the employer.
-- Generic vocabulary is checked from `tools/commit-rules/disclosure-patterns.mjs`, which is committed. Proper nouns go in `.disclosure-terms.local`, which `npm install` creates from `.disclosure-terms.example` and git never sees. CI reads the same names from a repository secret.
+- Generic vocabulary is checked from `tools/commit-rules/disclosure-patterns.mjs`, which is committed. Proper nouns go in `.disclosure-terms.local`, which `npm install` or the first agent session creates from `.disclosure-terms.example` and git never sees. CI reads the same names from a repository secret.
 - A failure names the rule and the commit, never the term, so no log leaks a name.
 
 ## How it is enforced
 
 | When                       | What happens                                                                                                    |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| An agent session starts    | A Claude Code hook switches the git hooks on and creates `.disclosure-terms.local` when either is missing       |
 | An agent proposes a commit | A Claude Code hook checks the message before git runs and gives the agent the broken rules                      |
 | You commit                 | The `commit-msg` hook rejects a bad message; a fix costs one retype                                             |
 | You push                   | The `pre-push` hook checks the branch name and every outgoing commit, including commits made with `--no-verify` |
 | You open a pull request    | CI runs the same checks, for clones where the hooks were never switched on                                      |
 
-The hooks are switched on by `npm install`. Only the CI check cannot be bypassed.
+The hooks are switched on by `npm install` and by the first agent session in a clone. Only the CI check cannot be bypassed.
 
 To check something by hand:
 
